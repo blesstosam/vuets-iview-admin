@@ -1,0 +1,127 @@
+// 必须用@import，否则在main里引入不起作用
+@import './var.styl'
+
+html, body
+  height 100%  
+	.app-main > div:nth-child(1) {
+    padding: 0 18px 18px 18px
+    border-color #e8eaec
+    border-radius: 4px
+    // border 1px solid #dcdee2
+		background: #fff
+    transition: all .2s ease-in-out;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1)
+  }
+  // .app-main > div:hover {
+  //   box-shadow 0 1px 6px rgba(0,0,0,.2);
+  //   border-color #eee;
+  // }
+
+    
+
+
+// 侧边栏样式 - dark
+.left-sider-dark
+  background $theme-dark 
+  box-shadow 2px 0 6px rgba(0,21,41,.35) 
+  .ivu-menu-dark
+    background $theme-dark
+    &.ivu-menu-vertical .ivu-menu-opened
+      background $theme-dark-sub-menu
+    &.ivu-menu-vertical .ivu-menu-opened .ivu-menu-submenu-title
+      background $theme-dark
+    &.ivu-menu-vertical .ivu-menu-submenu-title:hover
+      background $theme-dark !important
+  // 头像下面的一条分隔线    
+  & .avatar-wrap
+    border-bottom 2px solid $theme-dark-avatar-wrap-border 
+// 侧边栏样式 - light
+.left-sider-light
+  background $theme-light 
+  box-shadow 2px 0 8px 0 rgba(29,35,41,.05)
+  .ivu-menu-light
+    background $theme-light
+    &.ivu-menu-vertical .ivu-menu-opened
+      background $theme-light
+    &.ivu-menu-vertical .ivu-menu-opened .ivu-menu-submenu-title
+      background $theme-light
+    &.ivu-menu-vertical .ivu-menu-submenu-title:hover
+      background $theme-light !important
+  & .avatar-wrap
+    border-bottom 1px solid $theme-light-avatar-wrap-border 
+
+// header 样式 - dark
+.header-con-dark
+  background $theme-dark-sub-menu
+  color $theme-light
+// header 样式 - light
+.header-con-light
+  background $theme-light
+// header 样式 - primary
+.header-con-primary
+  background linear-gradient(90deg, $theme-primary-first, $theme-primary-second, $theme-primary-three)
+  color $theme-light
+
+// card-title
+// .card-title-dark
+//   background $theme-dark-sub-menu
+//   color $theme-light
+// .card-title-light
+//   background $theme-light
+//   border-bottom 1px solid #e8eaec
+// .card-title-primary
+//   background linear-gradient(90deg, $theme-primary-first, $theme-primary-second, $theme-primary-three)
+//   color $theme-light
+
+
+
+//  ==============按钮样式=============
+//按钮里的 icon 样式
+.ivu-btn>.ivu-icon
+  font-size 16px
+  line-height 0
+//  按钮之间的间隔
+.left20
+  margin-left 20px
+// 表格中的点击span
+.table-span {
+  color: blue;
+  cursor: pointer;
+}
+
+//  表格样式
+.red-txt
+  color #e74c3c
+.green-txt
+  color #19be6b
+.green-cir
+  width 11px
+  height 11px
+  display inline-block
+  background #19be6b
+  border-radius 50% 50%
+  margin-right 5px
+.red-cir
+  width: 11px
+  height: 11px
+  display: inline-block
+  background: #e74c3c
+  border-radius: 50% 50%
+  margin-right: 5px
+
+
+// 表格操作按钮icon样式
+.action-icon-style
+  margin-right: 5px
+  width: 22px
+  height:22px
+  font-size: 16px
+  line-height: 22px
+  color: white
+  padding: 0 2px
+  border-radius: 3px
+
+
+
+
+
