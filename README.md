@@ -1,5 +1,7 @@
 # TS IView DEMO
 
+![预览图](https://pan.baidu.com/disk/home?#/all?path=%2F&vmode=list)
+
 ## Project setup
 ```
 npm install
