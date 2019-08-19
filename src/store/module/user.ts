@@ -6,7 +6,7 @@ import storage from '@/assets/script/storage'
 export const defaultAvatar =
   'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564130985&di=ebc53a5c594bfafe06ba14d0799c88ab&src=http://n.sinaimg.cn/sinacn/w640h595/20180219/5762-fyrswmu1170551.jpg';
 
-type State = User & { authorization: string, orgCode: string, logoutMsg: string };
+type State = User & { authorization: string, orgCode: string};
 const state: State = {
   username: localStorage.getItem('username') || '',
   avatar: localStorage.getItem('avatar') || defaultAvatar,
@@ -16,7 +16,6 @@ const state: State = {
   authorization: '',
   orgCode: '201907221579545258',
   proxyId: localStorage.getItem('proxyId') || '',
-  logoutMsg: ''
 };
 
 export default {
@@ -57,9 +56,6 @@ export default {
       _s.proxyId = str;
       localStorage.setItem('proxyId', str);
     },
-    [types.UPDATE_LOGOUT_MSG](_s: State, str: string): void {
-      _s.logoutMsg = str;
-    }
   },
   actions: {
     [types.UPDATE_USER]({ commit }: any, userinfo: User) {

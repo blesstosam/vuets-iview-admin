@@ -21,7 +21,6 @@
   transition: width 0.2s;
   height: 100%;
   position: fixed;
-  /*top: 89px;*/
   bottom: 0;
   left: 0;
   z-index: 98 !important;
@@ -33,10 +32,4 @@
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   width: 100%
-}
-#app .hideSidebar .sidebar-container {
-  /* width: 64px !important; */
-}
-#app .hideSidebar .main-container {
-  /* margin-left: 64px; */
 }

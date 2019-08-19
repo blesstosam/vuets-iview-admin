@@ -54,8 +54,6 @@
             <span v-else>登录中...</span>
           </Button>
         </FormItem>
-
-        <div style="color: red; font-size: 16px; text-align: center;">{{ logoutMsg }}</div>
       </Form>
     </Card>
   </div>
@@ -80,14 +78,6 @@ interface LoginForm {
 
 @Component({})
 export default class Login extends Vue {
-  created() {
-    this.logoutMsg = storage.get('logoutMsg') || '';
-    // 清空 因为只显示一次
-    storage.set('logoutMsg', '');
-  }
-
-  logoutMsg: string = '';
-
   passwordInputType: 'password' | 'text' = 'password';
   loading: boolean = false;
   authcode: string = '';
