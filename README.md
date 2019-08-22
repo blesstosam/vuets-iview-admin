@@ -1,7 +1,25 @@
-# TS IView DEMO
-## ts+vue，ui框架采用iview 通用的后台管理界面
+# TS IView Admin
 
-![预览图](https://thumbnail0.baidupcs.com/thumbnail/2225cd3e7f30066b03a822b8d37c5bc1?fid=3926977140-250528-666405415741258&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-D65QwH%2fT2CZrPa%2b0PMFc9i9PLJE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=5324714444248800936&dp-callid=0&time=1566108000&size=c1440_u900&quality=90&vuk=3926977140&ft=image&autopolicy=1)
+![Preview](http://chuantu.xyz/t6/702/1566217863x1033347913.png)
+
+## Introduction
+vuets-iview-admin is a front-end management background integration solution. It based on [Vue.js](https://github.com/vuejs/vue) and use the UI Toolkit [iView](https://github.com/iview/iview) and use [Typescript](https://www.tslang.cn/).
+
+## Features
+- Login / Logout
+- i18n
+- Error Page
+    - 403
+    - 404
+    - 500
+- Router
+    - Dynamic routing
+    - With reference page
+- Theme
+- Shrink the sidebar
+- Tag navigation
+- Breadcrumb navigation
+- Full screen / exit full screen
 
 ## Project setup
 ```
