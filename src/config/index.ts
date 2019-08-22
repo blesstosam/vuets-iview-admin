@@ -1,13 +1,13 @@
 /* eslint-disable-next-line no-unused-vars */
-import {State as SettingType} from '@/store/module/setting'
-// 默认ui配置 
+import { State as SettingType } from '@/store/module/setting';
+// 默认ui配置
 const setting: SettingType = {
   sidebarTheme: 'dark',
   headerTheme: 'light',
   showSettings: false,
   showTagsView: true,
   showMenuInHeader: false
-}
+};
 
 export default {
   // 配置显示在浏览器标签的title
@@ -23,7 +23,6 @@ export default {
    */
   useI18n: true,
 
-  
   // 默认打开的首页的路由name值，默认为home
   homeName: 'home',
 

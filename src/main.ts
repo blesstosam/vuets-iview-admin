@@ -6,12 +6,12 @@ import IView from 'iview';
 import TreeTable from 'tree-table-vue';
 import Spacer from '@/components/Spacer.vue';
 import TableAction from '@/components/TableAction.vue';
-import {SET_LOCAL} from './store/mutation-types'
+import { SET_LOCAL } from './store/mutation-types';
 
-Vue.component('TableAction', TableAction)
+Vue.component('TableAction', TableAction);
 
 Vue.component(TreeTable.name, TreeTable);
-Vue.component('spacer', Spacer)
+Vue.component('spacer', Spacer);
 
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 Vue.component(VueQrcode.name, VueQrcode);
@@ -28,8 +28,8 @@ Vue.use(IView);
 import VCharts from 'v-charts';
 Vue.use(VCharts);
 
-import help from './help'
-Vue.use(help)
+import help from './help';
+Vue.use(help);
 
 // 语言切换
 import customZhCn from './locale/zh-CN';
@@ -40,8 +40,8 @@ Vue.use(VueI18n);
 // 自动根据浏览器系统语言设置语言
 const navLang = navigator.language;
 const localLang = navLang === 'zh-CN' || navLang === 'en-US' ? navLang : '';
-let lang = localStorage.getItem('local')  || localLang || 'zh-CN';
-store.commit(SET_LOCAL, lang)
+let lang = localStorage.getItem('local') || localLang || 'zh-CN';
+store.commit(SET_LOCAL, lang);
 const i18n = new VueI18n({
   locale: lang, // 语言标识
   messages: {

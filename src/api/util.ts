@@ -1,9 +1,9 @@
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
-import {LOGOUT} from '@/store/mutation-types'
-import Vue from 'vue'
-import storage from '@/assets/script/storage'
-import cfg from '@/config/index'
+import { LOGOUT } from '@/store/mutation-types';
+import Vue from 'vue';
+import storage from '@/assets/script/storage';
+import cfg from '@/config/index';
 
 export class HttpService {
   service: AxiosInstance;
@@ -25,7 +25,7 @@ export class HttpService {
         if (authorization) {
           config.headers.authorization = authorization;
         }
-        const _locale = (store.state as any).app.local
+        const _locale = (store.state as any).app.local;
         // 现在后台只做了zh_CN | en_US
         config.headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
         config.headers.orgCode = (store.state as any).user.orgCode;
@@ -57,9 +57,9 @@ export class HttpService {
             Vue.prototype.$Modal.info({
               title: response.data.msg,
               onOk: () => {
-                store.dispatch(LOGOUT)
+                store.dispatch(LOGOUT);
               }
-            })
+            });
           }
           return Promise.reject(response);
         } else {
@@ -68,10 +68,10 @@ export class HttpService {
             Vue.prototype.$Modal.info({
               title: response.data.msg,
               onOk: () => {
-                store.dispatch(LOGOUT)
+                store.dispatch(LOGOUT);
               }
-            })
-            return Promise.reject(response);  // 407的直接不处理
+            });
+            return Promise.reject(response); // 407的直接不处理
           } else {
             return response; // return 会默认resolve
           }

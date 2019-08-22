@@ -1,5 +1,6 @@
 /* eslint-disable */
 import {RouteConfig} from 'vue-router'
+import WsConfig from './ws'
 const cssVar = require('@/styles/var.styl')
 
 
@@ -246,3 +247,15 @@ export const off = (function() {
 export function getTextColor(theme: string): string {
   return theme === 'light' ? cssVar['$theme-light-text'] : '#fff';
 }
+
+// 连接ws
+export const initWs = function(url: string, cb: Function) {
+  if (!(window as any).ws) {
+    (window as any).ws = new WsConfig({
+      // 自定义参数
+    }, (msg: any) => {
+      cb && cb(msg);
+    });
+    (window as any).ws.openWs(url);
+  }
+};

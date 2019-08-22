@@ -44,32 +44,32 @@ export const routerList: Array<RouteConfig> = [
         component: () => import('@/views/home/Home.vue')
       }
     ]
-  },
+  }
 ];
 
 // 将后台返回的 菜单列表 转成vue-router所需要的 router list
 export function toRouterComponent(menuList: Array<any>) {
-  if (!menuList.length) return []
+  if (!menuList.length) return [];
 
   let routerArr = [];
   // 将按钮保存到locastorage
-  let btnMap: {[key: string]: string} = {}
+  let btnMap: { [key: string]: string } = {};
 
   // 首页根路由放到前台来 方便自定义修改 (important) 后面放到后台数据库里
-  routerArr.push(routerList[0])
+  routerArr.push(routerList[0]);
   for (let j = 0; j < menuList.length; j++) {
     let obj;
     let firstIndex = routerList.findIndex(i => i.path === menuList[j].url); // 一级菜单
     if (firstIndex !== -1) {
-      let children: Array<RouteConfig> = []
+      let children: Array<RouteConfig> = [];
       obj = {
         path: routerList[firstIndex].path,
         component: routerList[firstIndex].component,
         redirect: routerList[firstIndex].redirect,
         name: routerList[firstIndex].name,
-         // icon 和 title 都是从后台获取的
+        // icon 和 title 都是从后台获取的
         meta: {
-          ...routerList[firstIndex].meta, 
+          ...routerList[firstIndex].meta,
           icon: menuList[j].icon,
           title: menuList[j].name
         },
@@ -79,11 +79,11 @@ export function toRouterComponent(menuList: Array<any>) {
       // 如果有子菜单
       if (menuList[j].children && menuList[j].children.length) {
         for (let k = 0; k < menuList[j].children.length; k++) {
-          const _children = routerList[firstIndex].children!
+          const _children = routerList[firstIndex].children!;
           let secondIndex = _children.findIndex(i => {
             let fullpath = '';
-            const menuVersion = menuList[j].children[k].menuVersion
-            const _version = (menuVersion && (menuVersion !== 1 || menuVersion != '1')) ? `/v${menuVersion}` : ''
+            const menuVersion = menuList[j].children[k].menuVersion;
+            const _version = menuVersion && (menuVersion !== 1 || menuVersion != '1') ? `/v${menuVersion}` : '';
             // console.log(_version, menuVersion,  '_version')
             if (routerList[firstIndex].path === '/') {
               fullpath = `${routerList[firstIndex].path}${i.path}`;
@@ -94,26 +94,26 @@ export function toRouterComponent(menuList: Array<any>) {
           });
           if (secondIndex !== -1) {
             obj.children.push({
-              ..._children[secondIndex], 
+              ..._children[secondIndex],
               meta: {
-                ..._children[secondIndex].meta, 
+                ..._children[secondIndex].meta,
                 // icon 和 title 都是从后台获取的
                 icon: menuList[j].children[k].icon,
                 title: menuList[j].children[k].name
               }
             });
           }
-          
+
           // 将按钮保存到locastorage
-          const __third = menuList[j].children[k]
-          const _btnMap = storage.get('btnMap');  // 只在登录的时候保存一次
+          const __third = menuList[j].children[k];
+          const _btnMap = storage.get('btnMap'); // 只在登录的时候保存一次
           if (__third.children && __third.children.length && !_btnMap) {
             __third.children.forEach((btnItem: any) => {
               if (btnItem.type === 2) {
                 // btnItem.perms : 111565162230126897:111565163577313903:search
-                const type = btnItem.perms.split(':')[2]
+                const type = btnItem.perms.split(':')[2];
                 // console.log(btnItem, `${__third.url}/${type}`)
-                btnMap[`${__third.url}/${type}`] = btnItem.name
+                btnMap[`${__third.url}/${type}`] = btnItem.name;
               }
             });
           }
@@ -127,7 +127,7 @@ export function toRouterComponent(menuList: Array<any>) {
   }
 
   if (Object.keys(btnMap).length) {
-    storage.set('btnMap', btnMap)
+    storage.set('btnMap', btnMap);
   }
 
   return routerArr;

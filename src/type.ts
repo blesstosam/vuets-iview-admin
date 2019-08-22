@@ -69,8 +69,6 @@ export interface SearchItem {
   endTime: string | Date;
 }
 
-
-
 // *********************************** iview 类型定义
 export type IForm = Form;
 export type IMenu = Menu;
@@ -86,8 +84,7 @@ export type IFormRuleItem = {
   validator?: Function;
 };
 
-
-// *********************************** Vue 类型定义 
+// *********************************** Vue 类型定义
 // options 后面加上详细定义
 export type VueRouter = VueRouter & { options: any };
 export type Route = Route;

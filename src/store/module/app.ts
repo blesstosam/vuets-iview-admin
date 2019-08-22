@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as types from '../mutation-types';
-import {MenuItem} from '@/type'
+import { MenuItem } from '@/type';
 
 import { Route } from 'vue-router';
 import cfg from '@/config/index';
@@ -21,7 +21,7 @@ interface State {
   local: string;
   sidebar: { opened: boolean };
   tagsView: TagsView;
-  menuList: Array<MenuItem>
+  menuList: Array<MenuItem>;
 }
 
 // 初始化tagsview
@@ -64,13 +64,13 @@ export default {
     cachedViews: (_s: State) => _s.tagsView.cachedViews,
     visitedViews: (_s: State) => _s.tagsView.visitedViews,
     isSidebarOpened: (_s: State) => _s.sidebar.opened,
-    menuList: (_s: State) => _s.menuList,
+    menuList: (_s: State) => _s.menuList
   },
 
   mutations: {
     // 生成菜单数组
     [types.SET_MENU_LIST](_s: State, menuList: Array<MenuItem>) {
-      _s.menuList = menuList
+      _s.menuList = menuList;
     },
 
     // 设置语言

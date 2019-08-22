@@ -6,7 +6,6 @@ import { scrollTop } from '@/assets/script/util';
 
 Vue.use(Router);
 
-
 // 动态路由
 /* eslint-disable-next-line no-unused-vars */
 import { routerList, getRouterListFromStorage } from './router-list';
@@ -17,7 +16,7 @@ const staticRouter: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: Login,
-    meta: { title: '登录', hideInMenu: true, notCache: true}
+    meta: { title: '登录', hideInMenu: true, notCache: true }
   },
 
   {
@@ -48,7 +47,6 @@ export function resetRouter() {
   (_router as RouterSupple).matcher = (newRouter as RouterSupple).matcher; // reset router
 }
 
-
 // 初始化路由 不管到哪个路由 第一个路由都是 / 根路由
 _router.beforeEach((to: Route, from: Route, next: Function) => {
   (IView as any).LoadingBar.start();
@@ -65,7 +63,7 @@ _router.beforeEach((to: Route, from: Route, next: Function) => {
       next();
     }
   } else {
-    next()
+    next();
   }
 });
 

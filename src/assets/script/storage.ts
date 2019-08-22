@@ -6,7 +6,7 @@ const api = {
     }
     storage.setItem(key, value as string);
   },
-  
+
   get(key: string, storage: Storage) {
     let v = storage.getItem(key);
     if (!v) {
@@ -23,31 +23,31 @@ const api = {
   remove(key: string, storage: Storage) {
     storage.removeItem(key);
   }
-}
+};
 
 const store = {
   storage: window.localStorage,
   set(key: string, value: object | string) {
-    return api.set(key, value, this.storage)
+    return api.set(key, value, this.storage);
   },
   get(key: string) {
-    return api.get(key,  this.storage)
+    return api.get(key, this.storage);
   },
   remove(key: string) {
-    return api.remove(key, this.storage)
+    return api.remove(key, this.storage);
   },
   session: {
     storage: window.sessionStorage,
     set(key: string, value: object | string) {
-      return api.set(key, value, this.storage)
+      return api.set(key, value, this.storage);
     },
     get(key: string) {
-      return api.get(key,  this.storage)
+      return api.get(key, this.storage);
     },
     remove(key: string) {
-      return api.remove(key, this.storage)
-    },
+      return api.remove(key, this.storage);
+    }
   }
-}
+};
 
-export default store
+export default store;

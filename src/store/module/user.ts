@@ -1,12 +1,12 @@
 import { User } from '@/type';
 import * as types from '../mutation-types';
-import router, {resetRouter} from '@/router/router'
-import storage from '@/assets/script/storage'
+import router, { resetRouter } from '@/router/router';
+import storage from '@/assets/script/storage';
 
 export const defaultAvatar =
   'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564130985&di=ebc53a5c594bfafe06ba14d0799c88ab&src=http://n.sinaimg.cn/sinacn/w640h595/20180219/5762-fyrswmu1170551.jpg';
 
-type State = User & { authorization: string, orgCode: string};
+type State = User & { authorization: string; orgCode: string };
 const state: State = {
   username: localStorage.getItem('username') || '',
   avatar: localStorage.getItem('avatar') || defaultAvatar,
@@ -15,7 +15,7 @@ const state: State = {
   adminId: localStorage.getItem('adminId') || '',
   authorization: '',
   orgCode: '201907221579545258',
-  proxyId: localStorage.getItem('proxyId') || '',
+  proxyId: localStorage.getItem('proxyId') || ''
 };
 
 export default {
@@ -55,7 +55,7 @@ export default {
     [types.UPDATE_PROXY_ID](_s: State, str: string): void {
       _s.proxyId = str;
       localStorage.setItem('proxyId', str);
-    },
+    }
   },
   actions: {
     [types.UPDATE_USER]({ commit }: any, userinfo: User) {
@@ -64,30 +64,29 @@ export default {
       commit(types.UPDATE_TOKEN, userinfo.token);
       commit(types.UPDATE_ROLE_ID, userinfo.roleId);
       commit(types.UPDATE_ADMIN_ID, userinfo.adminId);
-      commit(types.UPDATE_PROXY_ID, userinfo.proxyId)
+      commit(types.UPDATE_PROXY_ID, userinfo.proxyId);
     },
-    [types.LOGOUT]({state, dispatch, commit}: any) {
-        // 清除用户信息 localstorage 和 store
-        dispatch(types.UPDATE_USER, {
-          username: '',
-          roleId: '',
-          adminId: '',
-          token: '',
-          avatar: ''
-        });
+    [types.LOGOUT]({ state, dispatch, commit }: any) {
+      // 清除用户信息 localstorage 和 store
+      dispatch(types.UPDATE_USER, {
+        username: '',
+        roleId: '',
+        adminId: '',
+        token: '',
+        avatar: ''
+      });
 
-        commit(types.CLEAR_VISITED_VIEW)
-        storage.set('menuTree', '')
+      commit(types.CLEAR_VISITED_VIEW);
+      storage.set('menuTree', '');
 
-        // reset 有点问题
-        // resetRouter()
-        window.location.reload()
+      // reset 有点问题
+      // resetRouter()
+      window.location.reload();
 
-        // 清除页签
-        setTimeout(() => {
-          router.push('/login');
-        }, 200)
-      
+      // 清除页签
+      setTimeout(() => {
+        router.push('/login');
+      }, 200);
     }
   }
 };

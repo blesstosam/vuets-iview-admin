@@ -1,8 +1,8 @@
 import * as types from '../mutation-types';
 import cfg from '@/config';
 
-export type SidebarThemeType = 'dark' | 'light'
-export type HeaderThemeType = 'dark' | 'light' | 'primary'
+export type SidebarThemeType = 'dark' | 'light';
+export type HeaderThemeType = 'dark' | 'light' | 'primary';
 
 export interface State {
   sidebarTheme: SidebarThemeType;
@@ -10,12 +10,12 @@ export interface State {
   headerTheme: HeaderThemeType;
   showSettings: boolean;
   showTagsView: boolean;
-  showMenuInHeader: boolean;  // 将菜单置于顶部
+  showMenuInHeader: boolean; // 将菜单置于顶部
 }
 
 // type State<T> = { [P in keyof T]?: T[P] }; //  ？？？
 
-const {setting} = cfg
+const { setting } = cfg;
 let _setting: State = setting;
 const tem: string = localStorage.getItem('setting') || '';
 if (tem) {
@@ -31,7 +31,7 @@ export default {
   getters: {
     showSettings: (_s: State) => _s.showSettings,
     sidebarTheme: (_s: State) => _s.sidebarTheme,
-    headerTheme: (_s: State) => _s.headerTheme,
+    headerTheme: (_s: State) => _s.headerTheme
   },
   mutations: {
     [types.CHANGE_SETTING]<K extends keyof State>(_s: State, data: { key: K; val: string | boolean }) {
@@ -39,8 +39,8 @@ export default {
       let { key, val } = data;
       if (_s.hasOwnProperty(key)) {
         (_s[key] as string | boolean) = val;
-        localStorage.setItem('setting', JSON.stringify(_s))
+        localStorage.setItem('setting', JSON.stringify(_s));
       }
     }
-  },
+  }
 };

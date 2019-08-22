@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-const cssVar = require('@/styles/var.styl')
 
 @Component
 export default class ItemMixin extends Vue {
