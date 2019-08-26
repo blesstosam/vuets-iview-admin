@@ -90,12 +90,11 @@ export default {
         name: view.name || '',
         path: view.path,
         title: view.meta.title || 'no-name',
-        isCache: view.isCache
+        isCache: !view.meta.notCache
       });
       sessionStorage.setItem('visited_view', JSON.stringify(_s.tagsView.visitedViews));
 
-      if (view.isCache) {
-        // 在添加的时候通过是否传入isCache来判断是否缓存
+      if (!view.meta.notCache) {
         _s.tagsView.cachedViews.push(view.name || '');
       }
     },
@@ -127,6 +126,7 @@ export default {
     },
     [types.CLEAR_VISITED_VIEW](_s: State) {
       _s.tagsView.visitedViews = [];
+      _s.tagsView.cachedViews = [];
       sessionStorage.setItem('visited_view', '');
     },
     // 除了传进来的 其他都删除

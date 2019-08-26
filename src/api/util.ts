@@ -30,15 +30,6 @@ export class HttpService {
         config.headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
         config.headers.orgCode = (store.state as any).user.orgCode;
 
-        if (config.params) {
-          // get请求
-          // config.param.siteId = getSiteId();
-          // let userId = sessionStorage.getItem('userId');
-          // if (userId) {
-          //   config.param.userId = userId;
-          // }
-        }
-
         return config;
       },
       (error: AxiosError) => {
@@ -93,12 +84,7 @@ export class HttpService {
   post(url: string, param?: Object) {
     const _header = { 'Content-Type': 'application/json' }; // 改用json形式上传参数
     param = param || {};
-    // param.siteId = getSiteId();
 
-    // let userId = sessionStorage.getItem('userId');
-    // if (userId) {
-    //   param.userId = userId;
-    // }
     return new Promise(resolve => {
       this.service.post(url, param, { headers: _header }).then(
         (res: AxiosResponse) => {

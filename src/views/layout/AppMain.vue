@@ -26,26 +26,23 @@
   <section class="app-main" id="app-main" ref="main">
     <div class="app-main-card" id="app-main-card">
       <!-- <transition name="fade" mode="out-in"> -->
-      <!-- <keep-alive> -->
-      <div class="app-main-center">
+      <keep-alive :max="10" :include="cacheList">
         <router-view />
-      </div>
-      <!-- </keep-alive> -->
+      </keep-alive>
       <!-- </transition> -->
     </div>
     <ABackTop :height="100" :bottom="30" :right="50" container=".app-main" />
-    <div class="app-main-footer" id="app-main-footer">
-      Copyright © 2019 xxx技术支持
-    </div>
+    <div class="app-main-footer" id="app-main-footer">Copyright © {{ new Date().getFullYear() }} xxx技术支持</div>
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import ABackTop from './components/ABackTop.vue';
-import { Mutation } from 'vuex-class';
+import { Mutation, Getter } from 'vuex-class';
 import { SET_LOCAL } from '@/store/mutation-types';
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
+import cfg from '@/config/index';
 
 @Component({
   components: { ABackTop, CommonCardTitle }
@@ -55,13 +52,23 @@ export default class AppMain extends Vue {
     this.setLocal(this.$i18n.locale);
     this.getDivHeight();
   }
+
+  // 加上一个配置控制
+  get cacheList(): Array<string> {
+    return cfg.useComponentCache ? this.cachedViews : [];
+  }
+
+  @Getter('cachedViews') readonly cachedViews!: Array<string>;
+
   // 计算高度
   getDivHeight() {
-    let appMainHeight = document.getElementById('app-main')!.offsetHeight;
+    // let appMainHeight = document.getElementById('app-main')!.offsetHeight;
     let appMainCardHeight = document.getElementById('app-main-card')!.offsetHeight;
-
-    if (appMainHeight - 18 - 35 > appMainCardHeight) {
-      document.getElementById('app-main-footer')!.style.marginTop = appMainHeight - 18 - 35 - appMainCardHeight + 'px';
+    // console.log(window.innerHeight - 64 - 40 - 61 - 30, appMainCardHeight)
+    // 由于表格的高度是未知的 所以这一块不好算
+    if (window.innerHeight - 64 - 40 - 61 > appMainCardHeight) {
+      document.getElementById('app-main-footer')!.style.marginTop =
+        window.innerHeight - 64 - 40 - 61 - appMainCardHeight + 'px';
     } else {
       document.getElementById('app-main-footer')!.style.marginTop = '30px';
     }

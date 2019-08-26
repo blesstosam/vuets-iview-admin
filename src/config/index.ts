@@ -41,5 +41,7 @@ export default {
     CN: 'zh-CN',
     TW: 'zh-TW',
     US: 'en-US'
-  }
+  },
+
+  useComponentCache: true
 };
