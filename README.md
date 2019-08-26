@@ -1,6 +1,6 @@
 # TS IView Admin
 
-![Preview](http://chuantu.xyz/t6/702/1566217863x1033347913.png)
+![Preview](https://github.com/blesstosam/vuets-iview-admin/blob/master/public/preview.png)
 
 ## Introduction
 vuets-iview-admin is a front-end management background integration solution. It based on [Vue.js](https://github.com/vuejs/vue) and use the UI Toolkit [iView](https://github.com/iview/iview) and use [Typescript](https://www.tslang.cn/).
