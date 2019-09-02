@@ -43,5 +43,8 @@ export default {
     US: 'en-US'
   },
 
-  useComponentCache: true
+  useComponentCache: true,
+
+  // 用户登录12小时后 自动登出（后面在每次发送请求时刷新过期时间）
+  userExpireTime: 12 * 60 * 60
 };

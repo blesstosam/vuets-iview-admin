@@ -3,6 +3,7 @@ import Router, { RouteConfig, Route } from 'vue-router';
 import Login from '@/views/Login.vue';
 import IView from 'iview';
 import { scrollTop } from '@/assets/script/util';
+import { getLsCache } from '@/assets/script/util';
 
 Vue.use(Router);
 
@@ -51,13 +52,13 @@ export function resetRouter() {
 _router.beforeEach((to: Route, from: Route, next: Function) => {
   (IView as any).LoadingBar.start();
   if (to.path !== '/login') {
-    if (localStorage.getItem('username')) {
+    if (getLsCache('username')) {
       next();
     } else {
       next('/login');
     }
   } else if (to.path === '/login') {
-    if (localStorage.getItem('username')) {
+    if (getLsCache('username')) {
       next('/home');
     } else {
       next();
