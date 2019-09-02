@@ -259,3 +259,56 @@ export const initWs = function(url: string, cb: Function) {
     (window as any).ws.openWs(url);
   }
 };
+
+/**
+ * 如果expiredTime === 0 表示永久保存
+ * @param {*} data {key: '', val: '', ttl: 1000}
+ * ttl: 过期时间 / 秒
+ */
+export function setLsCache(data: {key: string, val: string, ttl: number}) {
+  if (!data.key || !data.val) {
+    throw new Error('数据格式不对，data={key: "", val: "", ttl:  1000}');
+  }
+  const currentTime = new Date().getTime();
+  const expiredTime = data.ttl ? data.ttl * 1000 + currentTime : 0;
+  const obj = { val: data.val, expired: expiredTime };
+  localStorage.setItem(data.key, JSON.stringify(obj));
+}
+
+export function getLsCache(key: string) {
+  if (!key) {
+    throw new Error('数据格式不对，请传key值');
+  }
+
+  let tem = localStorage.getItem(key);
+  if (!tem) return null;
+
+  try {
+    let obj:{val: string, expired: number} = JSON.parse(tem);
+    if (obj.expired === 0) {
+      return obj.val;
+    }
+    if (obj.expired >= new Date().getTime()) {
+      return obj.val;
+    }
+  
+    localStorage.removeItem(key);
+    // if (key === 'username') {
+    //   setTimeout(() => {
+    //     window.location.reload()
+    //     // localStorage.setItem('logoutMsg', '您的登录信息已过期，请重新登录')
+    //   }, 200)
+    // }
+    return null;
+  } catch (e) {
+    console.log(`--getLsCache-- error: ${e}`)
+    localStorage.removeItem(key);
+    // if (key === 'username') {
+    //   setTimeout(() => {
+    //     window.location.reload()
+    //     // localStorage.setItem('logoutMsg', '您的登录信息已过期，请重新登录')
+    //   }, 200)
+    // }
+    return null;
+  }
+}

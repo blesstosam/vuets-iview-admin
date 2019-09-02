@@ -56,25 +56,3 @@ export function excelUrl(o: any = {}, api: string) {
   });
   return `${baseUrl}${api}?locale=${locale}&orgCode=${orgCode}&token=${token}${str}`;
 }
-
-// 判断排序吗是否可用（不能重复）
-export function isSortOk(data: any, sort: any, saveSort: any, isEdit: boolean, vue: any) {
-  // saveSort 点击编辑按钮时的排序码,  isEdit
-  let isOk = true;
-  data.forEach((i: any) => {
-    if (String(i.sort) === String(sort)) {
-      if (isEdit) {
-        if (String(sort) !== String(saveSort)) {
-          vue.$Message.error('排序码已存在，请重新输入！');
-          isOk = false;
-          return;
-        }
-      } else {
-        vue.$Message.error('排序码已存在，请重新输入！');
-        isOk = false;
-        return;
-      }
-    }
-  });
-  return isOk;
-}

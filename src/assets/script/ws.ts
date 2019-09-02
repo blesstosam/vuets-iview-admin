@@ -43,12 +43,7 @@ class WsConfig {
   }
 
   handleWebSocketMsg(data: string) {
-    try {
-      const value = JSON.parse(data);
-      this.msgCb && this.msgCb(value);
-    } catch (e) {
-      console.log('err', e);
-    }
+    this.msgCb && this.msgCb(data);
   }
 
   // 发送信息给服务器
@@ -75,14 +70,14 @@ class WsConfig {
       this.ws.onclose = () => {
         console.log('ws closed...');
         this.isReconnected = false;
+        setTimeout(() => {
+        	this.checkReconnected();
+        }, 3000)
       };
 
       this.ws.onerror = (evt: any) => {
         console.log(evt, 'ws open onerror');
         this.isReconnected = false;
-        // setTimeout(() => {
-        // 	this.checkReconnected();
-        // }, 5000)
       };
     } else {
       /* eslint-disable no-console */

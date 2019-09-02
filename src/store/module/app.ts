@@ -150,7 +150,7 @@ export default {
             name: view.name || '',
             path: view.path,
             title: (view as View).meta.title || 'no-name',
-            isCache: view.isCache || false
+            isCache: view.isCache || (view as View).meta.notCache || false
           }
         ];
         sessionStorage.setItem('visited_view', JSON.stringify(_s.tagsView.visitedViews));
