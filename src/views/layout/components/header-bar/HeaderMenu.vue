@@ -14,7 +14,7 @@
       }
     }
     .collased-menu-dropdown {
-      width: 115px;
+      width: 110px;
       height: 64px;
       line-height: 62px;
       // border: 1px solid red;
@@ -38,7 +38,7 @@
       }
     }
     .ivu-tooltip {
-      width: 100%;
+      width: 110px;
       .ivu-tooltip-rel {
         width: 100%;
       }
@@ -59,9 +59,11 @@
     text-align: center;
     color: #495060;
   }
-}
-.menu-title {
-  padding-left: 6px;
+  .menu-title {
+    padding-left: 6px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
 }
 </style>
 <template>
@@ -83,7 +85,7 @@
           transfer
           v-else
           :content="showTitle(item.children && item.children[0] ? item.children[0] : item)"
-          placement="right"
+          placement="bottom"
           :key="`drop-menu-${item.name}`"
         >
           <a @click="handleSelect(getNameOrHref(item, true))" class="drop-menu-a" :style="{ textAlign: 'center' }">
@@ -92,6 +94,9 @@
               :color="textColor"
               :type="item.icon || (item.children && item.children[0].icon)"
             />
+            <span class="menu-title" :style="{ color: textColor }">{{
+              showTitle(item.children && item.children[0] ? item.children[0] : item)
+            }}</span>
           </a>
         </Tooltip>
       </template>
@@ -117,15 +122,13 @@ import { getTextColor } from '@/assets/script/util';
   mixins: [Mixin]
 })
 export default class HeaderMenu extends Vue {
-  $config: any;
-
   get textColor() {
     return getTextColor(this.sidebarTheme);
   }
   @Getter('sidebarTheme') sidebarTheme!: SidebarThemeType;
   @Getter('menuList') menuList!: Array<MenuItem>;
 
-  @Prop({ default: 20 }) readonly rootIconSize!: number;
+  @Prop({ default: 18 }) readonly rootIconSize!: number;
   @Prop({ default: 16 }) readonly iconSize!: number;
   @Prop(Boolean) readonly accordion!: boolean;
   @Prop({ default: '' }) activeName!: string;

@@ -56,9 +56,9 @@
     text-align: center;
     color: #495060;
   }
-}
-.menu-title {
-  padding-left: 6px;
+  .menu-title {
+    padding-left: 6px;
+  }
 }
 </style>
 <template>
