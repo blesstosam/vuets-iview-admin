@@ -42,7 +42,7 @@
       <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
       <div class="logo-con">
         <SiderBarTop />
-        <div style="text-align: center; margin: 20px 10px 10px 0;" v-if="!collapsed">
+        <div style="text-align: center; margin: 20px 10px 20px 0;" v-if="!collapsed">
           <AutoComplete
             v-model="searchValue"
             @on-search="handleSearch"
@@ -96,7 +96,7 @@ export default class SideBar extends Vue {
 
   @Getter('visitedViews') viewList!: VisitedViewsList;
   get viewListWithHomePage(): VisitedViewsList {
-    return [{ name: 'home', title: '首页', path: '/home' }, ...this.viewList];
+    return [{ name: 'home', title: 'menuTitle.home', path: '/home' }, ...this.viewList];
   }
 
   handleFocus() {

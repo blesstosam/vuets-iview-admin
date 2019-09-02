@@ -115,7 +115,7 @@
             :closable="item.name !== $config.homeName"
             :color="isActive(item) ? 'primary' : 'default'"
             @contextmenu.prevent.native="contextMenu(item, $event)"
-            >{{ item.title }}</Tag
+            >{{ showTitle(item) }}</Tag
           >
         </transition-group>
       </div>
@@ -132,6 +132,7 @@ import { Mutation, Getter } from 'vuex-class';
 import { RouteConfig } from '@/type';
 /* eslint-disable-next-line no-unused-vars */
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
+import { showTitle } from '@/assets/script/util';
 
 @Component({})
 export default class TagViews extends Vue {
@@ -168,13 +169,17 @@ export default class TagViews extends Vue {
   }
 
   get viewListWithHomePage(): VisitedViewsList {
-    return [{ name: 'home', title: '首页', path: '/home' }, ...this.viewList];
+    return [{ name: 'home', title: 'menuTitle.home', path: '/home' }, ...this.viewList];
   }
 
   @Mutation(ADD_VISITED_VIEW) addVisitedView!: (route: RouteConfig) => void;
   @Mutation(DEL_VISITED_VIEW) delVisitedView!: (item: VisitedViewItem) => void;
   @Mutation(CLEAR_VISITED_VIEW) clearVisitedView!: () => void;
   @Mutation(DEL_OTHER_VISITED_VIEW) delOtherVisitedView!: (route: RouteConfig) => void;
+
+  showTitle(item: any) {
+    return showTitle(item, this);
+  }
 
   handleTagsOption(type: string) {
     if (type.includes('all')) {

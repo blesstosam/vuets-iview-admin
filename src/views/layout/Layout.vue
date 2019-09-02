@@ -178,7 +178,7 @@ export default class Layout extends Vue {
     let arr: Array<MenuItem> = [];
     if ((this.$router as VueRouter).options.routes) {
       (this.$router as VueRouter).options.routes.forEach((i: any) => {
-        if (!i.meta.hideInMenu && i.path !== '*' && i.path !== '/') {
+        if (!i.meta.hideInMenu && i.path !== '*') {
           let children: Array<MenuItem> = [];
           let obj = {
             title: i.meta.title,
@@ -190,12 +190,12 @@ export default class Layout extends Vue {
           };
           arr.push(obj);
           // 如果是总览不需要children
-          if (i.children && i.children.length && i.path !== '/') {
+          if (i.children && i.children.length) {
             i.children.forEach((__i: any) => {
               let obj2 = {
                 title: __i.meta.title,
                 name: __i.name,
-                path: obj.path === '/' ? '/dashboard' : `${obj.path}/${__i.path}`,
+                path: obj.path === '/' ? '/home' : `${obj.path}/${__i.path}`,
                 meta: __i.meta,
                 icon: __i.meta.icon
               };

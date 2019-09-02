@@ -27,7 +27,6 @@ export const routerList: Array<RouteConfig> = [
     redirect: '/home',
     component: Layout,
     meta: {
-      hideInMenu: true,
       notCache: true
     },
     children: [
@@ -35,11 +34,10 @@ export const routerList: Array<RouteConfig> = [
         path: 'home',
         name: 'home',
         meta: {
-          hideInMenu: true,
-          title: '首页',
+          title: 'menuTitle.home',
           notCache: true,
           icon: 'md-home',
-          remark: 'engRemark.home'
+          remark: 'remark.home'
         },
         component: () => import('@/views/home/Home.vue')
       }

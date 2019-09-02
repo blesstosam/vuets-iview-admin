@@ -55,13 +55,15 @@ export function deepCopy(data: any): any {
 
 export function showTitle(item: any, vm: any): string {
   // console.log(item, 'showtitle')
-  let { title } = item.meta
+  let title  = item.meta && item.meta.title || item.title
   if (!title) return ''
 
-  if (title.includes('{{') && title.includes('}}')) {
-    title = title.replace(/({{[\s\S]+?}})/, (m: any, str: string) => str.replace(/{{([\s\S]*)}}/, (m, _) => vm.$t(_.trim())))
+  const arr = title.split('.')
+  // 如果是用 i18n 多语言
+  if (arr.length && arr[0] === 'menuTitle') {
+    title = vm.$t(title.trim())
   } else {
-    title = (item.meta && item.meta.title) || item.name
+    title = item.meta && item.meta.title || item.title
   }
 
   return title
