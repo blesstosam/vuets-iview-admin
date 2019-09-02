@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router, { RouteConfig, Route } from 'vue-router';
 import Login from '@/views/Login.vue';
 import IView from 'iview';
-import { scrollTop } from '@/assets/script/util';
+import { scrollTop, showTitle } from '@/assets/script/util';
 import { getLsCache } from '@/assets/script/util';
 
 Vue.use(Router);
@@ -76,7 +76,7 @@ _router.afterEach((to: Route) => {
   }
 
   // document.querySelector('#app-main').scrollTo(0, 0)
-  window.document.title = to.meta.title;
+  window.document.title = showTitle(to, _router.app);;
 });
 
 export default _router;
