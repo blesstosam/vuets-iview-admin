@@ -76,7 +76,6 @@ import dayjs from 'dayjs';
 import { HeaderThemeType } from '@/store/module/setting';
 /* eslint-disable-next-line no-unused-vars */
 import { MenuItem, VueRouter } from '@/type';
-// import storage from '@/assets/script/storage';
 import cfg from '@/config/index';
 /* eslint-disable-next-line no-unused-vars */
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
@@ -130,45 +129,6 @@ export default class Navbar extends Vue {
     this._setLocal(lang);
     clearInterval(this.timer);
     this.setCurrentTime();
-    this.reqMenuList();
-  }
-
-  // 重新获取菜单权限
-  async reqMenuList() {
-    // const resp = await getCurrentAuthList();
-    // if (resp.code !== 200 || !resp.data || !resp.data.length) {
-    //   return;
-    // }
-    // // console.log((this.$router as VueRouter).options.routes, resp.data, '222')
-    // const menuList = resp.data;
-    // // 更新本地menu， 刷新页面后需要用到
-    // storage.set('menuTree', menuList);
-    // // 将routerlist里的title改掉 其他地方的都依赖该list 通过watch local 把相关组件刷新一遍
-    // if ((this.$router as VueRouter).options.routes) {
-    //   (this.$router as VueRouter).options.routes.forEach((i: any) => {
-    //     if (i.path !== '*' && i.path !== '/' && i.path !== '/login' && i.path !== '/404') {
-    //       const firstIndex = menuList.findIndex((menuItem: any) => menuItem.url === i.path);
-    //       if (firstIndex !== -1) {
-    //         i.meta.title = menuList[firstIndex].name;
-    //       }
-    //       if (i.children && i.children.length) {
-    //         i.children.forEach((__i: any, __index: number) => {
-    //           // 第二次没有对 path 做检查  其元素及元素的位置和应该是一样的
-    //           __i.meta.title = menuList[firstIndex].children[__index].name;
-    //           // 页签
-    //           this.visitedViews.forEach((view: any) => {
-    //             if (view.path === `${i.path}/${__i.path}`) {
-    //               view.title = menuList[firstIndex].children[__index].name;
-    //             }
-    //           });
-    //         });
-    //       }
-    //     }
-    //   });
-    // }
-    // this.emitLangChange();
-    // // 用事件通知 其他组件将组件数据刷新一遍
-    // (this.$refs.headerBar as any).updateBreadCrumbList();
   }
 
   @Emit('lang-change')

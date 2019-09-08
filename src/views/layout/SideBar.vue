@@ -49,7 +49,7 @@
             @on-select="handleSelect"
             @on-focus="handleFocus"
             icon="ios-search"
-            placeholder="搜索菜单"
+            :placeholder="$t('searchMenu')"
             style="width:90%"
           >
             <Option v-for="item in searchResult" :value="item.name" :key="item.name"> {{ item.title }}</Option>
@@ -80,6 +80,10 @@ const COLLAPSED_SIDER_WIDTH = 64;
   components: { ScrollBar, SideMenu, SiderBarTop }
 })
 export default class SideBar extends Vue {
+  created() {
+    this.collapsed = !this.isSidebarOpened;
+  }
+
   siderWidth: number = SIDER_WIDTH;
   collapsedWidth: number = COLLAPSED_SIDER_WIDTH;
 

@@ -71,8 +71,8 @@
           <Icon :size="18" type="ios-close-circle-outline" />
         </Button>
         <DropdownMenu slot="list">
-          <DropdownItem name="close-all">关闭所有</DropdownItem>
-          <DropdownItem name="close-others">关闭其他</DropdownItem>
+          <DropdownItem name="close-all">{{ $t('closeAll') }}</DropdownItem>
+          <DropdownItem name="close-others">{{ $t('closeOthers') }}</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>
@@ -138,6 +138,14 @@ import { showTitle } from '@/assets/script/util';
 export default class TagViews extends Vue {
   $config: any;
 
+  created() {
+    this.menuList.others = this.$t('closeOthers') as string;
+    this.menuList.all = this.$t('closeAll') as string;
+  }
+  mounted() {
+    this.handleScroll(-100);
+  }
+
   tagBodyLeft: number = 0;
   isIconHidden: boolean = true;
 
@@ -145,15 +153,11 @@ export default class TagViews extends Vue {
   contextMenuTop: number = 0;
   visible: boolean = false;
   menuList: { others: string; all: string } = {
-    others: '关闭其他',
-    all: '关闭所有'
+    others: '',
+    all: ''
   };
   @Getter('visitedViews') viewList!: VisitedViewsList;
   @Prop() readonly isShowTagsView!: boolean;
-
-  mounted() {
-    this.handleScroll(-100);
-  }
 
   @Watch('$route')
   handleRouteChange() {
@@ -189,10 +193,10 @@ export default class TagViews extends Vue {
     } else if (type.includes('others')) {
       // 关闭除当前页和home页的其他页
       this.delOtherVisitedView(this.$route);
-      setTimeout(() => {
-        this.moveToTarget();
-      }, 100);
     }
+    setTimeout(() => {
+      this.moveToTarget();
+    }, 100);
   }
 
   // 关闭右键菜单
@@ -219,10 +223,7 @@ export default class TagViews extends Vue {
   moveToTarget(): void {
     this.$nextTick(() => {
       // 找个路由对应的dom
-      let _el =
-        this.$route.name === 'dashboard'
-          ? (this.$refs[this.$route.name] as Vue).$el
-          : (this.$refs[this.$route.name as string] as Vue[])[0].$el;
+      let _el = (this.$refs[this.$route.name as string] as Vue[])[0].$el;
 
       let wrapperWidth = (this.$refs.scrollWrapper as HTMLElement).offsetWidth;
       // let barWidth = this.$refs.scrollBar.offsetWidth;

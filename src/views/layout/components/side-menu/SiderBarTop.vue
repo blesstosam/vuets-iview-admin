@@ -23,7 +23,7 @@
   >
     <Avatar size="large" :src="userAvatar" v-if="showAvatar" />
     <div class="text-wrap" v-if="isSidebarOpened || showMenuInHeader" :style="{ color: textColor }">
-      <div class="logo-title">管理后台</div>
+      <div class="logo-title">{{ $t('appName') }}</div>
       <div class="username">
         <span class="ivu-tag-dot-inner" style="background-color: #2d8cf0"></span>
         {{ username }}

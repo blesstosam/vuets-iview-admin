@@ -13,8 +13,8 @@
 <template>
   <div class="user-avatar-dropdown">
     <Dropdown @on-click="handleClick">
-      <Badge :dot="!!messageUnreadCount">
-        <Avatar :src="userAvatar" />
+      <Badge>
+        <Icon type="ios-more" :size="23" />
       </Badge>
       <Icon :size="18" type="md-arrow-dropdown"></Icon>
       <DropdownMenu slot="list">
@@ -22,7 +22,7 @@
           消息中心
           <Badge style="margin-left: 10px" :count="messageUnreadCount"></Badge>
         </DropdownItem> -->
-        <DropdownItem name="logout" @click="doLogout">退出登录</DropdownItem>
+        <DropdownItem name="logout" @click="doLogout">{{ $t('exit') }}</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>
@@ -43,20 +43,13 @@ export default class User extends Vue {
       name: name
     });
   }
-  //query
+
   handleClick(name: string): void {
     switch (name) {
       case 'logout':
         this.doLogout();
         break;
-      case 'message':
-        this.message('message_page');
-        break;
-      case 'loginPass':
-        this.message('login-psd');
-        break;
-      case 'identityPass':
-        this.message('identity-psd');
+      default:
         break;
     }
   }

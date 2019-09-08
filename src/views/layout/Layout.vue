@@ -9,6 +9,7 @@
   .left-sider
     .ivu-layout-sider-children
       overflow-y: scroll
+      overflow-x: hidden
       margin-right: -18px // 空出一个滚动条的距离 被隐藏在下面
 
 .root-rightPanel

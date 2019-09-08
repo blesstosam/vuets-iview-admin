@@ -5,23 +5,24 @@
   overflow-y: auto
   width 100%
   height: calc(100% - 103px)
-  .app-main-card .common-card-title
-    font-size 16px
-    font-weight 500
-    padding 18px 0 10px 0
-    margin 0 0 24px 0
-    border-bottom 1px solid #e8eaec
-    line-height 1.7
-    display flex
-    justify-content space-between
+  .app-main-card
+    min-height calc(100vh - 173px)
+    .common-card-title
+      font-size 16px
+      font-weight 500
+      padding 18px 0 10px 0
+      margin 0 0 24px 0
+      border-bottom 1px solid #e8eaec
+      line-height 1.7
+      display flex
+      justify-content space-between
+  & .app-main-footer
+    margin-top: 15px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center
 </style>
-<style type="text/css">
-.app-main-footer {
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-}
-</style>
+
 <template>
   <section class="app-main" id="app-main" ref="main">
     <div class="app-main-card" id="app-main-card">
@@ -40,7 +41,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import ABackTop from './components/ABackTop.vue';
 import { Mutation, Getter } from 'vuex-class';
-import { SET_LOCAL } from '@/store/mutation-types';
+import { SET_LOCAL, TOGGLE_SIDE_BAR } from '@/store/mutation-types';
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
 import cfg from '@/config/index';
 
@@ -48,10 +49,20 @@ import cfg from '@/config/index';
   components: { ABackTop, CommonCardTitle }
 })
 export default class AppMain extends Vue {
+  created() {
+    // 根据显示器宽度自动展开隐藏sidebar
+    window.addEventListener('resize', () => {
+      this.winWidth = window.innerWidth;
+    });
+  }
   mounted() {
     this.setLocal(this.$i18n.locale);
-    this.getDivHeight();
+    if (this.winWidth < 960) {
+      this.toggleSideBar(false);
+    }
   }
+
+  winWidth: number = window.innerWidth;
 
   // 加上一个配置控制
   get cacheList(): Array<string> {
@@ -59,28 +70,18 @@ export default class AppMain extends Vue {
   }
 
   @Getter('cachedViews') readonly cachedViews!: Array<string>;
+  @Getter('isSidebarOpened') readonly isSidebarOpened!: boolean;
 
-  // 计算高度
-  getDivHeight() {
-    // let appMainHeight = document.getElementById('app-main')!.offsetHeight;
-    let appMainCardHeight = document.getElementById('app-main-card')!.offsetHeight;
-    // console.log(window.innerHeight - 64 - 40 - 61 - 30, appMainCardHeight)
-    // 由于表格的高度是未知的 所以这一块不好算
-    if (window.innerHeight - 64 - 40 - 61 > appMainCardHeight) {
-      document.getElementById('app-main-footer')!.style.marginTop =
-        window.innerHeight - 64 - 40 - 61 - appMainCardHeight + 'px';
-    } else {
-      document.getElementById('app-main-footer')!.style.marginTop = '30px';
+  @Watch('winWidth')
+  handleWinChange(val: number) {
+    if (val < 960 && this.isSidebarOpened) {
+      this.toggleSideBar(false);
+    } else if (val > 960 && !this.isSidebarOpened) {
+      this.toggleSideBar(true);
     }
   }
 
-  @Watch('$route')
-  handleRouteChange() {
-    this.$nextTick(() => {
-      this.getDivHeight();
-    });
-  }
-
   @Mutation(SET_LOCAL) setLocal!: (lang: string) => void;
+  @Mutation(TOGGLE_SIDE_BAR) toggleSideBar!: (bool: boolean) => void;
 }
 </script>

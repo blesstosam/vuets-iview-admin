@@ -1,6 +1,7 @@
 <style lang="less">
 .side-menu-wrapper {
   user-select: none;
+  margin-right: 18px;
   .menu-collapsed {
     padding-top: 10px;
     .collased-menu-dropdown {

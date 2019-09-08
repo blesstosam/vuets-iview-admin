@@ -13,6 +13,13 @@ module.exports = {
       .set('_c', resolve('src/components'));
   },
 
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      // 保持类名不被压缩  这样keep-alive的include才有效
+      config.optimization.minimizer[0].options.terserOptions.keep_fnames = true;
+    }
+  },
+
   // 设为false打包时不生成.map文件
   productionSourceMap: false,
 

@@ -32,7 +32,7 @@ const staticRouter: Array<RouteConfig> = [
 // 创建路由
 const createRouter = (routeList: Array<RouteConfig>) =>
   new Router({
-    // mode: 'history', // require service support
+    mode: 'history', // require service support
     routes: routeList
   });
 
