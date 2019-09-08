@@ -20,8 +20,8 @@
   <div class="custom-bread-crumb" :class="`custom-bread-crumb-${headerTheme}`">
     <Breadcrumb :style="{ fontSize: `${fontSize}px` }">
       <BreadcrumbItem v-for="item in list" :to="item.to" :key="`bread-crumb-${item.name}`">
-        <common-icon style="margin-right: 4px;" :type="item.icon || ''" />
-        {{ showTitle(item) }}
+        <common-icon style="margin-right: 4px;" :type="item.icon || ''" :size="16" />
+        <span style="vertical-align: middle">{{ showTitle(item) }}</span>
       </BreadcrumbItem>
     </Breadcrumb>
   </div>

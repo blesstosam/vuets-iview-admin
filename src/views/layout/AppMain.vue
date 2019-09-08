@@ -56,10 +56,17 @@ export default class AppMain extends Vue {
     });
   }
   mounted() {
+    window.addEventListener('storage', () => {
+      // 当同时打开两个网页 其中一个网页退出登录的时候 通知另一个网页刷新 把之前的路由清掉
+      // 这样就不会重复push路由进去了
+      if (localStorage.getItem('username') === '') {
+        window.location.reload();
+        setTimeout(() => {
+          this.$router.push('/login');
+        }, 200);
+      }
+    });
     this.setLocal(this.$i18n.locale);
-    if (this.winWidth < 960) {
-      this.toggleSideBar(false);
-    }
   }
 
   winWidth: number = window.innerWidth;

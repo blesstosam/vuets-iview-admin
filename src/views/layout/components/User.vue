@@ -14,9 +14,8 @@
   <div class="user-avatar-dropdown">
     <Dropdown @on-click="handleClick">
       <Badge>
-        <Icon type="ios-more" :size="23" />
+        <Icon type="md-more" :size="23" />
       </Badge>
-      <Icon :size="18" type="md-arrow-dropdown"></Icon>
       <DropdownMenu slot="list">
         <!-- <DropdownItem name="message">
           消息中心

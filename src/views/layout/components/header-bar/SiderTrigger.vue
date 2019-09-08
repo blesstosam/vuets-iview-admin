@@ -9,15 +9,15 @@
   height: @size;
   display: inline-block;
   text-align: center;
-  margin-top: 12px;
+  margin-top: 16px;
   i {
     .trans;
     vertical-align: top;
   }
-  &.collapsed i {
-    transform: rotateZ(90deg);
-    .trans;
-  }
+  // &.collapsed i {
+  //   transform: rotateZ(90deg);
+  //   .trans;
+  // }
 }
 </style>
 
@@ -28,7 +28,7 @@
     :style="{ color: textColor }"
     :class="['sider-trigger-a', !isSidebarOpened ? 'collapsed' : '']"
   >
-    <Icon :type="icon" :size="size" />
+    <Icon :custom="`iconfont ${icon}`" :size="size" />
   </a>
 </template>
 <script lang="ts">
@@ -41,13 +41,16 @@ import { getTextColor } from '@/assets/script/util';
 
 @Component({})
 export default class SiderTrigger extends Vue {
-  @Prop({ default: 'navicon-round' }) readonly icon!: string;
-  @Prop({ default: 26 }) readonly size!: number;
+  @Prop({ default: 23 }) readonly size!: number;
 
   @Getter('isSidebarOpened') isSidebarOpened!: boolean;
   @Getter('headerTheme') headerTheme!: HeaderThemeType;
   get textColor() {
     return getTextColor(this.headerTheme);
+  }
+
+  get icon(): string {
+    return this.isSidebarOpened ? 'icon-menu-fold1' : 'icon-menu-fold';
   }
 
   onChange() {
