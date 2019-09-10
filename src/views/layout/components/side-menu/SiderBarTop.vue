@@ -1,5 +1,6 @@
 <style lang="stylus" scoped>
 .avatar-wrap
+  width 230px
   height 64px
   display flex
   align-items center
@@ -16,11 +17,7 @@
 </style>
 
 <template>
-  <div
-    :style="{ width: showAvatar ? '230px' : '160px' }"
-    class="avatar-wrap"
-    :class="{ 'avatar-small': !isSidebarOpened && !showMenuInHeader }"
-  >
+  <div class="avatar-wrap" :class="{ 'avatar-small': !isSidebarOpened && !showMenuInHeader }">
     <Avatar size="large" :src="userAvatar" v-if="showAvatar" />
     <div class="text-wrap" v-if="isSidebarOpened || showMenuInHeader" :style="{ color: textColor }">
       <div class="logo-title">{{ $t('appName') }}</div>

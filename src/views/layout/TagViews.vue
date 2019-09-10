@@ -1,4 +1,4 @@
-<style lang="stylus" scoped>
+<style lang="stylus">
 .tagview
   position: relative;
   height: 40px;
@@ -33,13 +33,16 @@
     position: absolute;
     top: 0px;
     height: 100%;
-    background: #fff;
+    // background: #fff;
     padding-top: 3px;
     z-index: 10;
     button
       padding: 6px 4px;
-      line-height: 14px;
+      line-height: 18px;
       text-align: center;
+      outline: none;
+      background: none;
+      border: none;
     &.left-btn
       left: 0px;
     &.right-btn
@@ -48,10 +51,10 @@
   & .scroll-wrapper
     position: absolute;
     left: 27px;
-    right: 45px;
+    right: 64px;
     height: 100%;
     overflow: hidden;
-    box-shadow: 0px 0 3px 2px rgba(100, 100, 100, 0.1) inset;
+    // box-shadow: 0px 0 3px 2px rgba(100, 100, 100, 0.1) inset;
     .scroll-bar
       display: flex;
       overflow: visible;
@@ -60,6 +63,16 @@
       white-space: nowrap;
       height: 100%
       padding 1px 4px 0
+      .ivu-tag-text
+        font-size 13px
+      & .ivu-icon-ios-close
+        margin-left 8px !important
+        font-size 16px
+      & .ivu-tag-primary
+        .ivu-tag-text
+          color #2d8cf0
+      & .ivu-btn-text:focus
+        box-shadow none
 </style>
 
 <template>
@@ -84,14 +97,14 @@
 
     <!-- 左右箭头 -->
     <div class="btn-con left-btn">
-      <Button type="text" @click="handleScroll(240)">
+      <button type="text" @click="handleScroll(240)">
         <Icon :size="18" type="ios-arrow-back" />
-      </Button>
+      </button>
     </div>
     <div class="btn-con right-btn">
-      <Button type="text" @click="handleScroll(-240)">
+      <button type="text" @click="handleScroll(-240)">
         <Icon :size="18" type="ios-arrow-forward" />
-      </Button>
+      </button>
     </div>
 
     <!-- 标签bar -->

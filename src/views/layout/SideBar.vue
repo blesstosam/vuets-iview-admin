@@ -12,12 +12,12 @@
       line-height: 50px;
       border-radius: 30px
     & .avatar-small
+      width 45px !important
       .ivu-avatar-large
         width: 40px !important
         height: 40px !important
         line-height: 40px !important
         border-radius: 30px !important
-        margin-left 7px !important
 </style>
 
 <template>
