@@ -9,13 +9,11 @@
   }
 }
 
-/*/ 1440*900 仅苹果 /*/
-@media (min-width: 1440px) {
-}
+/* 1440*900 仅苹果 */
+@media (min-width: 1440px) {}
 
-/*/ 1920*1200 /*/
-@media (min-width: 1920px) {
-}
+/* 1920*1200 */
+@media (min-width: 1920px) {}
 
 #app .sidebar-container {
   transition: width 0.2s;

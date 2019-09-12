@@ -18,6 +18,27 @@
         height: 40px !important
         line-height: 40px !important
         border-radius: 30px !important
+
+@media screen and (max-width: 600px) {
+  .left {
+    position: absolute !important;
+    min-width: 0px;
+    height: 100%;
+    z-index: 200;
+  }
+  .logo-con {
+    position relative;
+    z-index: 200;
+  }
+  .hide-sider {
+    position: absolute !important ;
+    z-index: 200 ;
+    height: 100% ;
+    width: 0 !important ;
+    flex: 0 0 0 !important ;
+    min-width : 0 !important ;
+  }
+}
 </style>
 
 <template>
@@ -28,7 +49,7 @@
     :collapsed-width="collapsedWidth"
     v-model="collapsed"
     class="left-sider"
-    :class="`left-sider-${sidebarTheme}`"
+    :class="[`left-sider-${sidebarTheme}`, { left: isSidebarOpened }, { 'hide-sider': !isSidebarOpened }]"
     :style="{ overflow: 'hidden' }"
   >
     <side-menu
@@ -67,11 +88,12 @@ import { VueRouter, MenuItem } from '../../type';
 import ScrollBar from '@/components/common/ScrollBar.vue';
 import SideMenu from './components/side-menu/SideMenu.vue';
 import SiderBarTop from './components/side-menu/SiderBarTop.vue';
-import { Getter } from 'vuex-class';
+import { Getter, Mutation } from 'vuex-class';
 /* eslint-disable-next-line no-unused-vars */
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
 /* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType } from '@/store/module/setting';
+import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
 
 const SIDER_WIDTH = 256;
 const COLLAPSED_SIDER_WIDTH = 64;
@@ -145,7 +167,6 @@ export default class SideBar extends Vue {
     });
   }
   turnToPage(route: any): void {
-    // console.log(route, 'route')
     let name, params, query;
     if (typeof route === 'string') {
       name = route;
@@ -154,31 +175,27 @@ export default class SideBar extends Vue {
       params = route.params;
       query = route.query;
     }
-    // console.log(name)
-    if (name.indexOf('isTurnByHref_') > -1) {
-      window.open(name.split('_')[1]);
-      return;
-    }
     // 如果是当前路由不用处理
     if (this.$route.name === name) return;
-    // 超过十个不能加
-    if (this.viewListWithHomePage.length >= 10) {
-      this.$Modal.warning({
-        title: '注意',
-        content: '您打开的页面太多，请关闭其他页面再打开！'
-      });
-      return;
-    }
     this.$router.push({
       name,
       params,
       query
     });
+
+    setTimeout(() => {
+      this.toggleSidebar(false);
+    }, 200);
   }
 
   @Watch('isSidebarOpened')
   toggleSideBar(val: boolean): void {
     this.collapsed = !val;
+  }
+
+  @Mutation(TOGGLE_SIDE_BAR) toggleSidebar!: (bool: boolean) => void;
+  toggle() {
+    this.toggleSidebar(!this.isSidebarOpened);
   }
 }
 </script>

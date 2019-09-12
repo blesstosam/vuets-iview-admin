@@ -36,10 +36,23 @@
       display flex
       justify-content space-between
       margin-bottom 20px
+
+@media screen and (max-width: 600px) {
+  .mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background : rgba(0,0,0,0.7);
+    z-index: 1;
+  }
+}
 </style>
 
 <template>
   <div :class="{ hideSidebar: !isSidebarOpened }" class="app-wrapper">
+    <div :class="{ mask: isSidebarOpened }" @click="toggle"></div>
     <sider-bar v-show="!isShowMenuInHeader" />
 
     <div class="main-container">
@@ -91,6 +104,7 @@ import { CHANGE_SETTING } from '@/store/mutation-types';
 /* eslint-disable-next-line no-unused-vars */
 import { MenuItem, VueRouter } from '../../type';
 import { SET_MENU_LIST } from '@/store/mutation-types';
+import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
 
 @Component({
   components: { SiderBar, Navbar, AppMain, TagsViews, RightPanel }
@@ -213,6 +227,11 @@ export default class Layout extends Vue {
   // 语言改变时将菜单重新生成一遍
   handleLangChange() {
     this.getMenuList();
+  }
+
+  @Mutation(TOGGLE_SIDE_BAR) toggleSidebar!: (bool: boolean) => void;
+  toggle() {
+    this.toggleSidebar(!this.isSidebarOpened);
   }
 }
 </script>

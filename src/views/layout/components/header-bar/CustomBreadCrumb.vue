@@ -14,6 +14,13 @@
         color white
       & > span:last-child
         color white
+
+@media screen and (max-width: 600px) {
+  .custom-bread-crumb {
+    display none
+  }
+
+}
 </style>
 
 <template>

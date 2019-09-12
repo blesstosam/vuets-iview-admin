@@ -48,6 +48,12 @@
 .ivu-select-dropdown.ivu-dropdown-transfer {
   max-height: 400px;
 }
+
+@media screen and (max-width: 600px) {
+  .time-wrap {
+    display: none;
+  }
+}
 </style>
 
 <template>
