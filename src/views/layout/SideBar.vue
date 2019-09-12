@@ -97,6 +97,7 @@ import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
 
 const SIDER_WIDTH = 256;
 const COLLAPSED_SIDER_WIDTH = 64;
+const HIDE_SIDEBAR_WIDTH = 600; // 隐藏侧边栏的宽度
 
 @Component({
   components: { ScrollBar, SideMenu, SiderBarTop }
@@ -184,7 +185,9 @@ export default class SideBar extends Vue {
     });
 
     setTimeout(() => {
-      this.toggleSidebar(false);
+      if (window.innerWidth <= HIDE_SIDEBAR_WIDTH) {
+        this.toggleSidebar(false);
+      }
     }, 200);
   }
 
