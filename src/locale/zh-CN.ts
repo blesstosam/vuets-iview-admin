@@ -6,10 +6,23 @@ export default {
   closeOthers: '关闭其他',
   exitFullscreen: '退出全屏',
   fullscreen: '全屏',
+  page401Desc: 'Oh~~您没有浏览这个页面的权限~',
+  page404Desc: 'Oh~~您的页面好像飞走了~',
+  page500Desc: 'Oh~~鬼知道服务器经历了什么~',
+  backToHome: '返回首页',
+  backToPreviousPage: '返回上一页',
+
   menuTitle: {
-    home: '首页'
+    home: '首页',
+    errorPage: '错误页面',
+    errorPage401: '401',
+    errorPage404: '404',
+    errorPage500: '500',
   },
   remark: {
-    home: '首页'
+    home: '首页',
+    errorPage401: '401',
+    errorPage404: '404',
+    errorPage500: '500',
   }
 };

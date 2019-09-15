@@ -1,11 +1,11 @@
 <template>
   <div>
     <Dropdown trigger="hover" @on-click="changeLang">
-      <Icon custom="iconfont icon-language" size="23"></Icon>
+      <Icon custom="iconfont icon-language" size="21"></Icon>
       <DropdownMenu slot="list">
-        <DropdownItem v-for="(value, key) in localList" :name="key" :key="`lang-${key}`" :selected="key === lang">{{
-          value
-        }}</DropdownItem>
+        <DropdownItem v-for="(value, key) in localList" :name="key" :key="`lang-${key}`" :selected="key === lang">
+          {{ value }}
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>

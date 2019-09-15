@@ -6,10 +6,25 @@ export default {
   closeOthers: 'Close others',
   exitFullscreen: 'Exit fullscreen',
   fullscreen: 'Fullscreen',
+  page401Desc: 'Oh~~You do not have access to this page~',
+  page404Desc: 'Oh~~Your page seems to have flown away~',
+  page500Desc: 'Oh~~Who knows what happened to the server~',
+  backToHome: 'Back To Home',
+  backToPreviousPage: 'Go back to the previous page',
+
+  // 菜单
   menuTitle: {
-    home: 'Home'
+    home: 'Home',
+    errorPage: 'Error Pages',
+    errorPage401: '401',
+    errorPage404: '404',
+    errorPage500: '500',
   },
+  // 菜单说明
   remark: {
-    home: 'Home'
+    home: 'Home',
+    errorPage401: '401',
+    errorPage404: '404',
+    errorPage500: '500',
   }
 };

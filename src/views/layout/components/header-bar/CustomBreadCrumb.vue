@@ -35,7 +35,7 @@
 </template>
 <script lang="ts">
 import { showTitle } from '@/assets/script/util';
-import CommonIcon from '_c/common-icon.vue';
+import CommonIcon from '@/components//CommonIcon.vue';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';

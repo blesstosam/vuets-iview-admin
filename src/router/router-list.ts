@@ -6,10 +6,8 @@ import { RouteConfig } from 'vue-router';
  * meta: {
  *  remark: (string) 对于该菜单的一个解释说明
  *  engRemark: (string) 英文
- *  title: { String|Number|Function }
+ *  title: { String }
  *         显示在侧边栏、面包屑和标签栏的文字
- *         使用'{{ 多语言字段 }}'形式结合多语言使用，例子看多语言的路由配置;
- *         可以传入一个回调函数，参数是当前路由对象，例子看动态路由和带参路由
  *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中，示例看QQ群路由配置
  *  hideInMenu: (false) 设为true后在左侧菜单不会显示该页面选项
  *  notCache: (false) 设为true后页面在切换标签后不会缓存，如果需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
@@ -42,7 +40,43 @@ export const routerList: Array<RouteConfig> = [
         component: () => import('@/views/home/Home.vue')
       }
     ]
-  }
+  },
+
+  {
+    path: '/error-page',
+    name: 'ErrorPage',
+    component: Layout,
+    meta: { title: 'menuTitle.errorPage', icon: 'md-bug'},
+    children: [
+      {
+        path: '401',
+        name: 'Error401',
+        meta: {
+          title: 'menuTitle.errorPage401',
+          remark: 'remark.errorPage401'
+        },
+        component: () => import('@/views/error-page/401.vue')
+      },
+      {
+        path: '404',
+        name: 'Error404',
+        meta: {
+          title: 'menuTitle.errorPage404',
+          remark: 'remark.errorPage404'
+        },
+        component: () => import('@/views/error-page/404.vue')
+      },
+      {
+        path: '500',
+        name: 'Error500',
+        meta: {
+          title: 'menuTitle.errorPage500',
+          remark: 'remark.errorPage500'
+        },
+        component: () => import('@/views/error-page/500.vue')
+      }
+    ]
+  },
 ];
 
 // 将后台返回的 菜单列表 转成vue-router所需要的 router list

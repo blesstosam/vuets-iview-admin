@@ -1,9 +1,8 @@
 <template>
-  <error-content code="404" desc="Oh~~您的页面好像飞走了~" :src="src" />
+  <error-content code="404" :desc="$t('page404Desc')" :src="src" />
 </template>
 
 <script lang="ts">
-// import error404 from '@/assets/img/error-page/error-404.svg'
 import ErrorContent from './ErrorContent.vue';
 import { Vue, Component } from 'vue-property-decorator';
 

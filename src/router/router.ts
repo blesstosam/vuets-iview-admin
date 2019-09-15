@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router, { RouteConfig, Route } from 'vue-router';
 import Login from '@/views/Login.vue';
-import IView from 'iview';
 import { scrollTop, showTitle } from '@/assets/script/util';
 import { getLsCache } from '@/assets/script/util';
 
@@ -50,7 +49,8 @@ export function resetRouter() {
 
 // 初始化路由 不管到哪个路由 第一个路由都是 / 根路由
 _router.beforeEach((to: Route, from: Route, next: Function) => {
-  (IView as any).LoadingBar.start();
+  _router.app.$Loading.config({height: 4})
+  _router.app.$Loading.start();
   if (to.path !== '/login') {
     if (getLsCache('username')) {
       next();
@@ -69,7 +69,7 @@ _router.beforeEach((to: Route, from: Route, next: Function) => {
 });
 
 _router.afterEach((to: Route) => {
-  (IView as any).LoadingBar.finish();
+  _router.app.$Loading.finish();
   const main_dom: HTMLElement | null = document.querySelector('#app-main');
   if (main_dom) {
     scrollTop(main_dom, main_dom.scrollTop, 0, 300);

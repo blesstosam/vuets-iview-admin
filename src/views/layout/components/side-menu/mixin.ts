@@ -1,4 +1,4 @@
-import CommonIcon from '_c/common-icon.vue';
+import CommonIcon from '@/components/CommonIcon.vue';
 import { showTitle } from '@/assets/script/util';
 import Vue from 'vue';
 import Component from 'vue-class-component';
