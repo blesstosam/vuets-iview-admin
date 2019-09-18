@@ -8,8 +8,11 @@ import Spacer from '@/components/Spacer.vue';
 import TableAction from '@/components/TableAction.vue';
 import { SET_LOCAL } from './store/mutation-types';
 
-Vue.component('TableAction', TableAction);
+// 实际打包时应该不引入mock
+/* eslint-disable */
+if (process.env.NODE_ENV !== 'production') require('@/mock/index')
 
+Vue.component('TableAction', TableAction);
 Vue.component(TreeTable.name, TreeTable);
 Vue.component('spacer', Spacer);
 

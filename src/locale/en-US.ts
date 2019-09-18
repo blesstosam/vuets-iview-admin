@@ -26,5 +26,11 @@ export default {
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+  },
+
+
+  login: {
+    enterUsername: 'Please fill in the user name',
+    enterPassword: 'Please fill in the password'
   }
 };

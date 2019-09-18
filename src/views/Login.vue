@@ -41,13 +41,6 @@
           </Input>
         </FormItem>
 
-        <!-- <FormItem prop="authcode">
-          <Input type="text" v-model="formValidate.authcode" placeholder="验证码" @keyup.enter.native="doLogin">
-            <Icon size="14" type="md-code" slot="prepend"></Icon>
-            <img :src="authcode" slot="append" @click="getAuthCode" />
-          </Input>
-        </FormItem> -->
-
         <FormItem>
           <Button :loading="loading" type="primary" @click="doLogin" class="login-btn">
             <span v-if="!loading">登录</span>
@@ -63,48 +56,39 @@
 import { Component, Vue } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
 import { IForm, User } from '../type';
-// import sha256 from 'sha256';
+import sha256 from 'sha256';
 import { Action, Mutation } from 'vuex-class';
 import { UPDATE_USER, UPDATE_AUTHORIZATION, CHANGE_SETTING } from '@/store/mutation-types';
-import { defaultAvatar } from '@/store/module/user';
 import { toRouterComponent } from '@/router/router-list';
 import storage from '@/assets/script/storage';
+import { login } from '@/api/user/index';
 
 interface LoginForm {
   username: string;
   password: string;
-  authcode: string;
 }
 
 @Component({})
 export default class Login extends Vue {
   passwordInputType: 'password' | 'text' = 'password';
   loading: boolean = false;
-  authcode: string = '';
+
   formValidate: LoginForm = {
     username: '',
-    password: '',
-    authcode: ''
+    password: ''
   };
   ruleValidate: object = {
     username: [
       {
         required: true,
-        message: '请填写用户名！',
+        message: this.$t('login.enterUsername'),
         trigger: 'blur'
       }
     ],
     password: [
       {
         required: true,
-        message: '请填写密码',
-        trigger: 'blur'
-      }
-    ],
-    authcode: [
-      {
-        required: true,
-        message: '请填写验证码',
+        message: this.$t('login.enterPassword'),
         trigger: 'blur'
       }
     ]
@@ -119,14 +103,17 @@ export default class Login extends Vue {
       async (valid: boolean | undefined): Promise<void> => {
         if (valid) {
           this.loading = true;
+          const { username, password } = this.formValidate;
+          const resp = await login({ username: username, password: sha256(password) });
+
           // 将状态保存到store 和 localstorage 里
           this.updateUser({
             username: this.formValidate.username,
-            roleId: 'roldId123',
-            adminId: 'adminId123',
-            token: 'token123',
-            avatar: defaultAvatar,
-            proxyId: 'proxyId123'
+            roleId: resp.data.roleId,
+            adminId: resp.data.adminId,
+            token: resp.data.token,
+            avatar: resp.data.avatar,
+            proxyId: resp.data.proxyId
           });
 
           // 将ui setting 保存到store 和 localstorage

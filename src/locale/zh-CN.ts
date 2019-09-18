@@ -24,5 +24,10 @@ export default {
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+  },
+
+  login: {
+    enterUsername: '请填写用户名',
+    enterPassword: '请填写密码'
   }
 };

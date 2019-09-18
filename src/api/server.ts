@@ -7,7 +7,7 @@ switch (process.env.NODE_ENV) {
     wsUrl = '';
     break;
   case 'development':
-    baseUrl = 'http://192.168.3.225:9076';
+    baseUrl = '';
     wsUrl = '';
     break;
 }
