@@ -70,6 +70,10 @@ interface LoginForm {
 
 @Component({})
 export default class Login extends Vue {
+  created() {
+    this.ruleValidate = this.getValidator();
+  }
+
   passwordInputType: 'password' | 'text' = 'password';
   loading: boolean = false;
 
@@ -77,25 +81,30 @@ export default class Login extends Vue {
     username: '',
     password: ''
   };
-  ruleValidate: object = {
-    username: [
-      {
-        required: true,
-        message: this.$t('login.enterUsername'),
-        trigger: 'blur'
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: this.$t('login.enterPassword'),
-        trigger: 'blur'
-      }
-    ]
-  };
+
+  ruleValidate: object = {};
 
   get iconType() {
     return this.passwordInputType === 'password' ? 'ios-eye-off' : 'ios-eye';
+  }
+
+  getValidator() {
+    return {
+      username: [
+        {
+          required: true,
+          message: '',
+          trigger: 'blur'
+        }
+      ],
+      password: [
+        {
+          required: true,
+          message: '',
+          trigger: 'blur'
+        }
+      ]
+    };
   }
 
   async doLogin(): Promise<void> {
