@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7668454",
+      "name": "question",
+      "font_class": "icon-circle-question",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "8493189",
+      "name": "menu-unfold",
+      "font_class": "menu-fold",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "8518085",
+      "name": "language",
+      "font_class": "language",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "9569903",
+      "name": "menu-fold",
+      "font_class": "menu-fold1",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    }
+  ]
+}
