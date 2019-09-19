@@ -1,0 +1,1 @@
+export const CHART_DATA_BY_WEEK = '/api/getChartDataByWeek'

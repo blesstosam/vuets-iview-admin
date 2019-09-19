@@ -19,6 +19,10 @@
           </div>
         </NumberCard>
       </Col>
+
+      <Col :sm="24" :md="16" style="margin-top: 20px">
+        <MyChart :chartTypes="chartType" :chartData="chartData" @change-chart-type="changeChartType" />
+      </Col>
     </Row>
   </div>
 </template>
@@ -26,11 +30,17 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import NumberCard from './NumberCard.vue';
+import MyChart from './MyChart.vue';
+import { getChartDataByWeek } from '@/api/home/index';
 
 @Component({
-  components: { NumberCard }
+  components: { NumberCard, MyChart }
 })
 export default class Home extends Vue {
+  async created() {
+    this.reqChartData();
+  }
+
   totalData: Array<any> = [
     {
       startVal: 0,
@@ -69,5 +79,36 @@ export default class Home extends Vue {
       growth: 10
     }
   ];
+
+  chartType = {
+    id: '1',
+    targetName: '盈利统计',
+    chartStyle: 'line',
+    chartName: 'income',
+    unit: '(元)',
+    respStatus: 'noData'
+  };
+
+  chartData = {
+    columns: ['日期', '上周盈利统计', '本周盈利统计'],
+    rows: []
+  };
+
+  changeChartType(chartStyle: string, chartName: string) {
+    this.chartType.chartStyle = chartStyle;
+    this.chartType.chartName = chartName;
+  }
+
+  async reqChartData() {
+    const resp = await getChartDataByWeek({ target: this.chartType.chartName });
+    if (resp.code !== 200) {
+      this.chartType.respStatus = 'netWorkError';
+      return;
+    }
+    if (resp.data && resp.data.rows.length) {
+      this.chartType.respStatus = 'hasData';
+      this.chartData = resp.data;
+    }
+  }
 }
 </script>

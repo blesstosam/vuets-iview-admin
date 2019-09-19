@@ -11,6 +11,8 @@ export default {
   page500Desc: 'Oh~~Who knows what happened to the server~',
   backToHome: 'Back To Home',
   backToPreviousPage: 'Go back to the previous page',
+  networkError: 'Network exception, please click refresh button to try again!',
+  noData: 'No data',
 
   // 菜单
   menuTitle: {

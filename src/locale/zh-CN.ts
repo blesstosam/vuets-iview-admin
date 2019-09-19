@@ -11,6 +11,8 @@ export default {
   page500Desc: 'Oh~~鬼知道服务器经历了什么~',
   backToHome: '返回首页',
   backToPreviousPage: '返回上一页',
+  networkError: '网络异常，请点击刷新按钮重试!',
+  noData: '暂无数据',
 
   menuTitle: {
     home: '首页',
