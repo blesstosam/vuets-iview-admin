@@ -1,13 +1,14 @@
 <template>
   <div>
     <Row>
-      <Col :xs="24" :sm="12" :md="6" v-for="(item, index) in totalData" :key="index">
+      <Col :xs="24" :sm="12" :md="6" v-for="(item, index) in cardData" :key="index">
         <NumberCard
           :endVal="item.targetValue"
           :subfix="item.targetCell"
           :targetName="item.targetName"
           :explanation="item.explanation"
           :icon="item.icon"
+          :style="{ 'margin-right': index !== 3 ? '12px' : 0 }"
         >
           <div v-if="item.growth" style="color: #19be6b; font-weight: 500">
             <Icon type="ios-arrow-up" />
@@ -19,9 +20,35 @@
           </div>
         </NumberCard>
       </Col>
+    </Row>
 
-      <Col :sm="24" :md="16" style="margin-top: 20px">
+    <Row style="margin-top: 20px">
+      <Col :sm="24" :md="16" style="padding-right: 12px;">
         <MyChart :chartTypes="chartType" :chartData="chartData" @change-chart-type="changeChartType" />
+      </Col>
+      <Col :sm="24" :md="8">
+        <DynamicCard
+          style="height: 240px;"
+          :startVal="onlineUserNumberOld"
+          :endVal="onlineUserNumber"
+          title="当前在线"
+          subTitle="在线登录人数"
+          @update-data="handleUpdateData"
+        />
+        <Card style="height: 228px; margin-top: 12px;" dis-hover :bordered="false" class="my-chart-wrap">
+          <p slot="title">当前活跃度</p>
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <i-circle :percent="88" stroke-color="#5cb85c" :size="110">
+                <i-circle :percent="66" stroke-color="#ff5500" :size="80"> </i-circle>
+              </i-circle>
+            </div>
+            <div style="font-size: 13px; padding-top: 50px;">
+              <div><Badge status="success" />活跃度：88%</div>
+              <div><Badge status="error" />留存率：66%</div>
+            </div>
+          </div>
+        </Card>
       </Col>
     </Row>
   </div>
@@ -31,54 +58,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import NumberCard from './NumberCard.vue';
 import MyChart from './MyChart.vue';
-import { getChartDataByWeek } from '@/api/home/index';
+import { getChartDataByWeek, getOnlineUser, getOverviewData } from '@/api/home/index';
+import DynamicCard from './DynamicCard.vue';
 
 @Component({
-  components: { NumberCard, MyChart }
+  components: { NumberCard, MyChart, DynamicCard }
 })
 export default class Home extends Vue {
   async created() {
     this.reqChartData();
+    this.reqOverview();
   }
 
-  totalData: Array<any> = [
-    {
-      startVal: 0,
-      targetValue: 320,
-      targetName: '新增用户',
-      targetCell: '人',
-      explanation: '所有平台中新增用户',
-      icon: 'ios-people',
-      growth: 110
-    },
-    {
-      startVal: 0,
-      targetValue: 2020,
-      targetName: '总用户',
-      targetCell: '人',
-      explanation: '所有平台中总用户',
-      icon: 'ios-people',
-      growth: 20
-    },
-    {
-      startVal: 0,
-      targetValue: 310000,
-      targetName: '总消费额',
-      targetCell: '元',
-      explanation: '所有平台中总消费额',
-      icon: 'logo-bitcoin',
-      reduce: 20
-    },
-    {
-      startVal: 0,
-      targetValue: 6060,
-      targetName: '人均消费额',
-      targetCell: '元',
-      explanation: '所有平台中人均消费额',
-      icon: 'logo-bitcoin',
-      growth: 10
-    }
-  ];
+  cardData: Array<any> = [];
 
   chartType = {
     id: '1',
@@ -94,9 +86,20 @@ export default class Home extends Vue {
     rows: []
   };
 
+  onlineUserNumber: number = 0;
+  onlineUserNumberOld: number = 0;
+
   changeChartType(chartStyle: string, chartName: string) {
     this.chartType.chartStyle = chartStyle;
     this.chartType.chartName = chartName;
+  }
+
+  async reqOverview() {
+    const resp = await getOverviewData();
+    if (resp.code !== 200) {
+      return;
+    }
+    this.cardData = resp.data;
   }
 
   async reqChartData() {
@@ -109,6 +112,15 @@ export default class Home extends Vue {
       this.chartType.respStatus = 'hasData';
       this.chartData = resp.data;
     }
+  }
+
+  async handleUpdateData() {
+    const resp = await getOnlineUser();
+    if (resp.code !== 200) {
+      return;
+    }
+    this.onlineUserNumberOld = this.onlineUserNumber;
+    this.onlineUserNumber = resp.data;
   }
 }
 </script>

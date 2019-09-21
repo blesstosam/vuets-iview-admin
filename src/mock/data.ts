@@ -27,3 +27,49 @@ export const getChartDataByWeek = (req: any) => {
   // @ts-ignore
   return {code: 200, msg: '登录成功', data}
 }
+
+export const onlineUser = (req: any) => {
+  return {code: 200, msg: '', data: Random.increment(Random.integer(10, 100))}
+}
+
+export const getOverview = (req: any) => {
+  const data = [
+    {
+      startVal: 0,
+      targetValue: Random.integer(100, 1000),
+      targetName: '新增用户',
+      targetCell: '人',
+      explanation: '所有平台中新增用户',
+      icon: 'ios-people',
+      growth: Random.integer(1, 200)
+    },
+    {
+      startVal: 0,
+      targetValue: Random.integer(1000, 10000),
+      targetName: '总用户',
+      targetCell: '人',
+      explanation: '所有平台中总用户',
+      icon: 'ios-people',
+      growth: Random.integer(1, 200)
+    },
+    {
+      startVal: 0,
+      targetValue: Random.integer(10000, 1000000),
+      targetName: '总消费额',
+      targetCell: '元',
+      explanation: '所有平台中总消费额',
+      icon: 'logo-bitcoin',
+      reduce: Random.integer(1, 200)
+    },
+    {
+      startVal: 0,
+      targetValue: Random.integer(2000, 10000),
+      targetName: '人均消费额',
+      targetCell: '元',
+      explanation: '所有平台中人均消费额',
+      icon: 'logo-bitcoin',
+      growth: Random.integer(1, 200)
+    }
+  ]
+  return {code: 200, msg: '', data}
+}

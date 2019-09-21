@@ -11,9 +11,12 @@
 
     img:nth-child(1)
       margin-right: 8px
+  & .no-data-chart
+    text-align center
+    margin-top 30px
 </style>
 <template>
-  <Card style="width: 100%" dis-hover :bordered="false" class="my-chart-wrap">
+  <Card style="width: 100%; height: 480px;" dis-hover :bordered="false" class="my-chart-wrap">
     <p slot="title">{{ chartTypes.targetName }}</p>
     <div v-if="chartData.rows.length > 0">
       <span v-if="chartTypes.chartStyle === 'line'" class="icon-style">

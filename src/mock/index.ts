@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import { login, logout } from './login'
-import {getChartDataByWeek} from './data'
+import {getChartDataByWeek, onlineUser, getOverview} from './data'
 
 Mock.setup({
   timeout: 1000
@@ -10,6 +10,8 @@ Mock.setup({
 Mock.mock(/\/api\/login/, login)
 Mock.mock(/\/api\/logout/, logout)
 Mock.mock(/\/api\/getChartDataByWeek/, getChartDataByWeek)
+Mock.mock(/\/api\/onlineUser/, onlineUser)
+Mock.mock(/\/api\/overview/, getOverview)
 
 Mock.mock(/\/save_error_logger/, 'success')
 
