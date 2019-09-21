@@ -2,8 +2,8 @@ import { User } from '@/type';
 import * as types from '../mutation-types';
 import router, { resetRouter } from '@/router/router';
 import storage from '@/assets/script/storage';
-import {setLsCache, getLsCache} from '@/assets/script/util'
-import cfg from '@/config'
+import { setLsCache, getLsCache } from '@/assets/script/util';
+import cfg from '@/config';
 
 export const defaultAvatar =
   'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564130985&di=ebc53a5c594bfafe06ba14d0799c88ab&src=http://n.sinaimg.cn/sinacn/w640h595/20180219/5762-fyrswmu1170551.jpg';

@@ -20,12 +20,16 @@ export default {
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+    guide: '引导页',
+    table: '表格'
   },
   remark: {
     home: '首页',
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+    guide: '引导页',
+    table: '表格'
   },
 
   login: {

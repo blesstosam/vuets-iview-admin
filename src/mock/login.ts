@@ -7,7 +7,7 @@ const USER_MAP = {
     adminId: '111567391736420556',
     token: 'a69f2ac9-91c3-4128-ab6b-e89321e36bb2',
     avatar: defaultAvatar,
-    proxyId: '',
+    proxyId: ''
   },
   sam: {
     username: 'sam',
@@ -15,17 +15,17 @@ const USER_MAP = {
     adminId: '111567391736420556',
     token: 'a69f2ac9-91c3-4128-ab6b-e89321e36bb2',
     avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4',
-    proxyId: 'proxyId123',
+    proxyId: 'proxyId123'
   }
-}
+};
 
 export const login = (req: any) => {
-  req = JSON.parse(req.body)
+  req = JSON.parse(req.body);
 
   // @ts-ignore
-  return {code: 200, msg: '登录成功', data: USER_MAP[req.username] || USER_MAP.weilei}
-}
+  return { code: 200, msg: '登录成功', data: USER_MAP[req.username] || USER_MAP.weilei };
+};
 
 export const logout = (req: any) => {
-  return {code: 200, msg: '登出成功'}
-}
+  return { code: 200, msg: '登出成功' };
+};

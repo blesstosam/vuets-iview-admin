@@ -71,8 +71,8 @@ class WsConfig {
         console.log('ws closed...');
         this.isReconnected = false;
         setTimeout(() => {
-        	this.checkReconnected();
-        }, 3000)
+          this.checkReconnected();
+        }, 3000);
       };
 
       this.ws.onerror = (evt: any) => {

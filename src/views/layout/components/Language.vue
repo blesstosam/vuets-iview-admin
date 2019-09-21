@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lang-switch-wrap">
     <Dropdown trigger="hover" @on-click="changeLang">
       <Icon custom="iconfont icon-language" size="21"></Icon>
       <DropdownMenu slot="list">

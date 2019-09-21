@@ -21,6 +21,11 @@
     height: 30px;
     line-height: 30px;
     text-align: center
+    font-size 13px
+    a
+      color #515a6e;
+      &:hover
+        color #2d8cf0
 </style>
 
 <template>
@@ -33,7 +38,12 @@
       <!-- </transition> -->
     </div>
     <ABackTop :height="100" :bottom="30" :right="50" container=".app-main" />
-    <div class="app-main-footer" id="app-main-footer">Copyright © {{ new Date().getFullYear() }} xxx技术支持</div>
+    <div class="app-main-footer">
+      <span>Copyright © {{ new Date().getFullYear() }} xxx技术支持</span>
+      <Divider type="vertical" />
+      <a href="https://github.com/blesstosam" style="margin-right: 12px;">Github</a>
+      <a href="https://segmentfault.com/u/weilei_58f084f7de891">Segmentfault</a>
+    </div>
   </section>
 </template>
 

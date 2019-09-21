@@ -21,6 +21,8 @@ export default {
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+    guide: 'Guide',
+    table: 'Table'
   },
   // 菜单说明
   remark: {
@@ -28,8 +30,9 @@ export default {
     errorPage401: '401',
     errorPage404: '404',
     errorPage500: '500',
+    guide: 'Guide',
+    table: 'Table'
   },
-
 
   login: {
     enterUsername: 'Please fill in the user name',

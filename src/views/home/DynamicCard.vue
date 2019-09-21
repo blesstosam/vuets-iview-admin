@@ -32,7 +32,7 @@ const TIME_STEP = 5;
 @Component({
   components: { countTo }
 })
-export default class AppMain extends Vue {
+export default class DynamicCard extends Vue {
   timer!: number;
   timer2!: number;
 

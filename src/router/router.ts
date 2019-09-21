@@ -49,7 +49,7 @@ export function resetRouter() {
 
 // 初始化路由 不管到哪个路由 第一个路由都是 / 根路由
 _router.beforeEach((to: Route, from: Route, next: Function) => {
-  _router.app.$Loading.config({height: 4})
+  _router.app.$Loading.config({ height: 4 });
   _router.app.$Loading.start();
   if (to.path !== '/login') {
     if (getLsCache('username')) {
@@ -76,7 +76,7 @@ _router.afterEach((to: Route) => {
   }
 
   // document.querySelector('#app-main').scrollTo(0, 0)
-  window.document.title = showTitle(to, _router.app);;
+  window.document.title = showTitle(to, _router.app);
 });
 
 export default _router;

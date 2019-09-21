@@ -11,9 +11,7 @@ import { RouteConfig } from 'vue-router';
  *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中，示例看QQ群路由配置
  *  hideInMenu: (false) 设为true后在左侧菜单不会显示该页面选项
  *  notCache: (false) 设为true后页面在切换标签后不会缓存，如果需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
- *  access: (null) 可访问该页面的权限数组，当前路由设置的权限会影响子路由
  *  icon: (-) 该页面在左侧菜单、面包屑和标签导航处显示的图标，如果是自定义图标，需要在图标名称前加下划线'_'
- *  beforeCloseName: (-) 设置该字段，则在关闭当前tab页时会去'@/router/before-close.js'里寻找该字段名对应的方法，作为关闭前的钩子函数
  * }
  */
 
@@ -41,12 +39,48 @@ export const routerList: Array<RouteConfig> = [
       }
     ]
   },
+  {
+    path: '/table',
+    name: '_table',
+    component: Layout,
+    meta: { title: 'menuTitle.table' },
+    children: [
+      {
+        path: '',
+        name: 'ComplexTable',
+        meta: {
+          title: 'menuTitle.table',
+          remark: 'remark.table',
+          icon: 'md-document'
+        },
+        component: () => import('@/views/table-example/ComplexTable.vue')
+      }
+    ]
+  },
+
+  {
+    path: '/guide',
+    component: Layout,
+    meta: { title: 'menuTitle.guide' },
+    children: [
+      {
+        path: '',
+        name: 'Guide',
+        meta: {
+          title: 'menuTitle.guide',
+          remark: 'remark.guide',
+          icon: 'md-send'
+        },
+        component: () => import('@/views/guide/Guide.vue')
+      }
+    ]
+  },
 
   {
     path: '/error-page',
     name: 'ErrorPage',
     component: Layout,
-    meta: { title: 'menuTitle.errorPage', icon: 'md-bug'},
+    meta: { title: 'menuTitle.errorPage', icon: 'md-bug' },
     children: [
       {
         path: '401',
@@ -76,7 +110,7 @@ export const routerList: Array<RouteConfig> = [
         component: () => import('@/views/error-page/500.vue')
       }
     ]
-  },
+  }
 ];
 
 // 将后台返回的 菜单列表 转成vue-router所需要的 router list
