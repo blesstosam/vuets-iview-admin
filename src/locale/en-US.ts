@@ -13,6 +13,9 @@ export default {
   backToPreviousPage: 'Go back to the previous page',
   networkError: 'Network exception, please click refresh button to try again!',
   noData: 'No data',
+  updateTip: '{second} seconds to refresh',
+  search: 'Seach',
+  reset: 'Reset',
 
   // 菜单
   menuTitle: {
@@ -22,7 +25,10 @@ export default {
     errorPage404: '404',
     errorPage500: '500',
     guide: 'Guide',
-    table: 'Table'
+    table: 'Table',
+    components: 'Components',
+    editor: 'Editor',
+    markdown: 'Markdown'
   },
   // 菜单说明
   remark: {
@@ -31,7 +37,10 @@ export default {
     errorPage404: '404',
     errorPage500: '500',
     guide: 'Guide',
-    table: 'Table'
+    table: 'Complex table',
+    components: 'Components',
+    editor: 'Editor',
+    markdown: 'Markdown'
   },
 
   login: {

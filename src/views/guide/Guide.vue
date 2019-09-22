@@ -77,6 +77,14 @@ export default class Guide extends Vue {
           description: 'The history of the page you visited',
           position: 'bottom'
         }
+      },
+      {
+        element: '.handle-button',
+        popover: {
+          title: 'Style Switch',
+          description: 'You can change page style here',
+          position: 'left'
+        }
       }
     ]);
 

@@ -39,6 +39,36 @@ export const routerList: Array<RouteConfig> = [
       }
     ]
   },
+
+  {
+    path: '/components',
+    name: 'Components',
+    component: Layout,
+    meta: { title: 'menuTitle.components', icon: 'md-apps' },
+    children: [
+      {
+        path: 'editor',
+        name: 'Editor',
+        meta: {
+          title: 'menuTitle.editor',
+          remark: 'remark.editor',
+          icon: 'md-keypad'
+        },
+        component: () => import('@/views/components/Editor.vue')
+      },
+      {
+        path: 'markdown',
+        name: 'Markdown',
+        meta: {
+          title: 'menuTitle.markdown',
+          remark: 'remark.markdown',
+          icon: 'logo-markdown'
+        },
+        component: () => import('@/views/components/Markdown.vue')
+      }
+    ]
+  },
+
   {
     path: '/table',
     name: '_table',

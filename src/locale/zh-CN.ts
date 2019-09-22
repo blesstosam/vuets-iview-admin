@@ -13,6 +13,9 @@ export default {
   backToPreviousPage: '返回上一页',
   networkError: '网络异常，请点击刷新按钮重试!',
   noData: '暂无数据',
+  updateTip: '{second} 秒后更新',
+  search: '查询',
+  reset: '重置',
 
   menuTitle: {
     home: '首页',
@@ -21,7 +24,10 @@ export default {
     errorPage404: '404',
     errorPage500: '500',
     guide: '引导页',
-    table: '表格'
+    table: '表格',
+    components: '组件',
+    editor: '编辑器',
+    markdown: 'Markdown'
   },
   remark: {
     home: '首页',
@@ -29,7 +35,10 @@ export default {
     errorPage404: '404',
     errorPage500: '500',
     guide: '引导页',
-    table: '表格'
+    table: '综合实例表格',
+    components: '组件',
+    editor: '编辑器',
+    markdown: 'Markdown'
   },
 
   login: {

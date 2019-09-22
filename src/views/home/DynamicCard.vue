@@ -17,7 +17,7 @@
     <div>{{ subTitle }}</div>
     <div class="tip">
       <Badge status="processing" />
-      <span>{{ timeToRefresh }} 秒后更新</span>
+      <span>{{ $t('updateTip', { second: timeToRefresh }) }} </span>
     </div>
   </Card>
 </template>

@@ -2,7 +2,7 @@
   <div class="common-card-title" :class="`card-title-${headerTheme}`">
     <div>
       <Icon :size="14" :type="$route.meta.icon" style="position: relative; top: -1px;" />
-      <span> {{ $route.meta.title }} </span>
+      <span> {{ $t($route.meta.title) }} </span>
       <div style="font-size: 13px; font-weight: normal;">
         {{ $t($route.meta.remark) }}
       </div>

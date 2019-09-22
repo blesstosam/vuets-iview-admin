@@ -155,13 +155,34 @@ export default class MyChart extends Vue {
     },
     series: {
       type: 'line',
-      smooth: false, //曲线平滑
+      smooth: true, //曲线平滑
       radius: ['50%', '80%'],
       roseType: 'area',
       symbolSize: 8, //折线放大
       showSymbol: true
     },
-    color: ['#57C5E6', '#36DBCE', '#fcb609', '#f6b37f', '#4d96f0', '#e4007f'] //调色盘颜色
+    color: ['#57C5E6', '#36DBCE', '#fcb609', '#f6b37f', '#4d96f0', '#e4007f'], //调色盘颜色
+    yAxis: {
+      // splitNumber:8,
+      nameGap: 30,
+      nameTextStyle: {
+        padding: [10, 30, -10, 0],
+        fontWeight: 'bold',
+        fontSize: 14
+      },
+      splitLine: {
+        // 分割线
+        show: true,
+        lineStyle: {
+          color: '#e7e7e7'
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#000' //坐标轴字体颜色
+        }
+      }
+    }
   };
 
   extendBar: any = {

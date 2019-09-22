@@ -10,7 +10,7 @@
     .common-card-title
       font-size 16px
       font-weight 500
-      padding 18px 0 10px 0
+      padding 0 0 10px 0
       margin 0 0 24px 0
       border-bottom 1px solid #e8eaec
       line-height 1.7
@@ -39,10 +39,10 @@
     </div>
     <ABackTop :height="100" :bottom="30" :right="50" container=".app-main" />
     <div class="app-main-footer">
-      <span>Copyright © {{ new Date().getFullYear() }} xxx技术支持</span>
+      <span>Copyright © {{ new Date().getFullYear() }} Angel技术支持</span>
       <Divider type="vertical" />
-      <a href="https://github.com/blesstosam" style="margin-right: 12px;">Github</a>
-      <a href="https://segmentfault.com/u/weilei_58f084f7de891">Segmentfault</a>
+      <a target="blank" href="https://github.com/blesstosam" style="margin-right: 12px;">Github</a>
+      <a target="blank" href="https://segmentfault.com/u/weilei_58f084f7de891">Segmentfault</a>
     </div>
   </section>
 </template>

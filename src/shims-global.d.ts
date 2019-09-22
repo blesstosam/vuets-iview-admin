@@ -22,3 +22,9 @@ declare module 'vue-count-to' {
     import Vue from 'vue';
     export default Vue;
 }
+
+declare module 'vue-quill-editor' {
+    const Quill: any;
+    const quillEditor: any
+    export {quillEditor};
+}
