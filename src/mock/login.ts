@@ -10,7 +10,7 @@ const USER_MAP = {
     proxyId: ''
   },
   sam: {
-    username: 'sam',
+    username: 'admin',
     roleId: '2019072202',
     adminId: '111567391736420556',
     token: 'a69f2ac9-91c3-4128-ab6b-e89321e36bb2',

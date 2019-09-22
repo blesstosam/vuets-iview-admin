@@ -3,7 +3,7 @@ let baseUrl = '',
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    baseUrl = 'http://192.168.3.225:9076';
+    baseUrl = '';
     wsUrl = '';
     break;
   case 'development':

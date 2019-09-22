@@ -78,8 +78,8 @@ export default class Login extends Vue {
   loading: boolean = false;
 
   formValidate: LoginForm = {
-    username: '',
-    password: ''
+    username: 'admin',
+    password: '123456'
   };
 
   ruleValidate: object = {};
