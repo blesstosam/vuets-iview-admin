@@ -52,6 +52,7 @@
         @click="chartTypes.isNoDataOrInt ? '' : handleReqData"
       />
     </div>
+    <Spin size="large" fix v-if="loading"></Spin>
   </Card>
 </template>
 
@@ -76,6 +77,7 @@ interface ChartType {
 export default class MyChart extends Vue {
   @Prop({ required: true }) readonly chartTypes!: ChartType;
   @Prop({ default: [], required: true }) readonly chartData!: any;
+  @Prop({ default: false }) readonly loading!: boolean;
 
   @Emit('req-data')
   handleReqData() {

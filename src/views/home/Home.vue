@@ -24,7 +24,12 @@
 
     <Row style="margin-top: 20px">
       <Col :sm="24" :md="16" style="padding-right: 12px;">
-        <MyChart :chartTypes="chartType" :chartData="chartData" @change-chart-type="changeChartType" />
+        <MyChart
+          :loading="chartLoading"
+          :chartTypes="chartType"
+          :chartData="chartData"
+          @change-chart-type="changeChartType"
+        />
       </Col>
       <Col :sm="24" :md="8">
         <DynamicCard
@@ -80,11 +85,11 @@ export default class Home extends Vue {
     unit: '(元)',
     respStatus: 'noData'
   };
-
   chartData = {
     columns: ['日期', '上周盈利统计', '本周盈利统计'],
     rows: []
   };
+  chartLoading: boolean = false;
 
   onlineUserNumber: number = 0;
   onlineUserNumberOld: number = 0;
@@ -103,7 +108,9 @@ export default class Home extends Vue {
   }
 
   async reqChartData() {
+    this.chartLoading = true;
     const resp = await getChartDataByWeek({ target: this.chartType.chartName });
+    this.chartLoading = false;
     if (resp.code !== 200) {
       this.chartType.respStatus = 'netWorkError';
       return;

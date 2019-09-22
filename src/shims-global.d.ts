@@ -28,3 +28,9 @@ declare module 'vue-quill-editor' {
     const quillEditor: any
     export {quillEditor};
 }
+
+declare module '@toast-ui/vue-editor' {
+    const Editor: any
+    export {Editor};
+}
+

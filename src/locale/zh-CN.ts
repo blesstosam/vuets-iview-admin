@@ -27,7 +27,8 @@ export default {
     table: '表格',
     components: '组件',
     editor: '编辑器',
-    markdown: 'Markdown'
+    markdown: 'Markdown',
+    productList: '商品列表'
   },
   remark: {
     home: '首页',
@@ -38,7 +39,8 @@ export default {
     table: '综合实例表格',
     components: '组件',
     editor: '编辑器',
-    markdown: 'Markdown'
+    markdown: 'Markdown',
+    productList: '商品列表'
   },
 
   login: {

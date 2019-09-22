@@ -85,7 +85,6 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
 import { VueRouter, MenuItem } from '../../type';
-import ScrollBar from '@/components/common/ScrollBar.vue';
 import SideMenu from './components/side-menu/SideMenu.vue';
 import SiderBarTop from './components/side-menu/SiderBarTop.vue';
 import { Getter, Mutation } from 'vuex-class';
@@ -100,7 +99,7 @@ const COLLAPSED_SIDER_WIDTH = 64;
 const HIDE_SIDEBAR_WIDTH = 600; // 隐藏侧边栏的宽度
 
 @Component({
-  components: { ScrollBar, SideMenu, SiderBarTop }
+  components: { SideMenu, SiderBarTop }
 })
 export default class SideBar extends Vue {
   created() {

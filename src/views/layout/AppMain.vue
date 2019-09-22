@@ -6,7 +6,7 @@
   width 100%
   height: calc(100% - 103px)
   .app-main-card
-    min-height calc(100vh - 188px)
+    min-height calc(100vh - 203px)
     .common-card-title
       font-size 16px
       font-weight 500
@@ -17,7 +17,8 @@
       display flex
       justify-content space-between
   & .app-main-footer
-    margin-top: 30px;
+    margin-top 30px
+    margin-bottom 15px
     height: 30px;
     line-height: 30px;
     text-align: center

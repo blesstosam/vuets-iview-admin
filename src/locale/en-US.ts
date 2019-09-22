@@ -28,7 +28,8 @@ export default {
     table: 'Table',
     components: 'Components',
     editor: 'Editor',
-    markdown: 'Markdown'
+    markdown: 'Markdown',
+    productList: 'Product list'
   },
   // 菜单说明
   remark: {
@@ -40,7 +41,8 @@ export default {
     table: 'Complex table',
     components: 'Components',
     editor: 'Editor',
-    markdown: 'Markdown'
+    markdown: 'Markdown',
+    productList: 'Product list'
   },
 
   login: {

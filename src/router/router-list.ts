@@ -54,7 +54,7 @@ export const routerList: Array<RouteConfig> = [
           remark: 'remark.editor',
           icon: 'md-keypad'
         },
-        component: () => import('@/views/components/Editor.vue')
+        component: () => import('@/views/components-demo/Editor.vue')
       },
       {
         path: 'markdown',
@@ -64,7 +64,17 @@ export const routerList: Array<RouteConfig> = [
           remark: 'remark.markdown',
           icon: 'logo-markdown'
         },
-        component: () => import('@/views/components/Markdown.vue')
+        component: () => import('@/views/components-demo/Markdown.vue')
+      },
+      {
+        path: 'product-list',
+        name: 'ProductList',
+        meta: {
+          title: 'menuTitle.productList',
+          remark: 'remark.productList',
+          icon: 'md-egg'
+        },
+        component: () => import('@/views/components-demo/ProductList.vue')
       }
     ]
   },

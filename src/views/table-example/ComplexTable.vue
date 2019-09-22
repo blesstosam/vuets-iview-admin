@@ -5,6 +5,9 @@
     margin-bottom 24px
   & .ivu-alert
     // margin-bottom 24px
+  & .pager
+    margin-top 24px
+    text-align center
 </style>
 
 <template>
@@ -38,6 +41,7 @@
         <Button type="error" size="small" @click="remove(index)">删除</Button>
       </template>
     </Table>
+    <Page class="pager" :total="data.length" show-elevator />
   </Card>
 </template>
 
