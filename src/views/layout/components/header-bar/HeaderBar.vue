@@ -84,7 +84,7 @@ export default class HeaderBar extends Vue {
         let obj = {
           icon: (item.meta && item.meta.icon) || '',
           name: item.name || '',
-          meta: meta
+          meta
         };
         return obj;
       });

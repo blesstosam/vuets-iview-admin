@@ -113,7 +113,7 @@ export default class Login extends Vue {
         if (valid) {
           this.loading = true;
           const { username, password } = this.formValidate;
-          const resp = await login({ username: username, password: sha256(password) });
+          const resp = await login({ username, password: sha256(password) });
 
           // 将状态保存到store 和 localstorage 里
           this.updateUser({

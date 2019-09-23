@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
+
 @Component({})
 export default class TableAction extends Vue {
   // /* props */

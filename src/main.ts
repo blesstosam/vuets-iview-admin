@@ -70,3 +70,8 @@ new Vue({
   i18n,
   render: h => h(App)
 }).$mount('#app');
+
+var b = 1
+const a = {
+  b: b
+}

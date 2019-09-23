@@ -92,7 +92,7 @@ export default class MyChart extends Vue {
   getyAxis(name: string) {
     let yAxis = {
       // 单位样式
-      name: name,
+      name,
       nameGap: 30,
       nameTextStyle: {
         padding: [0, 30, -10, 0],

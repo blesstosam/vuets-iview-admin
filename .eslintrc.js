@@ -21,6 +21,8 @@ module.exports = {
     // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
 
+    'object-shorthand': 2,
+
     /************************ ts相关 目前不增加过多相关检查 *****************************/
     'typescript/class-name-casing': 'error'
 

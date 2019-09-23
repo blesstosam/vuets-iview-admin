@@ -1,5 +1,7 @@
+/* eslint-disable-next-line no-unused-vars */
 import { User } from '@/type';
 import * as types from '../mutation-types';
+/* eslint-disable-next-line no-unused-vars */
 import router, { resetRouter } from '@/router/router';
 import storage from '@/assets/script/storage';
 import { setLsCache, getLsCache } from '@/assets/script/util';
@@ -72,7 +74,7 @@ export default {
       commit(types.UPDATE_ADMIN_ID, userinfo.adminId);
       commit(types.UPDATE_PROXY_ID, userinfo.proxyId);
     },
-    [types.LOGOUT]({ state, dispatch, commit }: any) {
+    [types.LOGOUT]({ dispatch, commit }: any) {
       // 清除用户信息 localstorage 和 store
       dispatch(types.UPDATE_USER, {
         username: '',

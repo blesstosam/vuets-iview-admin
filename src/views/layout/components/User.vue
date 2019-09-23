@@ -39,7 +39,7 @@ export default class User extends Vue {
 
   message(name: string): void {
     this.$router.push({
-      name: name
+      name
     });
   }
 
