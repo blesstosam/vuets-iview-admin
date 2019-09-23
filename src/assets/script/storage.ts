@@ -15,9 +15,8 @@ const api = {
     if (v.indexOf('obj-') === 0) {
       v = v.slice(4);
       return JSON.parse(v);
-    } else {
-      return v;
     }
+    return v;
   },
 
   remove(key: string, storage: Storage) {

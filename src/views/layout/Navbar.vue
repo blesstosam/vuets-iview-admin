@@ -109,10 +109,9 @@ export default class Navbar extends Vue {
     } else if (this.local === 'zh-TW') {
       const arr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
       return arr[day];
-    } else {
-      const arr = ['Sun. ', 'Mon. ', 'Tues. ', 'Wed. ', 'Thurs. ', 'Fri. ', 'Sat. '];
-      return arr[day];
     }
+    const arr = ['Sun. ', 'Mon. ', 'Tues. ', 'Wed. ', 'Thurs. ', 'Fri. ', 'Sat. '];
+    return arr[day];
   }
   @Getter('headerTheme') headerTheme!: HeaderThemeType;
   @Getter('local') local!: string;

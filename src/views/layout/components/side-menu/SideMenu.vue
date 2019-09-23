@@ -128,7 +128,7 @@
 <script lang="ts">
 import SideMenuItem from './SideMenuItem.vue';
 import CollapsedMenu from './CollapsedMenu.vue';
-import { getUnion } from '@/assets/script/util';
+import { getUnion, getTextColor } from '@/assets/script/util';
 import Mixin from './mixin';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
@@ -136,7 +136,6 @@ import { IMenu, MenuItem } from '@/type';
 import { Getter } from 'vuex-class';
 /* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
-import { getTextColor } from '@/assets/script/util';
 
 @Component({
   components: {

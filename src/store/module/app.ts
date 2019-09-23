@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as types from '../mutation-types';
+/* eslint-disable-next-line no-unused-vars */
 import { MenuItem } from '@/type';
-
+/* eslint-disable-next-line no-unused-vars */
 import { Route } from 'vue-router';
 import cfg from '@/config/index';
 
@@ -46,7 +47,7 @@ if (tem) {
 const state: State = {
   local: localStorage.getItem('lang') || '',
   sidebar: {
-    opened: window.innerWidth < 960 ? false : true
+    opened: !(window.innerWidth < 960)
   },
   // 缓存的组件 首页的标签
   tagsView: {

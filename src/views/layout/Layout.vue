@@ -100,11 +100,9 @@ import TagsViews from './TagViews.vue';
 import RightPanel from '@/components/RightPanel.vue';
 /* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
-import { CHANGE_SETTING } from '@/store/mutation-types';
 /* eslint-disable-next-line no-unused-vars */
 import { MenuItem, VueRouter } from '../../type';
-import { SET_MENU_LIST } from '@/store/mutation-types';
-import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
+import { SET_MENU_LIST, TOGGLE_SIDE_BAR, CHANGE_SETTING } from '@/store/mutation-types';
 
 @Component({
   components: { SiderBar, Navbar, AppMain, TagsViews, RightPanel }

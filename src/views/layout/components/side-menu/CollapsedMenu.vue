@@ -35,9 +35,8 @@
 <script lang="ts">
 import mixin from './mixin';
 import itemMixin from './item-mixin';
-import { findNodeUpperByClasses } from '@/assets/script/util';
+import { findNodeUpperByClasses, getTextColor } from '@/assets/script/util';
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { getTextColor } from '@/assets/script/util';
 
 @Component({
   mixins: [itemMixin, mixin]

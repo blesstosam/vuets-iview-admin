@@ -1,8 +1,9 @@
+/* eslint-disable-next-line no-unused-vars */
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
 import { LOGOUT } from '@/store/mutation-types';
 import Vue from 'vue';
-import storage from '@/assets/script/storage';
+// import storage from '@/assets/script/storage';
 import cfg from '@/config/index';
 
 export class HttpService {
@@ -53,20 +54,18 @@ export class HttpService {
             });
           }
           return Promise.reject(response);
-        } else {
-          // 405: 其他客户端登录了;  407:Token 过期了;
-          if (response.data.code === 407 || response.data.code === 405) {
-            Vue.prototype.$Modal.info({
-              title: response.data.msg,
-              onOk: () => {
-                store.dispatch(LOGOUT);
-              }
-            });
-            return Promise.reject(response); // 407的直接不处理
-          } else {
-            return response; // return 会默认resolve
-          }
         }
+        // 405: 其他客户端登录了;  407:Token 过期了;
+        if (response.data.code === 407 || response.data.code === 405) {
+          Vue.prototype.$Modal.info({
+            title: response.data.msg,
+            onOk: () => {
+              store.dispatch(LOGOUT);
+            }
+          });
+          return Promise.reject(response); // 407的直接不处理
+        }
+        return response; // return 会默认resolve
       },
       (error: AxiosError) => {
         // 404，500, timeout 等服务器报错
@@ -74,9 +73,8 @@ export class HttpService {
         if (errStr.search('timeout') === -1) {
           // 处理timeout
           return Promise.reject(error);
-        } else {
-          return Promise.reject({ msg: '网络异常，请稍后重试' });
         }
+        return Promise.reject({ msg: '网络异常，请稍后重试' });
       }
     );
   }
