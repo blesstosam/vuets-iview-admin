@@ -1,19 +1,22 @@
 <style lang="stylus">
 .tagview
   position: relative;
-  height: 40px;
-  background: #F0F0F0;
-  border-top: 1px solid #F0F0F0;
-  border-bottom: 1px solid #F0F0F0
+  height: 44px;
+  // background: #F0F0F0;
+  // border-top: 1px solid #F0F0F0;
+  // border-bottom: 1px solid #F0F0F0
   .close-con
     position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    right: 10px;
+    top: 5px;
+    height: 32px;
     width: 32px;
     background: #fff;
     text-align: center;
+    border-radius 3px;
     z-index: 10;
+    button
+      height 32px
   .contextmenu
     position: absolute;
     margin: 0;
@@ -33,8 +36,7 @@
     position: absolute;
     top: 0px;
     height: 100%;
-    // background: #fff;
-    padding-top: 3px;
+    padding-top: 5px;
     z-index: 10;
     button
       padding: 6px 4px;
@@ -43,15 +45,15 @@
       outline: none;
       background: none;
       border: none;
+      color #515a6e
     &.left-btn
       left: 0px;
     &.right-btn
-      right: 32px;
-      border-right: 1px solid #f0f0f0
+      right: 42px;
   & .scroll-wrapper
     position: absolute;
     left: 27px;
-    right: 64px;
+    right: 74px;
     height: 100%;
     overflow: hidden;
     // box-shadow: 0px 0 3px 2px rgba(100, 100, 100, 0.1) inset;
@@ -62,9 +64,12 @@
       transition: left 0.4s ease;
       white-space: nowrap;
       height: 100%
-      padding 1px 4px 0
-      .ivu-tag-text
-        font-size 13px
+      padding 4px 4px 0
+      .ivu-tag
+        border 0 !important
+        margin-right 6px !important
+        .ivu-tag-text
+          font-size 13px
       & .ivu-icon-ios-close
         margin-left 8px !important
         font-size 16px
@@ -79,9 +84,9 @@
   <div class="tagview">
     <!-- 关闭按钮 -->
     <div class="close-con">
-      <Dropdown transfer @on-click="handleTagsOption" style="margin-top:7px;">
+      <Dropdown transfer @on-click="handleTagsOption">
         <Button size="small" type="text">
-          <Icon :size="18" type="ios-close-circle-outline" />
+          <Icon :size="18" type="ios-arrow-down" />
         </Button>
         <DropdownMenu slot="list">
           <DropdownItem name="close-all">{{ $t('closeAll') }}</DropdownItem>

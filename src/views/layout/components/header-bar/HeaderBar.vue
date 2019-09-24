@@ -33,7 +33,6 @@ import CustomBreadCrumb from './CustomBreadCrumb.vue';
 import { Component, Vue, Watch } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
 import { Route, RouteConfig } from '@/type';
-import { routerList } from '@/router/router-list';
 import { getHomeRoute } from '@/assets/script/util';
 import SiderBarTop from '../side-menu/SiderBarTop.vue';
 import HeaderMenu from './HeaderMenu.vue';
@@ -53,7 +52,8 @@ type MatchedItem = {
 })
 export default class HeaderBar extends Vue {
   created() {
-    this.homeRoute = getHomeRoute(routerList);
+    const allRoutes = (this.$router as any).options.routes;
+    this.homeRoute = getHomeRoute(allRoutes);
     this.updateBreadCrumbList();
   }
 

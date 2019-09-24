@@ -1,12 +1,12 @@
 <style lang="stylus">
 .app-main
-  padding: 18px 18px 0px 18px
+  padding: 0 18px 0px 18px
   overflow-x: hidden
   overflow-y: auto
   width 100%
   height: calc(100% - 103px)
   .app-main-card
-    min-height calc(100vh - 203px)
+    min-height calc(100vh - 185px)
     .common-card-title
       font-size 16px
       font-weight 500
