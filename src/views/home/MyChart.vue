@@ -35,6 +35,7 @@
         :yAxis="getyAxis(chartTypes.unit)"
         :dataZoom="dataZoom"
         :extend="extend"
+        ref="chartLine"
       ></ve-line>
 
       <ve-histogram
@@ -43,6 +44,7 @@
         :yAxis="getyAxis(chartTypes.unit)"
         :dataZoom="dataZoom"
         :extend="extendBar"
+        ref="chartHistogram"
       />
     </div>
 
@@ -57,8 +59,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit, Watch } from 'vue-property-decorator';
 import StatusResp from '@/components/RespStatus.vue';
+import { Getter } from 'vuex-class';
 
 interface ChartType {
   id: string;
@@ -75,6 +78,8 @@ interface ChartType {
   }
 })
 export default class MyChart extends Vue {
+  @Getter('isSidebarOpened') isSidebarOpened!: boolean;
+
   @Prop({ required: true }) readonly chartTypes!: ChartType;
   @Prop({ default: [], required: true }) readonly chartData!: any;
   @Prop({ default: false }) readonly loading!: boolean;
@@ -87,6 +92,17 @@ export default class MyChart extends Vue {
   @Emit('change-chart-type')
   changeChart() {
     return;
+  }
+
+  @Watch('isSidebarOpened')
+  toggleSideBar() {
+    setTimeout(() => {
+      if (this.chartTypes.chartStyle === 'line') {
+        (this.$refs.chartLine as any).echarts.resize();
+      } else {
+        (this.$refs.chartHistogram as any).echarts.resize();
+      }
+    }, 200);
   }
 
   getyAxis(name: string) {
