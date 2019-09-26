@@ -45,6 +45,9 @@ export default {
 
   login: {
     enterUsername: '请填写用户名',
-    enterPassword: '请填写密码'
+    enterPassword: '请填写密码',
+    welcome: '欢迎登录',
+    login: '登录',
+    logging: '登录中...'
   }
 };

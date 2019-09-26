@@ -1,4 +1,3 @@
-<style scoped lang="stylus"></style>
 <template>
   <span @click="handleEmit">
     <Tooltip :content="tooltipContent" placement="top">
@@ -38,8 +37,7 @@ export default class TableAction extends Vue {
     | 'card'
     | 'resetPayPsd';
   @Prop() tooltipContent!: string;
-  /* methods 方法*/
-  /* =====================================================methods 方法*/
+
   @Emit('click')
   handleEmit() {
     return;

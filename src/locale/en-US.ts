@@ -47,6 +47,9 @@ export default {
 
   login: {
     enterUsername: 'Please fill in the user name',
-    enterPassword: 'Please fill in the password'
+    enterPassword: 'Please fill in the password',
+    welcome: 'Welcome to login',
+    login: 'Login',
+    logging: 'be logging in...'
   }
 };
