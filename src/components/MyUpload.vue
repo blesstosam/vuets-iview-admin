@@ -2,7 +2,7 @@
   <Upload
     style="margin-left: 72px; margin-bottom: 20px;"
     :action="uploadFilePath"
-    :headers="{ token, orgCode }"
+    :headers="{ token }"
     :on-success="handleSuccess"
     :on-format-error="handleErrorFile"
     :on-exceeded-size="handleMaxSize"
@@ -17,13 +17,12 @@
 <script lang="ts">
 import { Vue, Component, Emit } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-// import { baseUrl } from '@/api/server';
+import { baseUrl } from '@/api/server';
 
 @Component({})
 export default class MyUpload extends Vue {
-  // uploadFilePath: string = `${baseUrl}${UPLOAD_FILE}`;
+  uploadFilePath: string = `${baseUrl}`;
   @Getter('token') readonly token!: string;
-  @Getter('orgCode') readonly orgCode!: string;
 
   handleSuccess(resp: any) {
     if (resp.code !== 200) {

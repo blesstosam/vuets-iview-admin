@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+
 @Component({})
 export default class RespStatus extends Vue {
   // 有两种状态 一种是 nodata 一种是网络异常 network error
