@@ -2,9 +2,6 @@
 .tagview
   position: relative;
   height: 44px;
-  // background: #F0F0F0;
-  // border-top: 1px solid #F0F0F0;
-  // border-bottom: 1px solid #F0F0F0
   .close-con
     position: absolute;
     right: 10px;
@@ -14,7 +11,7 @@
     background: #fff;
     text-align: center;
     border-radius 3px;
-    z-index: 10;
+    z-index: 1;
     button
       height 32px
   .contextmenu
@@ -37,7 +34,7 @@
     top: 0px;
     height: 100%;
     padding-top: 5px;
-    z-index: 10;
+    z-index: 1;
     button
       padding: 6px 4px;
       line-height: 18px;
@@ -56,7 +53,6 @@
     right: 74px;
     height: 100%;
     overflow: hidden;
-    // box-shadow: 0px 0 3px 2px rgba(100, 100, 100, 0.1) inset;
     .scroll-bar
       display: flex;
       overflow: visible;

@@ -40,7 +40,7 @@
     </div>
     <ABackTop :height="100" :bottom="30" :right="50" container=".app-main" />
     <div class="app-main-footer">
-      <span>Copyright © {{ new Date().getFullYear() }} Angel技术支持</span>
+      <span>Copyright © {{ new Date().getFullYear() }} Angel 技术支持</span>
       <Divider type="vertical" />
       <a target="blank" href="https://github.com/blesstosam" style="margin-right: 12px;">Github</a>
       <a target="blank" href="https://segmentfault.com/u/weilei_58f084f7de891">Segmentfault</a>

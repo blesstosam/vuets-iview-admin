@@ -45,7 +45,7 @@
     left: 0;
     right: 0;
     background : rgba(0,0,0,0.7);
-    z-index: 1;
+    z-index: 2;
   }
 }
 </style>

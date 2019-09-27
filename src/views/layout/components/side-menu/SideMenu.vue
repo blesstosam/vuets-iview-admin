@@ -2,6 +2,11 @@
 .side-menu-wrapper {
   user-select: none;
   margin-right: 18px;
+
+  // 防止菜单搜索的下拉框被遮住
+  .ivu-menu {
+    z-index: 199 !important;
+  }
   .menu-collapsed {
     padding-top: 10px;
     .collased-menu-dropdown {
