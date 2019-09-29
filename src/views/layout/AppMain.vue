@@ -31,7 +31,7 @@
 
 <template>
   <section class="app-main" id="app-main" ref="main">
-    <div class="app-main-card" id="app-main-card">
+    <div class="app-main-card" :style="{ height: isFullscreen ? '100%' : 'auto' }">
       <!-- <transition name="fade" mode="out-in"> -->
       <keep-alive :max="10" :include="cacheList">
         <router-view />
@@ -39,7 +39,8 @@
       <!-- </transition> -->
     </div>
     <ABackTop :height="100" :bottom="30" :right="50" container=".app-main" />
-    <div class="app-main-footer">
+
+    <div class="app-main-footer" v-if="!isFullscreen">
       <span>Copyright © {{ new Date().getFullYear() }} Angel 技术支持</span>
       <Divider type="vertical" />
       <a target="blank" href="https://github.com/blesstosam" style="margin-right: 12px;">Github</a>
@@ -97,6 +98,10 @@ export default class AppMain extends Vue {
     } else if (val > 960 && !this.isSidebarOpened) {
       this.toggleSideBar(true);
     }
+  }
+
+  get isFullscreen() {
+    return cfg.fullscreenPath.indexOf(this.$route.fullPath) !== -1;
   }
 
   @Mutation(SET_LOCAL) setLocal!: (lang: string) => void;

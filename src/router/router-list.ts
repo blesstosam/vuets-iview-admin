@@ -1,5 +1,6 @@
 import Layout from '@/views/layout/Layout.vue';
 import storage from '@/assets/script/storage';
+/* eslint-disable-next-line no-unused-vars */
 import { RouteConfig } from 'vue-router';
 
 /**
@@ -83,10 +84,11 @@ export const routerList: Array<RouteConfig> = [
     path: '/table',
     name: '_table',
     component: Layout,
+    redirect: '/table/index',
     meta: { title: 'menuTitle.table' },
     children: [
       {
-        path: '',
+        path: 'index',
         name: 'ComplexTable',
         meta: {
           title: 'menuTitle.table',
@@ -101,10 +103,12 @@ export const routerList: Array<RouteConfig> = [
   {
     path: '/guide',
     component: Layout,
+    name: '_guide',
+    redirect: '/guide/index',
     meta: { title: 'menuTitle.guide' },
     children: [
       {
-        path: '',
+        path: 'index',
         name: 'Guide',
         meta: {
           title: 'menuTitle.guide',
@@ -112,6 +116,26 @@ export const routerList: Array<RouteConfig> = [
           icon: 'md-send'
         },
         component: () => import('@/views/guide/Guide.vue')
+      }
+    ]
+  },
+
+  {
+    path: '/chat',
+    component: Layout,
+    name: '_chat',
+    redirect: '/chat/index',
+    meta: { title: 'menuTitle.chat' },
+    children: [
+      {
+        path: 'index',
+        name: 'Chat',
+        meta: {
+          title: 'menuTitle.chat',
+          remark: 'remark.chat',
+          icon: 'md-chatboxes'
+        },
+        component: () => import('@/views/chat/Chat.vue')
       }
     ]
   },
@@ -189,7 +213,7 @@ export function toRouterComponent(menuList: Array<any>) {
           let secondIndex = _children.findIndex(i => {
             let fullpath = '';
             const menuVersion = menuList[j].children[k].menuVersion;
-            const _version = menuVersion && (menuVersion !== 1 || menuVersion != '1') ? `/v${menuVersion}` : '';
+            const _version = menuVersion && (menuVersion !== 1 || menuVersion !== '1') ? `/v${menuVersion}` : '';
             // console.log(_version, menuVersion,  '_version')
             if (routerList[firstIndex].path === '/') {
               fullpath = `${routerList[firstIndex].path}${i.path}`;

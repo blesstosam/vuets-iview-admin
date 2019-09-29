@@ -28,7 +28,8 @@ export default {
     components: '组件',
     editor: '编辑器',
     markdown: 'Markdown',
-    productList: '商品列表'
+    productList: '商品列表',
+    chat: '聊天'
   },
   remark: {
     home: '首页',
@@ -40,7 +41,8 @@ export default {
     components: '组件',
     editor: '编辑器',
     markdown: 'Markdown',
-    productList: '商品列表'
+    productList: '商品列表',
+    chat: '聊天界面'
   },
 
   login: {

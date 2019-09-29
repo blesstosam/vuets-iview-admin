@@ -125,4 +125,37 @@ html, body
   width: 0 !important;
 
 
+// siderbar
+@media (max-width: 959px) {
+  #app .sidebar-container {
+    width: 256px;
+  }
+}
+@media (min-width: 960px) {
+  #app .sidebar-container {
+    width: 256px;
+  }
+}
+
+/* 1440*900 仅苹果 */
+@media (min-width: 1440px) {}
+
+/* 1920*1200 */
+@media (min-width: 1920px) {}
+
+#app .sidebar-container 
+  transition: width 0.2s;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 98 !important;
+  background: none;
+  border: 1px solid red
+
+#app .main-container 
+  transition: margin-left 0.2s;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%
 

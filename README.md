@@ -14,6 +14,13 @@ vuets-iview-admin is a front-end management background integration solution. It 
 ## Features
 - Login / Logout
 - i18n
+- Dashboard
+- Component Demo
+    - Editor
+    - Markdown Editor
+    - Product List
+- Table
+- Guide    
 - Error Page
     - 403
     - 404

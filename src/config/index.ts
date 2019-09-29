@@ -10,11 +10,7 @@ const setting: SettingType = {
 };
 
 export default {
-  /**
-   * 是否使用国际化，默认为false
-   * 如果不使用，则需要在路由中给需要在菜单中展示的路由设置meta: {title: 'xxx'}
-   * 用来在菜单中显示文字
-   */
+  // 是否使用国际化
   useI18n: true,
 
   // 默认打开的首页的路由name值，默认为home
@@ -40,5 +36,8 @@ export default {
   useComponentCache: true,
 
   // 用户登录12小时后 自动登出（后面在每次发送请求时刷新过期时间）
-  userExpireTime: 12 * 60 * 60
+  userExpireTime: 12 * 60 * 60,
+
+  // 全屏的页面路由
+  fullscreenPath: ['/chat/index']
 };

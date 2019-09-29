@@ -29,7 +29,8 @@ export default {
     components: 'Components',
     editor: 'Editor',
     markdown: 'Markdown',
-    productList: 'Product list'
+    productList: 'Product list',
+    chat: 'Chat'
   },
   // 菜单说明
   remark: {
@@ -42,7 +43,8 @@ export default {
     components: 'Components',
     editor: 'Editor',
     markdown: 'Markdown',
-    productList: 'Product list'
+    productList: 'Product list',
+    chat: 'Chat Box'
   },
 
   login: {
