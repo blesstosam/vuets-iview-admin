@@ -52,7 +52,6 @@ export function deepCopy(data: any): any {
   return o;
 }
 
-
 export function showTitle(item: any, vm: any): string {
   // console.log(item, 'showtitle')
   let title  = item.meta && item.meta.title || item.title
@@ -89,65 +88,6 @@ export const findNodeUpperByClasses = (ele: any, classes: string[]): any => {
 export const getUnion = (arr1: Array<any>, arr2: Array<any>) => {
   return Array.from(new Set([...arr1, ...arr2]))
 }
-
-export const forEach = (arr: Array<any>, fn: Function) => {
-  if (!arr.length || !fn) return
-  let i = -1
-  let len = arr.length
-  while (++i < len) {
-    let item = arr[i]
-    fn(item, i, arr)
-  }
-}
-export const hasChild = (item: any) => {
-  return item.children && item.children.length !== 0
-}
-
-/**
- * @param {Array} target 目标数组
- * @param {Array} arr 需要查询的数组
- * @description 判断要查询的数组是否至少有一个元素包含在目标数组中
- */
-export const hasOneOf = (targetarr: Array<any>, arr: Array<any>) => {
-  return targetarr.some(_ => arr.indexOf(_) > -1)
-}
-const showThisMenuEle = (item: any, access: any) => {
-  if (item.meta && item.meta.access && item.meta.access.length) {
-    if (hasOneOf(item.meta.access, access)) return true
-    else return false
-  } else return true
-}
-
-type MenuItem  = {
-  icon: string,
-  name: string,
-  meta: {href?: string, icon?: string},
-  children?: Array<MenuItem>,
-  href?: string
-}
-/**
- * @param {Array} list 通过路由列表得到菜单列表
- * @returns {Array}
- */
-export const getMenuByRouter = (list: Array<any>, access: any) => {
-  let res: Array<MenuItem> = []
-  forEach(list, (item: any) => {
-    if (!item.meta || (item.meta && !item.meta.hideInMenu)) {
-      let obj: MenuItem = {
-        icon: (item.meta && item.meta.icon) || '',
-        name: item.name,
-        meta: item.meta
-      }
-      if ((hasChild(item) || (item.meta && item.meta.showAlways)) && showThisMenuEle(item, access)) {
-        obj.children = getMenuByRouter(item.children, access)
-      }
-      if (item.meta && item.meta.href) obj.href = item.meta.href
-      if (showThisMenuEle(item, access)) res.push(obj)
-    }
-  })
-  return res
-}
-
 
 /**
  * @param {Array} routers 路由列表数组
