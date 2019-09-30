@@ -11,8 +11,9 @@ import TableAction from '@/components/TableAction.vue';
 import { SET_LOCAL } from './store/mutation-types';
 
 // 实际打包时应该不引入mock
+// process.env.NODE_ENV !== 'production'
 /* eslint-disable */
-if (process.env.NODE_ENV !== 'production') require('@/mock/index')
+if (true) require('@/mock/index')
 
 Vue.component('TableAction', TableAction);
 Vue.component(TreeTable.name, TreeTable);
