@@ -53,7 +53,6 @@ export function deepCopy(data: any): any {
 }
 
 export function showTitle(item: any, vm: any): string {
-  // console.log(item, 'showtitle')
   let title  = item.meta && item.meta.title || item.title
   if (!title) return ''
 

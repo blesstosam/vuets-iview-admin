@@ -56,7 +56,7 @@
   a.drop-menu-a {
     display: inline-block;
     width: 100%;
-    text-align: center;
+    text-align: center !important;
     color: #495060;
   }
   .menu-title {
@@ -77,7 +77,6 @@
           :hide-title="false"
           :root-icon-size="rootIconSize"
           :icon-size="iconSize"
-          :theme="sidebarTheme"
           :parent-item="item"
           :key="`drop-menu-${item.name}`"
         />
@@ -88,7 +87,7 @@
           placement="bottom"
           :key="`drop-menu-${item.name}`"
         >
-          <a @click="handleSelect(getNameOrHref(item, true))" class="drop-menu-a" :style="{ textAlign: 'center' }">
+          <a @click="handleSelect(getNameOrHref(item, true))" class="drop-menu-a">
             <common-icon
               :size="rootIconSize"
               :color="textColor"
@@ -123,9 +122,9 @@ import { getTextColor } from '@/assets/script/util';
 })
 export default class HeaderMenu extends Vue {
   get textColor() {
-    return getTextColor(this.sidebarTheme);
+    return getTextColor(this.headerTheme);
   }
-  @Getter('sidebarTheme') sidebarTheme!: SidebarThemeType;
+  @Getter('headerTheme') headerTheme!: HeaderThemeType;
   @Getter('menuList') menuList!: Array<MenuItem>;
 
   @Prop({ default: 18 }) readonly rootIconSize!: number;
