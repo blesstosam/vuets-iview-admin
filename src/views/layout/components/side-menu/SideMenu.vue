@@ -135,7 +135,7 @@ import SideMenuItem from './SideMenuItem.vue';
 import CollapsedMenu from './CollapsedMenu.vue';
 import { getUnion, getTextColor } from '@/assets/script/util';
 import Mixin from './mixin';
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator';
 /* eslint-disable-next-line no-unused-vars */
 import { IMenu, MenuItem } from '@/type';
 import { Getter } from 'vuex-class';
@@ -172,8 +172,11 @@ export default class SideMenu extends Vue {
 
   @Watch('activeName')
   activeNameChanged(name: string) {
-    if (this.accordion) this.openedNames = this.getOpenedNamesByActiveName(name);
-    else this.openedNames = getUnion(this.openedNames, this.getOpenedNamesByActiveName(name));
+    if (this.accordion) {
+      this.openedNames = this.getOpenedNamesByActiveName(name);
+    } else {
+      this.openedNames = getUnion(this.openedNames, this.getOpenedNamesByActiveName(name));
+    }
   }
 
   @Watch('openedNames')
@@ -183,9 +186,11 @@ export default class SideMenu extends Vue {
     });
   }
 
+  @Emit('on-select')
   handleSelect(name: string) {
-    this.$emit('on-select', name);
+    return name;
   }
+
   getOpenedNamesByActiveName(name: string): (string | undefined)[] {
     return this.$route.matched.map(item => item.name).filter(item => item !== name);
   }
