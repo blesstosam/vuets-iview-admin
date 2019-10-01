@@ -150,8 +150,6 @@ import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
   mixins: [Mixin]
 })
 export default class SideMenu extends Vue {
-  $config: any;
-
   mounted() {
     this.openedNames = getUnion(this.openedNames, this.getOpenedNamesByActiveName(name));
   }
@@ -193,13 +191,6 @@ export default class SideMenu extends Vue {
 
   getOpenedNamesByActiveName(name: string): (string | undefined)[] {
     return this.$route.matched.map(item => item.name).filter(item => item !== name);
-  }
-  updateOpenName(name: string) {
-    if (name === this.$config.homeName) {
-      this.openedNames = [];
-    } else {
-      this.openedNames = this.getOpenedNamesByActiveName(name);
-    }
   }
 }
 </script>
