@@ -18,7 +18,8 @@
 
 <template>
   <div class="avatar-wrap" :class="{ 'avatar-small': !isSidebarOpened && !showMenuInHeader }">
-    <Avatar size="large" :src="userAvatar" v-if="showAvatar" />
+    <!-- <Avatar size="large" :src="userAvatar" v-if="showAvatar" /> -->
+    <BlockiesAvatar />
     <div class="text-wrap" v-if="isSidebarOpened || showMenuInHeader" :style="{ color: textColor }">
       <div class="logo-title">{{ $t('appName') }}</div>
       <div class="username">
@@ -34,8 +35,11 @@ import { Getter } from 'vuex-class';
 /* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
 import { getTextColor } from '@/assets/script/util';
+import BlockiesAvatar from '@/components/BlockiesAvatar.vue';
 
-@Component({})
+@Component({
+  components: { BlockiesAvatar }
+})
 export default class SideBarTop extends Vue {
   @Getter('username') readonly username!: string;
   @Getter('avatar') readonly userAvatar!: string;

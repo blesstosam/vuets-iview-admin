@@ -34,3 +34,8 @@ declare module '@toast-ui/vue-editor' {
     export {Editor};
 }
 
+declare module '@download/blockies' {
+    const createIcon: any
+    export {createIcon};
+}
+
