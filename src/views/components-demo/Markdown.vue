@@ -1,7 +1,7 @@
 <style lang="stylus"></style>
 
 <template>
-  <div>
+  <Card dis-hover :bordered="false">
     <CommonCardTitle />
     <Editor
       :value="editorText"
@@ -11,7 +11,7 @@
       :usageStatistics="false"
       :useCommandShortcut="true"
     />
-  </div>
+  </Card>
 </template>
 
 <script lang="ts">

@@ -11,8 +11,8 @@
 
 <template>
   <div>
-    <CommonCardTitle />
     <Card class="ql-editor-wrap" :bordered="false" dis-hover>
+      <CommonCardTitle />
       <quill-editor
         style="min-height: 400px;"
         v-model="content"
