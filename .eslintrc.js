@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier', '@vue/typescript', 'eslint:recommended'],
   rules: {
+    // 'no-unused-vars': 'off',
     eqeqeq: 'error',
     'no-eval': 'error',
     "no-constant-condition": 'error', //禁止在条件中使用常量表达式 if(true) if(1)

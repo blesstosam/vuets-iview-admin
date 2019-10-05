@@ -1,8 +1,8 @@
 import Vue from 'vue';
+/* eslint-disable-next-line no-unused-vars */
 import Router, { RouteConfig, Route } from 'vue-router';
 import Login from '@/views/Login.vue';
-import { scrollTop, showTitle } from '@/assets/script/util';
-import { getLsCache } from '@/assets/script/util';
+import { scrollTop, showTitle, getLsCache } from '@/assets/script/util';
 
 Vue.use(Router);
 
