@@ -10,6 +10,7 @@
 ## Introduction
 vuets-iview-admin is a front-end management background integration solution. It based on [Vue.js](https://github.com/vuejs/vue) and use the UI Toolkit [iView](https://github.com/iview/iview) and use [Typescript](https://www.tslang.cn/).
 
+## Totally written by Typescript
 
 ## Features
 - Login / Logout
@@ -20,7 +21,8 @@ vuets-iview-admin is a front-end management background integration solution. It 
     - Markdown Editor
     - Product List
 - Table
-- Guide    
+- Guide  
+- Chat  
 - Error Page
     - 403
     - 404
@@ -34,7 +36,7 @@ vuets-iview-admin is a front-end management background integration solution. It 
 - Breadcrumb navigation
 - Full screen / exit full screen
 
-## Project setup
+### Project setup
 ```
 npm install
 ```
