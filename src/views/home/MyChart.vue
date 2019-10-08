@@ -36,7 +36,7 @@
         :dataZoom="dataZoom"
         :extend="extend"
         ref="chartLine"
-      ></ve-line>
+      />
 
       <ve-histogram
         v-else
@@ -54,7 +54,7 @@
         @click="chartTypes.isNoDataOrInt ? '' : handleReqData"
       />
     </div>
-    <Spin size="large" fix v-if="loading"></Spin>
+    <Spin size="large" fix v-if="loading" />
   </Card>
 </template>
 
@@ -134,7 +134,7 @@ export default class MyChart extends Vue {
     return yAxis;
   }
 
-  dataZoom: any = [
+  dataZoom: Array<object> = [
     // {
     //   type: 'inside'
     // start: 0,
@@ -161,7 +161,7 @@ export default class MyChart extends Vue {
     }
   ];
 
-  extend: any = {
+  extend: object = {
     legend: {
       type: 'scroll',
       pageIconColor: '#F5F5F5'
@@ -203,7 +203,7 @@ export default class MyChart extends Vue {
     }
   };
 
-  extendBar: any = {
+  extendBar: object = {
     series: {
       type: 'bar',
       barMinHeight: 2

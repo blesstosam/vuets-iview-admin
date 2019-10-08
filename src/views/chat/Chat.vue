@@ -54,7 +54,7 @@
       background #f3f4f7
       padding-top: 8px
       padding-bottom 24px
-      height calc(100% - 157px)
+      height calc(100% - 92px)
       overflow-y auto
       .row
         padding: 0 15px;
@@ -100,9 +100,10 @@
             border: 6px solid transparent;
             border-left-color: #fff
     .input-box
-      height 100px
+      height 35px
+      display flex
       .ivu-input
-        height 100px
+        height 35px
         border 0
         outline none
         &.ivu-input:focus
@@ -130,7 +131,7 @@
         <div><Icon type="md-add" size="24" /></div>
       </div>
 
-      <div class="content">
+      <div class="content" ref="content">
         <div
           class="row"
           :class="[item.type === 'other' ? 'row-left' : 'row-right']"
@@ -143,7 +144,8 @@
       </div>
 
       <div class="input-box">
-        <Input type="text" />
+        <Input v-model="msg" type="text" />
+        <Icon @click="send" type="md-send" size="24" style="margin-top: 10px; margin-right: 5px; " />
       </div>
     </div>
   </div>
@@ -159,11 +161,9 @@ interface ChatList {
   msgList: Array<{ msg: string; type: string }>;
 }
 
-@Component({
-  components: {}
-})
+@Component
 export default class Chat extends Vue {
-  created() {}
+  msg: string = '';
 
   currentChatIndex: number = 0;
   get currentChatItem() {
@@ -222,5 +222,18 @@ export default class Chat extends Vue {
   ];
 
   myAvatar = 'https://avatar-static.segmentfault.com/285/486/285486960-59226f974c266_big64';
+
+  send() {
+    if (!this.msg) return;
+    this.chatList[this.currentChatIndex].msgList.push({
+      msg: this.msg,
+      type: 'me'
+    });
+
+    this.$nextTick(() => {
+      (this.$refs.content as any).scrollTo(0, (this.$refs.content as any).scrollHeight);
+    });
+    this.msg = '';
+  }
 }
 </script>
