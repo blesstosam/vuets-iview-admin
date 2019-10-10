@@ -6,11 +6,11 @@
   background: #f8f8f9;
   .content-con {
     width: 700px;
-    height: 600px;
+    height: 500px;
     margin: 0 auto;
     img {
       display: block;
-      width: 100%;
+      width: 75%;
       height: 100%;
     }
     .text-con {
