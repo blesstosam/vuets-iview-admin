@@ -37,8 +37,7 @@
 import { showTitle } from '@/assets/script/util';
 import CommonIcon from '@/components//CommonIcon.vue';
 import { Component, Vue, Prop } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
-import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
+import { HeaderThemeType } from '@/store/module/setting';
 import { Getter } from 'vuex-class';
 
 @Component({

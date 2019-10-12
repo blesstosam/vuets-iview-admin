@@ -16,7 +16,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-/* eslint-disable-next-line no-unused-vars */
 import { HeaderThemeType } from '@/store/module/setting';
 
 @Component({})

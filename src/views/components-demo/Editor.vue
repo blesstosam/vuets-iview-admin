@@ -44,13 +44,13 @@ export default class Editor extends Vue {
   content: string = 'hello world!';
   editorOption: Object = {};
   mounted() {}
-  /* eslint-disable-next-line no-unused-vars */
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   onEditorBlur(quill: any) {}
-  /* eslint-disable-next-line no-unused-vars */
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   onEditorFocus(quill: any) {}
-  /* eslint-disable-next-line no-unused-vars */
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   onEditorReady(quill: any) {}
-  /* eslint-disable-next-line no-unused-vars */
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   onEditorChange({ quill, html, text }: { quill: any; html: string; text: string }) {
     this.content = html;
   }

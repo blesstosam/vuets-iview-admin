@@ -16,8 +16,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Emit, Watch } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
-import { User, AjaxResponse } from '../type';
+import { User } from '../type';
 // import { test } from '../api/user';
 import { State, Mutation, Getter } from 'vuex-class';
 import { UPDATE_USER } from '../store/mutation-types';

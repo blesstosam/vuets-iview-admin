@@ -1,5 +1,4 @@
 import Vue from 'vue';
-/* eslint-disable-next-line no-unused-vars */
 import Router, { RouteConfig, Route } from 'vue-router';
 import Login from '@/views/Login.vue';
 import { scrollTop, showTitle, getLsCache } from '@/assets/script/util';
@@ -7,7 +6,7 @@ import { scrollTop, showTitle, getLsCache } from '@/assets/script/util';
 Vue.use(Router);
 
 // 动态路由
-/* eslint-disable-next-line no-unused-vars */
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { routerList, getRouterListFromStorage } from './router-list';
 
 // 静态路由

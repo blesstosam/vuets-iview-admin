@@ -1,6 +1,5 @@
 import Layout from '@/views/layout/Layout.vue';
 import storage from '@/assets/script/storage';
-/* eslint-disable-next-line no-unused-vars */
 import { RouteConfig } from 'vue-router';
 
 /**

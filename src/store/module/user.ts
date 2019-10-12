@@ -1,7 +1,6 @@
-/* eslint-disable-next-line no-unused-vars */
 import { User } from '@/type';
 import * as types from '../mutation-types';
-/* eslint-disable-next-line no-unused-vars */
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import router, { resetRouter } from '@/router/router';
 import storage from '@/assets/script/storage';
 import { setLsCache, getLsCache } from '@/assets/script/util';

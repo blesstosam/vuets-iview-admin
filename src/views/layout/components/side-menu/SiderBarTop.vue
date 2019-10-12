@@ -32,7 +32,6 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-/* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
 import { getTextColor } from '@/assets/script/util';
 import BlockiesAvatar from '@/components/BlockiesAvatar.vue';

@@ -106,12 +106,10 @@
 <script lang="ts">
 import CollapsedMenu from '../side-menu/CollapsedMenu.vue';
 import Mixin from '../side-menu/mixin';
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { MenuItem } from '@/type';
 import { Getter } from 'vuex-class';
-/* eslint-disable-next-line no-unused-vars */
-import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
+import { HeaderThemeType } from '@/store/module/setting';
 import { getTextColor } from '@/assets/script/util';
 
 @Component({
@@ -132,10 +130,6 @@ export default class HeaderMenu extends Vue {
   @Prop(Boolean) readonly accordion!: boolean;
   @Prop({ default: '' }) activeName!: string;
   @Prop({ default: () => [] }) openNames!: Array<any>;
-
-  @Watch('openNames')
-  /* eslint-disable-next-line no-unused-vars */
-  openNamesChanged(newNames: (string | undefined)[]) {}
 
   handleSelect(name: string) {
     if (name) {

@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-vars */
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
 import { LOGOUT } from '@/store/mutation-types';

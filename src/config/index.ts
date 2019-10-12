@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-vars */
 import { State as SettingType } from '@/store/module/setting';
 // 默认ui配置
 const setting: SettingType = {

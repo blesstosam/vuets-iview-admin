@@ -1,9 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as types from '../mutation-types';
-/* eslint-disable-next-line no-unused-vars */
 import { MenuItem } from '@/type';
-/* eslint-disable-next-line no-unused-vars */
 import { Route } from 'vue-router';
 import cfg from '@/config/index';
 

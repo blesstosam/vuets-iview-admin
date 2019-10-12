@@ -5,7 +5,13 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier', '@vue/typescript', 'eslint:recommended'],
   rules: {
-    // 'no-unused-vars': 'off',
+    'no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "vars": "all",
+      "args": "after-used",
+      "ignoreRestSiblings": false
+    }],
+    'max-statements': ["error", 50],  // 函数内代码函数限制
     eqeqeq: 'error',
     'no-eval': 'error',
     "no-constant-condition": 'error', //禁止在条件中使用常量表达式 if(true) if(1)

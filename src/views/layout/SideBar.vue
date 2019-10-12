@@ -83,14 +83,11 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
-import { VueRouter, MenuItem } from '../../type';
+import { MenuItem } from '../../type';
 import SideMenu from './components/side-menu/SideMenu.vue';
 import SiderBarTop from './components/side-menu/SiderBarTop.vue';
 import { Getter, Mutation } from 'vuex-class';
-/* eslint-disable-next-line no-unused-vars */
-import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
-/* eslint-disable-next-line no-unused-vars */
+import { VisitedViewsList } from '@/store/module/app';
 import { SidebarThemeType } from '@/store/module/setting';
 import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
 

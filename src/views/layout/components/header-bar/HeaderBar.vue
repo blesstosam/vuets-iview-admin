@@ -31,7 +31,6 @@
 import SiderTrigger from './SiderTrigger.vue';
 import CustomBreadCrumb from './CustomBreadCrumb.vue';
 import { Component, Vue, Watch } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
 import { Route, RouteConfig } from '@/type';
 import { getHomeRoute } from '@/assets/script/util';
 import SiderBarTop from '../side-menu/SiderBarTop.vue';

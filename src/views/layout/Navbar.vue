@@ -78,13 +78,10 @@ import Language from './components/Language.vue';
 import { Getter, Mutation } from 'vuex-class';
 import { SET_LOCAL, SET_MENU_LIST } from '@/store/mutation-types';
 import dayjs from 'dayjs';
-/* eslint-disable-next-line no-unused-vars */
 import { HeaderThemeType } from '@/store/module/setting';
-/* eslint-disable-next-line no-unused-vars */
-import { MenuItem, VueRouter } from '@/type';
+import { MenuItem } from '@/type';
 import cfg from '@/config/index';
-/* eslint-disable-next-line no-unused-vars */
-import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
+import { VisitedViewsList } from '@/store/module/app';
 
 @Component({
   components: { HeaderBar, Fullscreen, User, Language }

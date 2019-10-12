@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const defaultAvatar =
   'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564130985&di=ebc53a5c594bfafe06ba14d0799c88ab&src=http://n.sinaimg.cn/sinacn/w640h595/20180219/5762-fyrswmu1170551.jpg';
 const USER_MAP = {

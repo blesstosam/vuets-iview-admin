@@ -35,8 +35,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Getter, Mutation } from 'vuex-class';
 import { TOGGLE_SIDE_BAR } from '@/store/mutation-types';
-/* eslint-disable-next-line no-unused-vars */
-import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
+import { HeaderThemeType } from '@/store/module/setting';
 import { getTextColor } from '@/assets/script/util';
 
 @Component({})

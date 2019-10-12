@@ -40,7 +40,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-/* eslint-disable-next-line no-unused-vars */
 import { IForm, User } from '../type';
 import sha256 from 'sha256';
 import { Action, Mutation } from 'vuex-class';

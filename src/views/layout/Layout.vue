@@ -98,9 +98,7 @@ import Navbar from './Navbar.vue';
 import AppMain from './AppMain.vue';
 import TagsViews from './TagViews.vue';
 import RightPanel from '@/components/RightPanel.vue';
-/* eslint-disable-next-line no-unused-vars */
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
-/* eslint-disable-next-line no-unused-vars */
 import { MenuItem, VueRouter } from '../../type';
 import { SET_MENU_LIST, TOGGLE_SIDE_BAR, CHANGE_SETTING } from '@/store/mutation-types';
 
