@@ -24,4 +24,4 @@ yarn-error.log*
 .project
 
 
-tests/func-test.js
+tests/**/*.js
