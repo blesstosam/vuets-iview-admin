@@ -126,7 +126,7 @@
             :data-route-item="item"
             @on-close="closeView(item)"
             @click.native="handleClick(item)"
-            :closable="item.name !== $config.homeName"
+            :closable="item.name !== homePageName"
             :color="isActive(item) ? 'primary' : 'default'"
             @contextmenu.prevent.native="contextMenu(item, $event)"
             >{{ showTitle(item) }}</Tag
@@ -145,11 +145,10 @@ import { Mutation, Getter } from 'vuex-class';
 import { RouteConfig } from '@/type';
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
 import { showTitle } from '@/assets/script/util';
+import cfg from '@/config/index';
 
-@Component({})
+@Component
 export default class TagViews extends Vue {
-  $config: any;
-
   created() {
     this.menuList.others = this.$t('closeOthers') as string;
     this.menuList.all = this.$t('closeAll') as string;
@@ -157,6 +156,8 @@ export default class TagViews extends Vue {
   mounted() {
     this.handleScroll(-100);
   }
+
+  homePageName: string = cfg.homeName;
 
   tagBodyLeft: number = 0;
   isIconHidden: boolean = true;
@@ -201,7 +202,7 @@ export default class TagViews extends Vue {
     if (type.includes('all')) {
       this.clearVisitedView();
       // 跳到首页
-      this.$router.push({ name: this.$config.homeName });
+      this.$router.push({ name: cfg.homeName });
     } else if (type.includes('others')) {
       // 关闭除当前页和home页的其他页
       this.delOtherVisitedView(this.$route);
@@ -218,7 +219,7 @@ export default class TagViews extends Vue {
 
   // 打开右键菜单
   contextMenu(item: VisitedViewItem, e: MouseEvent) {
-    if (item.name === this.$config.homeName) {
+    if (item.name === cfg.homeName) {
       return;
     }
     this.visible = true;
@@ -304,7 +305,7 @@ export default class TagViews extends Vue {
       return false;
     }
     // 如果是点击首页，不需要增加
-    if ((_r as RouteConfig).name === this.$config.homeName) {
+    if ((_r as RouteConfig).name === cfg.homeName) {
       return false;
     }
 
@@ -320,7 +321,7 @@ export default class TagViews extends Vue {
       if (latestView) {
         this.$router.push(latestView.path);
       } else {
-        this.$router.push({ name: this.$config.homeName });
+        this.$router.push({ name: cfg.homeName });
       }
     }
   }

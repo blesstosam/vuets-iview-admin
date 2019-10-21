@@ -61,7 +61,7 @@
     <Header class="header-con" :class="`header-con-${headerTheme}`">
       <HeaderBar ref="headerBar">
         <div class="time-wrap">{{ whichDay }} {{ currentTime }}</div>
-        <Language v-if="$config.useI18n" @on-lang-change="setLocal" style="margin-right: 20px;" :lang="local" />
+        <Language v-if="useI18n" @on-lang-change="setLocal" style="margin-right: 20px;" :lang="local" />
         <Fullscreen v-model="isFullscreen" style="margin-right: 10px;" />
         <User :message-unread-count="unreadCount" />
       </HeaderBar>
@@ -93,6 +93,7 @@ export default class Navbar extends Vue {
     this.setCurrentTime();
   }
 
+  useI18n: boolean = cfg.useI18n;
   isFullscreen: boolean = false;
   day: number = 0; // 星期几
   currentTime: string = '';

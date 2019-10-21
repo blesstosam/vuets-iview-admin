@@ -7,11 +7,10 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import cfg from '@/config/index';
 
 @Component({})
 export default class BackBtnGroup extends Vue {
-  $config: any;
-
   // mounted() {
   //   this.timer = setInterval(() => {
   //     if (this.second === 0) this.backPrev();
@@ -28,7 +27,7 @@ export default class BackBtnGroup extends Vue {
 
   backHome() {
     this.$router.replace({
-      name: this.$config.homeName
+      name: cfg.homeName
     });
   }
   backPrev() {

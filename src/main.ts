@@ -21,10 +21,6 @@ Vue.component('spacer', Spacer);
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 Vue.component(VueQrcode.name, VueQrcode);
 
-// 全局配置
-import config from '@/config/index.ts';
-Vue.prototype.$config = config;
-
 // 引入iview组件
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
@@ -42,6 +38,10 @@ import help from './help';
 Vue.use(help);
 
 // 语言切换
+//@ts-ignore  
+import en from 'view-design/dist/locale/en-US.js';
+//@ts-ignore  
+import zh from 'view-design/dist/locale/zh-CN.js';
 import customZhCn from './locale/zh-CN';
 import customZhTw from './locale/zh-TW';
 import customEnUs from './locale/en-US';
@@ -55,9 +55,9 @@ store.commit(SET_LOCAL, lang);
 const i18n = new VueI18n({
   locale: lang, // 语言标识
   messages: {
-    'zh-CN': customZhCn,
+    'zh-CN': Object.assign(customZhCn, zh),
     'zh-TW': customZhTw,
-    'en-US': customEnUs
+    'en-US': Object.assign(customEnUs, en)
   }
 });
 
