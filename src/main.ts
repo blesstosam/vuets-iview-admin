@@ -4,7 +4,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/router';
 import store from './store';
-import ViewUI from 'view-design';
 import TreeTable from 'tree-table-vue';
 import Spacer from '@/components/Spacer.vue';
 import TableAction from '@/components/TableAction.vue';
@@ -27,8 +26,13 @@ import config from '@/config/index.ts';
 Vue.prototype.$config = config;
 
 // 引入iview组件
+import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-Vue.use(ViewUI);
+//@ts-ignore  
+// Vue.locale = () => {}; // 官网推荐配置 但是 $modal 有bug
+Vue.use(ViewUI, {
+  i18n: (key: string, value: string) => i18n.t(key, value)
+});
 
 // 引入v-charts组件
 import VCharts from 'v-charts';
