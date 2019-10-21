@@ -4,7 +4,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/router';
 import store from './store';
-import IView from 'iview';
+import ViewUI from 'view-design';
 import TreeTable from 'tree-table-vue';
 import Spacer from '@/components/Spacer.vue';
 import TableAction from '@/components/TableAction.vue';
@@ -27,8 +27,8 @@ import config from '@/config/index.ts';
 Vue.prototype.$config = config;
 
 // 引入iview组件
-import 'iview/dist/styles/iview.css';
-Vue.use(IView);
+import 'view-design/dist/styles/iview.css';
+Vue.use(ViewUI);
 
 // 引入v-charts组件
 import VCharts from 'v-charts';
