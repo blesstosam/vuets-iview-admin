@@ -62,25 +62,29 @@ export default class ComplexTable extends Vue {
     },
     {
       title: '标题',
-      slot: 'title'
+      slot: 'title',
+      minWidth: 100
     },
     {
       title: '作者',
-      key: 'author'
+      key: 'author',
+      minWidth: 80
     },
     {
       title: '评分',
       slot: 'star',
-      width: 180
+      minWidth: 180
     },
     {
       title: '阅读数',
       key: 'readCount',
-      sortable: true
+      sortable: true,
+      minWidth: 80
     },
     {
       title: '状态',
       slot: 'status',
+      minWidth: 80,
       filters: [
         {
           label: '已发布',
@@ -102,7 +106,8 @@ export default class ComplexTable extends Vue {
     },
     {
       title: '时间',
-      key: 'time'
+      key: 'time',
+      minWidth: 120
     },
     {
       title: '操作',
