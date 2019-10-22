@@ -78,7 +78,7 @@ export class HttpService {
     );
   }
 
-  post(url: string, param?: Object) {
+  post(url: string, param?: Object): Promise<any> {
     const _header = { 'Content-Type': 'application/json' }; // 改用json形式上传参数
     param = param || {};
 
@@ -94,7 +94,7 @@ export class HttpService {
     });
   }
 
-  get(url: string, param: Object) {
+  get(url: string, param: Object): Promise<any> {
     return new Promise(resolve => {
       this.service.get(url, { params: param || {} }).then(
         (res: AxiosResponse) => {
@@ -114,7 +114,7 @@ export class HttpService {
    * @param {*} url
    * @param {formData对象} data
    */
-  upload(url: string, data: any) {
+  upload(url: string, data: any): Promise<any> {
     return new Promise(reslove => {
       this.service
         .post(url, data, { headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() } })
@@ -131,7 +131,7 @@ export class HttpService {
 }
 
 // 获取本地json数据
-export function getJson(url: string) {
+export function getJson(url: string): Promise<any> {
   return new Promise(resolve => {
     axios.get(url).then(
       res => {
