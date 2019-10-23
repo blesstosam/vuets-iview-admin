@@ -1,7 +1,7 @@
 <template>
   <div class="common-card-title" :class="`card-title-${headerTheme}`">
     <div>
-      <Icon :size="14" :type="$route.meta.icon" style="position: relative; top: -1px;" />
+      <Icon :size="16" :type="$route.meta.icon" style="position: relative; top: -1px;" />
       <span> {{ $t($route.meta.title) }} </span>
       <div style="font-size: 13px; font-weight: normal;">
         {{ $t($route.meta.remark) }}
