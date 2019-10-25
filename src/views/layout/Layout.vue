@@ -200,17 +200,18 @@ export default class Layout extends Vue {
             children
           };
           arr.push(obj);
-          // 如果是总览不需要children
           if (i.children && i.children.length) {
             i.children.forEach((__i: any) => {
-              let obj2 = {
-                title: __i.meta.title,
-                name: __i.name,
-                path: obj.path === '/' ? '/home' : `${obj.path}/${__i.path}`,
-                meta: __i.meta,
-                icon: __i.meta.icon
-              };
-              obj.children.push(obj2);
+              if (!__i.meta.hideInMenu) {
+                let obj2 = {
+                  title: __i.meta.title,
+                  name: __i.name,
+                  path: obj.path === '/' ? '/home' : `${obj.path}/${__i.path}`,
+                  meta: __i.meta,
+                  icon: __i.meta.icon
+                };
+                obj.children.push(obj2);
+              }
             });
           }
         }
