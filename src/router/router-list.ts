@@ -212,7 +212,7 @@ export function toRouterComponent(menuList: Array<any>) {
           let secondIndex = _children.findIndex(i => {
             let fullpath = '';
             const menuVersion = menuList[j].children[k].menuVersion;
-            const _version = menuVersion && (menuVersion !== 1 || menuVersion !== '1') ? `/v${menuVersion}` : '';
+            const _version = menuVersion && (menuVersion !== 1 && menuVersion !== '1') ? `/v${menuVersion}` : '';
             // console.log(_version, menuVersion,  '_version')
             if (routerList[firstIndex].path === '/') {
               fullpath = `${routerList[firstIndex].path}${i.path}`;
