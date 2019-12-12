@@ -44,3 +44,8 @@ declare module 'clipboard' {
     export default Clipboard;
 }
 
+declare module 'bpmn-js' {
+    const BpmnViewer: any
+    export default BpmnViewer;
+}
+

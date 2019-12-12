@@ -11,6 +11,14 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
       .set('_c', resolve('src/components'));
+
+    // 添加 raw-loader 来解析 bpmn 文件
+    config.module
+      .rule('bpmn')
+      .test(/\.bpmn$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end();
   },
 
   configureWebpack: config => {

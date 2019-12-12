@@ -75,6 +75,16 @@ export const routerList: Array<RouteConfig> = [
           icon: 'md-egg'
         },
         component: () => import('@/views/components-demo/ProductList.vue')
+      },
+      {
+        path: 'bpmn-demo',
+        name: 'BpmnDemo',
+        meta: {
+          title: 'bpmn demo',
+          remark: 'bpmn demo',
+          icon: 'md-egg'
+        },
+        component: () => import('@/views/components-demo/BpmnDemo.vue')
       }
     ]
   },
