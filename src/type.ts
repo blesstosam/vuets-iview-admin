@@ -1,6 +1,6 @@
 // 用接口来定义对象类型
 import { Form, Menu, Upload } from 'iview';
-import VueRouter, { Route, RouteConfig } from 'vue-router';
+import VueRouter from 'vue-router';
 
 // 侧边栏菜单数据类型
 export interface MenuItem {
@@ -77,6 +77,4 @@ export type IFormRuleItem = {
 
 // *********************************** Vue 类型定义
 // options 后面加上详细定义
-export type VueRouter = VueRouter & { options: any };
-export type Route = Route;
-export type RouteConfig = RouteConfig;
+export type VueRouterWithOptions = VueRouter & { options: any };

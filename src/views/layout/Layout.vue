@@ -99,7 +99,7 @@ import AppMain from './AppMain.vue';
 import TagsViews from './TagViews.vue';
 import RightPanel from '@/components/RightPanel.vue';
 import { SidebarThemeType, HeaderThemeType } from '@/store/module/setting';
-import { MenuItem, VueRouter } from '../../type';
+import { MenuItem, VueRouterWithOptions } from '@/type';
 import { SET_MENU_LIST, TOGGLE_SIDE_BAR, CHANGE_SETTING } from '@/store/mutation-types';
 
 @Component({
@@ -187,8 +187,8 @@ export default class Layout extends Vue {
   }
   getMenuList(): void {
     let arr: Array<MenuItem> = [];
-    if ((this.$router as VueRouter).options.routes) {
-      (this.$router as VueRouter).options.routes.forEach((i: any) => {
+    if ((this.$router as VueRouterWithOptions).options.routes) {
+      (this.$router as VueRouterWithOptions).options.routes.forEach((i: any) => {
         if (!i.meta.hideInMenu && i.path !== '*') {
           let children: Array<MenuItem> = [];
           let obj = {

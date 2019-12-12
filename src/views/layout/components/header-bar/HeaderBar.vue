@@ -31,7 +31,7 @@
 import SiderTrigger from './SiderTrigger.vue';
 import CustomBreadCrumb from './CustomBreadCrumb.vue';
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { Route, RouteConfig } from '@/type';
+import { Route, RouteConfig } from 'vue-router';
 import { getHomeRoute } from '@/assets/script/util';
 import SiderBarTop from '../side-menu/SiderBarTop.vue';
 import HeaderMenu from './HeaderMenu.vue';

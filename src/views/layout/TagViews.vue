@@ -142,7 +142,7 @@ const padding = 15;
 import { ADD_VISITED_VIEW, DEL_VISITED_VIEW, CLEAR_VISITED_VIEW, DEL_OTHER_VISITED_VIEW } from '@/store/mutation-types';
 import { Vue, Component, Watch, Prop } from 'vue-property-decorator';
 import { Mutation, Getter } from 'vuex-class';
-import { RouteConfig } from '@/type';
+import { RouteConfig } from 'vue-router';
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
 import { showTitle } from '@/assets/script/util';
 import cfg from '@/config/index';

@@ -149,6 +149,7 @@ export const scrollTop = (el: HTMLElement | Window, from = 0, to: number, durati
  * @description 绑定事件 on(element, event, handler)
  */
 export const on = (function() {
+  // @ts-ignore
   if (document.addEventListener) {
     return function(element: HTMLElement, event: string, handler: any) {
       if (element && event && handler) {
@@ -168,6 +169,7 @@ export const on = (function() {
  * @description 解绑事件 off(element, event, handler)
  */
 export const off = (function() {
+  // @ts-ignore
   if (document.removeEventListener) {
     return function(element: HTMLElement, event: string, handler: any) {
       if (element && event) {
