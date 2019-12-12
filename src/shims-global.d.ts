@@ -39,3 +39,8 @@ declare module '@download/blockies' {
     export {createIcon};
 }
 
+declare module 'clipboard' {
+    const Clipboard: any
+    export default Clipboard;
+}
+
