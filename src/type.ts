@@ -59,15 +59,6 @@ export interface TableHeader {
   slot?: string;
   fixed?: string;
 }
-//账号管理 搜索条件
-export interface SearchItem {
-  code: string;
-  status: string;
-  opetate?: string;
-  opetated?: string;
-  startTime: string | Date;
-  endTime: string | Date;
-}
 
 // *********************************** iview 类型定义
 export type IForm = Form;
