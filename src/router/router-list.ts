@@ -80,11 +80,21 @@ export const routerList: Array<RouteConfig> = [
         path: 'bpmn-demo',
         name: 'BpmnDemo',
         meta: {
-          title: 'bpmn demo',
-          remark: 'bpmn demo',
+          title: 'Bpmn demo',
+          remark: 'Bpmn demo',
           icon: 'md-egg'
         },
         component: () => import('@/views/components-demo/BpmnDemo.vue')
+      },
+      {
+        path: 'todo-demo',
+        name: 'TodoDemo',
+        meta: {
+          title: 'Todo demo',
+          remark: 'Todo demo',
+          icon: 'md-egg'
+        },
+        component: () => import('@/views/components-demo/todo-demo/Index.vue')
       }
     ]
   },

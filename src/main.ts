@@ -4,9 +4,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/router';
 import store from './store';
-import TreeTable from 'tree-table-vue';
-import Spacer from '@/components/Spacer.vue';
-import TableAction from '@/components/TableAction.vue';
 import { SET_LOCAL } from './store/mutation-types';
 
 // 实际打包时应该不引入mock
@@ -14,8 +11,13 @@ import { SET_LOCAL } from './store/mutation-types';
 /* eslint-disable */
 if (true) require('@/mock/index')
 
+import TableAction from '@/components/TableAction.vue';
 Vue.component('TableAction', TableAction);
+
+import TreeTable from 'tree-table-vue';
 Vue.component(TreeTable.name, TreeTable);
+
+import Spacer from '@/components/Spacer.vue';
 Vue.component('spacer', Spacer);
 
 import VueQrcode from '@chenfengyuan/vue-qrcode';
@@ -69,6 +71,10 @@ import './assets/fonts/iconfont.js';
 import './assets/fonts/iconfont.css';
 
 Vue.config.productionTip = false;
+
+// composition apis
+import VueCompositionApi from '@vue/composition-api';
+Vue.use(VueCompositionApi);
 
 new Vue({
   router,

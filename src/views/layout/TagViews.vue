@@ -66,6 +66,7 @@
         margin-right 6px !important
         .ivu-tag-text
           font-size 13px
+          cursor pointer
       & .ivu-icon-ios-close
         margin-left 8px !important
         font-size 16px
