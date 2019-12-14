@@ -20,6 +20,8 @@ vuets-iview-admin is a front-end management background integration solution. It 
     - Editor
     - Markdown Editor
     - Product List
+    - Bpmn Demo
+    - Todolist Demo (By Composition api)
 - Table
 - Guide  
 - Chat  
