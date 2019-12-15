@@ -119,10 +119,10 @@ export class HttpService {
       this.service
         .post(url, data, { headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() } })
         .then(
-          (res: any) => {
+          res => {
             reslove(res.data);
           },
-          (err: any) => {
+          err => {
             reslove(err);
           }
         );
