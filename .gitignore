@@ -22,6 +22,3 @@ yarn-error.log*
 *.sw?
 
 .project
-
-
-tests/**/*.js
