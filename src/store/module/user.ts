@@ -14,8 +14,7 @@ const state: State = {
   roleId: localStorage.getItem('roleId') || '',
   adminId: localStorage.getItem('adminId') || '',
   authorization: '',
-  orgCode: '201907221579545258',
-  proxyId: localStorage.getItem('proxyId') || ''
+  orgCode: '201907221579545258'
 };
 
 export default {
@@ -25,8 +24,7 @@ export default {
     avatar: (_s: State) => _s.avatar,
     roleId: (_s: State) => _s.roleId,
     token: (_s: State) => _s.token,
-    orgCode: (_s: State) => _s.orgCode,
-    proxyId: (_s: State) => _s.proxyId
+    orgCode: (_s: State) => _s.orgCode
   },
   mutations: {
     [types.UPDATE_USERNAME](_s: State, str: string): void {
@@ -55,10 +53,6 @@ export default {
     },
     [types.UPDATE_AUTHORIZATION](_s: State, str: string): void {
       _s.authorization = str;
-    },
-    [types.UPDATE_PROXY_ID](_s: State, str: string): void {
-      _s.proxyId = str;
-      localStorage.setItem('proxyId', str);
     }
   },
   actions: {
@@ -68,7 +62,6 @@ export default {
       commit(types.UPDATE_TOKEN, userinfo.token);
       commit(types.UPDATE_ROLE_ID, userinfo.roleId);
       commit(types.UPDATE_ADMIN_ID, userinfo.adminId);
-      commit(types.UPDATE_PROXY_ID, userinfo.proxyId);
     },
     [types.LOGOUT]({ dispatch, commit }: any) {
       // 清除用户信息 localstorage 和 store

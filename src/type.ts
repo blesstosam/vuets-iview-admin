@@ -24,7 +24,6 @@ export interface User {
   token: string;
   roleId: string;
   adminId: string;
-  proxyId: string;
 }
 
 // 枚举类型

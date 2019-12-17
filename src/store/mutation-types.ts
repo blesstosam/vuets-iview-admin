@@ -6,7 +6,6 @@ export const UPDATE_ROLE_ID = 'UPDATE_ROLE_ID';
 export const UPDATE_ADMIN_ID = 'UPDATE_ADMIN_ID';
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_AUTHORIZATION = 'UPDATE_AUTHORIZATION';
-export const UPDATE_PROXY_ID = 'UPDATE_PROXY_ID';
 export const LOGOUT = 'LOGOUT';
 export const UPDATE_LOGOUT_MSG = 'UPDATE_LOGOUT_MSG';
 

@@ -85,8 +85,7 @@ export default class HelloWorld extends Vue {
     token: '',
     avatar: '',
     roleId: '',
-    adminId: '',
-    proxyId: ''
+    adminId: ''
   };
 
   /* computed */

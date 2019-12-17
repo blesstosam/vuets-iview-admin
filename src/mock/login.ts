@@ -8,7 +8,6 @@ const USER_MAP = {
     adminId: '111567391736420556',
     token: 'a69f2ac9-91c3-4128-ab6b-e89321e36bb2',
     avatar: defaultAvatar,
-    proxyId: ''
   },
   sam: {
     username: 'admin',
@@ -16,7 +15,6 @@ const USER_MAP = {
     adminId: '111567391736420556',
     token: 'a69f2ac9-91c3-4128-ab6b-e89321e36bb2',
     avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4',
-    proxyId: 'proxyId123'
   }
 };
 

@@ -106,8 +106,7 @@ export default class Login extends Vue {
             roleId: resp.data.roleId,
             adminId: resp.data.adminId,
             token: resp.data.token,
-            avatar: resp.data.avatar,
-            proxyId: resp.data.proxyId
+            avatar: resp.data.avatar
           });
 
           // 将ui setting 保存到store 和 localstorage
