@@ -8,6 +8,7 @@
     "report": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
+    "test:ci": "vue-cli-service lint && vue-cli-service test:unit",
     "predeploy": "vue-cli-service build --mode predeploy"
   },
   "prettier": {
