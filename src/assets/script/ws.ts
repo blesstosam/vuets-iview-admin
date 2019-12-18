@@ -1,4 +1,5 @@
 import { wsUrl } from '@/api/server';
+import { paramToUrl } from '@/assets/script/util';
 // http://192.168.3.12:6016/user/websocket/socketServer.do
 
 class WsConfig {
@@ -21,7 +22,7 @@ class WsConfig {
     if (this.ws) {
       return;
     }
-    this.url = this._paramToUrl(wsUrl + url, this.params);
+    this.url = paramToUrl(wsUrl + url, this.params);
     this.cb = cb;
     this._open(this.url);
   }
@@ -83,17 +84,6 @@ class WsConfig {
       /* eslint-disable no-console */
       console.error('您的浏览器不支持 WebSocket!');
     }
-  }
-
-  // 拼接url @param {url} url @param {参数对象} data
-  _paramToUrl(url: string, data: any) {
-    if (!data) return '';
-    let params = '';
-    for (let k in data) {
-      params += k + '=' + data[k] + '&';
-    }
-    params = params.substr(0, params.length - 1);
-    return url.indexOf('?') > -1 ? url + '&' + params : url + '?' + params;
   }
 }
 

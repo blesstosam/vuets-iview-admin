@@ -277,7 +277,7 @@ export default class TagViews extends Vue {
       if (wrapperWidth < barWidth) {
         if (this.tagBodyLeft < -(barWidth - wrapperWidth)) {
           // barWidth大于wrapperWidth
-          this.tagBodyLeft = this.tagBodyLeft;
+          // this.tagBodyLeft = this.tagBodyLeft;
         } else {
           this.tagBodyLeft = Math.max(this.tagBodyLeft + offset, wrapperWidth - barWidth);
         }

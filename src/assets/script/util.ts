@@ -255,3 +255,20 @@ export function getLsCache(key: string) {
     return null;
   }
 }
+
+/**
+ * 拼接url
+ * @param url 
+ * @param data {参数对象}
+ */
+export function paramToUrl(url: string, data: any) {
+  if (!data) return '';
+  let params = '';
+  for (let k in data) {
+    if (data.hasOwnProperty(k)) {
+      params += k + '=' + data[k] + '&';
+    }
+  }
+  params = params.substr(0, params.length - 1);
+  return url.indexOf('?') > -1 ? url + '&' + params : url + '?' + params;
+}

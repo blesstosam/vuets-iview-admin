@@ -8,8 +8,8 @@ import { SET_LOCAL } from './store/mutation-types';
 
 // 实际打包时应该不引入mock
 // process.env.NODE_ENV !== 'production'
-/* eslint-disable */
-if (true) require('@/mock/index')
+/* eslint-disable-next-line */
+if (true) require('@/mock/index');
 
 import TableAction from '@/components/TableAction.vue';
 Vue.component('TableAction', TableAction);
@@ -26,7 +26,7 @@ Vue.component(VueQrcode.name, VueQrcode);
 // 引入iview组件
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-//@ts-ignore  
+//@ts-ignore
 // Vue.locale = () => {}; // 官网推荐配置 但是 $modal 有bug
 Vue.use(ViewUI, {
   i18n: (key: string, value: string) => i18n.t(key, value)
@@ -40,9 +40,9 @@ import help from './help';
 Vue.use(help);
 
 // 语言切换
-//@ts-ignore  
+//@ts-ignore
 import en from 'view-design/dist/locale/en-US.js';
-//@ts-ignore  
+//@ts-ignore
 import zh from 'view-design/dist/locale/zh-CN.js';
 import customZhCn from './locale/zh-CN';
 import customZhTw from './locale/zh-TW';
@@ -82,4 +82,3 @@ new Vue({
   i18n,
   render: h => h(App)
 }).$mount('#app');
-
