@@ -126,22 +126,22 @@ module.exports = {
     'no-class-assign': 'error',
 
 
-
-
-
-
     /************************ ts相关 目前不增加过多相关检查 *****************************/
     /**
      * 类型断言必须使用 as Type，禁止使用 <Type>，禁止对对象字面量进行类型断言（断言成 any 是允许的）
      * @reason <Type> 容易被理解为 jsx
      */
-    // '@typescript-eslint/consistent-type-assertions': [
-    //   'error',
-    //   {
-    //       assertionStyle: 'as',
-    //       objectLiteralTypeAssertions: 'never'
-    //   }
-    // ],
+    '@typescript-eslint/consistent-type-assertions': [
+      'error',
+      {
+          assertionStyle: 'as',
+          objectLiteralTypeAssertions: 'never'
+      }
+    ],
+    /**
+     * 禁止定义空的接口
+     */
+    '@typescript-eslint/no-empty-interface': 'error',
     /**
      * 禁止使用 any
      */

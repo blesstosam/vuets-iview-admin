@@ -50,13 +50,18 @@ export interface Pager {
 export interface TableHeader {
   type?: string;
   width?: number;
-  align: string;
+  align?: string;
   title?: string;
   key?: string;
   render?: (h: Function, params: any) => object;
   children?: Array<object>;
   slot?: string;
   fixed?: string;
+  sortable?: boolean;
+  minWidth?: number;
+  filters?: Array<object>;
+  filterMultiple?: boolean;
+  filterMethod?: Function;
 }
 
 // *********************************** iview 类型定义

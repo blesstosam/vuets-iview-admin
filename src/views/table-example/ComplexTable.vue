@@ -48,12 +48,17 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
+import { TableHeader } from '@/type';
+
+interface Obj {
+  [key: string]: string | number;
+}
 
 @Component({
   components: { CommonCardTitle }
 })
 export default class ComplexTable extends Vue {
-  columns: Array<any> = [
+  columns: Array<TableHeader> = [
     {
       title: '序号',
       slot: 'index',
@@ -116,7 +121,7 @@ export default class ComplexTable extends Vue {
       align: 'center'
     }
   ];
-  data: Array<any> = [
+  data: Array<Obj> = [
     {
       title: '前端交互体验优化若干点',
       href: 'https://segmentfault.com/a/1190000020048654',
@@ -157,7 +162,7 @@ export default class ComplexTable extends Vue {
 
   get totalReadCount() {
     let total = 0;
-    this.data.forEach(item => (total += item.readCount));
+    this.data.forEach(item => (total += item.readCount as number));
     return total;
   }
 
