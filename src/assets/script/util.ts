@@ -244,7 +244,6 @@ export function getLsCache(key: string) {
     // }
     return null;
   } catch (e) {
-    console.log(`--getLsCache-- error: ${e}`)
     localStorage.removeItem(key);
     // if (key === 'username') {
     //   setTimeout(() => {
@@ -252,7 +251,7 @@ export function getLsCache(key: string) {
     //     // localStorage.setItem('logoutMsg', '您的登录信息已过期，请重新登录')
     //   }, 200)
     // }
-    return null;
+    throw new Error(`--getLsCache-- error: ${e}`)
   }
 }
 
