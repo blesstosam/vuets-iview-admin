@@ -130,6 +130,26 @@ module.exports = {
     'prefer-object-spread': 'error',
 
 
+    /************************ vue模板内检测 *****************/
+    'vue/eqeqeq': ['error', 'always'],
+    /**
+     * 计算属性禁止包含异步方法
+     */
+    'vue/no-async-in-computed-properties': 'error',
+    /**
+     * 禁用已废弃的 scope 属性
+     */
+    'vue/no-deprecated-scope-attribute': 'error',
+    // /**
+    //  * 使用 v-slot 替代已废弃的 slot
+    //  */
+    // 'vue/no-deprecated-slot-attribute': 'error',
+    // /**
+    //  * 禁用已废弃的 slot-scope
+    //  */
+    // 'vue/no-deprecated-slot-scope-attribute': 'error',
+
+
     /************************ ts相关 目前不增加过多相关检查 *****************************/
     /**
      * 类型断言必须使用 as Type，禁止使用 <Type>，禁止对对象字面量进行类型断言（断言成 any 是允许的）
