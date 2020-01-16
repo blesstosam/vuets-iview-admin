@@ -34,9 +34,23 @@ export interface User {
 // }
 
 // 后台接口返回数据类型
-export interface AjaxResponse {
+export interface AjaxResponse<T = any> {
+  /**
+   * 状态码
+   * @type { number }
+   */
   code: number;
-  data: any;
+
+  /**
+   * 数据
+   * @type { T }
+   */
+  data: T;
+
+  /**
+   * 消息
+   * @type { string }
+   */
   msg: string;
 }
 
