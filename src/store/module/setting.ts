@@ -34,11 +34,13 @@ export default {
     headerTheme: (_s: State) => _s.headerTheme
   },
   mutations: {
-    [types.CHANGE_SETTING]<K extends keyof State>(_s: State, data: { key: K; val: string | boolean }) {
-      // console.log(data)
+    [types.CHANGE_SETTING]<K extends keyof State>(
+      _s: State,
+      data: { key: K; val: SidebarThemeType | HeaderThemeType | boolean }
+    ) {
       let { key, val } = data;
       if (_s.hasOwnProperty(key)) {
-        (_s[key] as string | boolean) = val;
+        (_s[key] as any) = val;
         localStorage.setItem('setting', JSON.stringify(_s));
       }
     }
