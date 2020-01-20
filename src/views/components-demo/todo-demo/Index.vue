@@ -17,59 +17,50 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
 import TodoList from './TodoList.vue';
 import Inputer from './Inputer.vue';
+import { createComponent, reactive } from '@vue/composition-api';
+import { Message } from 'view-design';
 
-@Component({
-  components: { CommonCardTitle, TodoList, Inputer }
-})
-export default class TodoIndex extends Vue {
-  list = [
-    {
-      content: '学习vue3.0',
-      completed: false,
-      id: 1
-    },
-    {
-      content: '学做饭',
-      completed: true,
-      id: 2
-    }
-  ];
+export default createComponent({
+  components: { CommonCardTitle, TodoList, Inputer },
 
-  addTodo(content: string) {
-    const index = this.list.findIndex(item => item.content === content);
-    if (index !== -1) {
-      this.$Message.info(`您已添加'${content}'`);
-      return;
+  setup() {
+    const list = reactive([
+      {
+        content: '学习vue3.0',
+        completed: false,
+        id: 1
+      },
+      {
+        content: '学做饭',
+        completed: true,
+        id: 2
+      }
+    ]);
+
+    function addTodo(content: string) {
+      if (!content) {
+        (Message as any).error('请输入内容');
+        return;
+      }
+      const index = list.findIndex(item => item.content === content);
+      if (index !== -1) {
+        (Message as any).info(`您已添加'${content}'`);
+        return;
+      }
+      list.push({
+        id: list[list.length - 1].id + 1,
+        content,
+        completed: false
+      });
     }
-    this.list.push({
-      id: this.list[this.list.length - 1].id + 1,
-      content,
-      completed: false
-    });
+
+    return {
+      list,
+      addTodo
+    };
   }
-}
-// export default createComponent({
-
-//   // props: {
-//   //   user: {
-//   //     type: Object as () => User,
-//   //     required: true
-//   //   }
-//   // },
-
-//   setup () {
-//     const fullName = computed(() => `${user.firstName} ${user.lastName}`)
-//     const user = reactive({firstName: 'wei', lastName: 'lei'})
-//     const message = ref('This is a message')
-
-//     return {
-//       fullName,
-//       message
-//     }
-//   }
-// })
+});
 </script>
