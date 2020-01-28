@@ -29,6 +29,7 @@ interface TodoListType {
 }
 
 export default createComponent({
+  name: 'Inputer',
   setup(props, ctx) {
     const content: Ref<string> = ref('');
 

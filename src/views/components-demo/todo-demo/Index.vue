@@ -24,6 +24,7 @@ import { createComponent, reactive } from '@vue/composition-api';
 import { Message } from 'view-design';
 
 export default createComponent({
+  name: 'TodoListIndex',
   components: { CommonCardTitle, TodoList, Inputer },
 
   setup() {

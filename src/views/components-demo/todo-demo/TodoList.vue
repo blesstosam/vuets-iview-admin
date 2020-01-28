@@ -30,6 +30,7 @@ interface TodoListType {
 }
 
 export default createComponent({
+  name: 'TodoList',
   props: {
     list: {
       type: Array as () => Array<TodoListType>,

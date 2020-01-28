@@ -53,7 +53,7 @@ interface LoginForm {
   password: string;
 }
 
-@Component({})
+@Component
 export default class Login extends Vue {
   created() {
     this.ruleValidate = this.getValidator();
