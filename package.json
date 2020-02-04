@@ -18,7 +18,7 @@
     "printWidth": 120
   },
   "dependencies": {
-    "@chenfengyuan/vue-qrcode": "1.0.1",
+    "@chenfengyuan/vue-qrcode": "1.0.2",
     "@download/blockies": "1.0.3",
     "@riophae/vue-treeselect": "0.0.38",
     "@toast-ui/vue-editor": "1.1.1",
