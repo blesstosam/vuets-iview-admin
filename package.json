@@ -20,7 +20,7 @@
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^1.0.1",
     "@download/blockies": "^1.0.3",
-    "@riophae/vue-treeselect": "0.0.38",
+    "@riophae/vue-treeselect": "0.4.0",
     "@toast-ui/vue-editor": "^1.1.1",
     "@types/echarts": "^4.1.9",
     "@vue/composition-api": "^0.3.4",
