@@ -80,7 +80,7 @@
     "raw-loader": "4.0.0",
     "stylus": "0.54.5",
     "stylus-loader": "3.0.2",
-    "typescript": "3.7.3",
+    "typescript": "3.7.5",
     "vue-template-compiler": "2.6.10"
   },
   "gitHooks": {
