@@ -8,6 +8,9 @@
   & .pager
     margin-top 24px
     text-align center
+.ivu-poptip-confirm .ivu-poptip-body .ivu-icon
+  // 解决 iview 的一个小bug
+  left 16px !important
 </style>
 
 <template>
@@ -38,7 +41,11 @@
       </template>
       <template slot-scope="{ row, index }" slot="action">
         <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
-        <Button type="error" size="small" @click="remove(index)">删除</Button>
+        <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
+        <!-- // https://next.ant.design/docs/spec/stay-cn -->
+        <Poptip placement="left" confirm title="确定要删除吗？" @on-ok="remove(index)">
+          <Button type="error" size="small">删除</Button>
+        </Poptip>
       </template>
     </Table>
     <Page class="pager" :total="data.length" show-elevator />
@@ -89,7 +96,7 @@ export default class ComplexTable extends Vue {
     {
       title: '状态',
       slot: 'status',
-      minWidth: 80,
+      minWidth: 100,
       filters: [
         {
           label: '已发布',
