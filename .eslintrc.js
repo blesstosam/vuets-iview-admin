@@ -86,7 +86,7 @@ module.exports = {
     /**
      * 限制一个文件最多的行数
      */
-    'max-lines': ['error', 1000],
+    'max-lines': ['error', 800],
     /**
      * 限制函数块中的代码行数
      */

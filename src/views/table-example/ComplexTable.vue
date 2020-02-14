@@ -169,9 +169,7 @@ export default class ComplexTable extends Vue {
   show(index: number) {
     this.$Modal.info({
       title: 'Article',
-      content: `Title: ${this.data[index].title}<br>Author: ${this.data[index].author}<br>Read count: ${
-        this.data[index].readCount
-      }`
+      content: `Title: ${this.data[index].title}<br>Author: ${this.data[index].author}<br>Read count: ${this.data[index].readCount}`
     });
   }
   remove(index: number) {
