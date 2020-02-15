@@ -8,9 +8,6 @@
   & .pager
     margin-top 24px
     text-align center
-.ivu-poptip-confirm .ivu-poptip-body .ivu-icon
-  // 解决 iview 的一个小bug
-  left 16px !important
 </style>
 
 <template>
@@ -43,7 +40,7 @@
         <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
         <!-- // https://next.ant.design/docs/spec/stay-cn -->
-        <DeleteButton @on-ok="remove(index)" placement="top" />
+        <DeleteButton @on-ok="remove(index)" />
       </template>
     </Table>
     <Page class="pager" :total="data.length" show-elevator />

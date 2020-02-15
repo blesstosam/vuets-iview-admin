@@ -1,3 +1,8 @@
+<style lang="stylus">
+.ivu-poptip-confirm .ivu-poptip-body .ivu-icon
+  // 解决 iview 的一个小bug
+  left 16px !important</style
+>>
 <template>
   <Poptip v-on="$listeners" v-bind="$attrs" :placement="placement" confirm :title="confirmMsg">
     <Button type="error" size="small">删除</Button>
