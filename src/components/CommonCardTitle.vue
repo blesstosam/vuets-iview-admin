@@ -23,7 +23,7 @@ export default class CommonCardTitle extends Vue {
   @Getter('headerTheme') headerTheme!: HeaderThemeType;
 
   get isI18nTitle() {
-    return this.$route.meta.title.indexOf('menutitle') !== -1;
+    return this.$route.meta.title.indexOf('menuTitle') !== -1;
   }
 
   get isI18nRemark() {
