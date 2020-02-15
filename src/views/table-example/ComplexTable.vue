@@ -40,7 +40,7 @@
         <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
         <!-- // https://next.ant.design/docs/spec/stay-cn -->
-        <DeleteButton @on-ok="remove(index)" />
+        <PopConfirm @on-ok="remove(index)" />
       </template>
     </Table>
     <Page class="pager" :total="data.length" show-elevator />
@@ -51,14 +51,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
 import { TableHeader } from '@/type';
-import DeleteButton from '@/components/DeleteButton.vue';
+import PopConfirm from '@/components/PopConfirm.vue';
 
 interface Obj {
   [key: string]: string | number;
 }
 
 @Component({
-  components: { CommonCardTitle, DeleteButton }
+  components: { CommonCardTitle, PopConfirm }
 })
 export default class ComplexTable extends Vue {
   columns: Array<TableHeader> = [
