@@ -1,7 +1,7 @@
 <template>
   <div class="lang-switch-wrap">
     <Dropdown trigger="hover" @on-click="changeLang">
-      <Icon custom="iconfont icon-language" size="21"></Icon>
+      <Icon custom="iconfont icon-language" size="19" style="position: relative; top: -2px;"></Icon>
       <DropdownMenu slot="list">
         <DropdownItem v-for="(value, key) in localList" :name="key" :key="`lang-${key}`" :selected="key === lang">
           {{ value }}

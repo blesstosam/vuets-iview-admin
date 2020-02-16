@@ -14,10 +14,10 @@
   <Card class="complex-table-wrap" :bordered="false" dis-hover>
     <CommonCardTitle />
     <div class="search-wrap">
-      <Input style="width: 200px; margin-right: 12px;" placeholder="请输入文章标题" />
+      <Input style="width: 200px; margin-right: 24px;" placeholder="请输入文章标题" />
       <Input style="width: 200px; margin-right: 12px;" placeholder="请输入作者姓名" />
-      <Button type="primary" style="margin-right: 12px;">{{ $t('search') }}</Button>
-      <Button>{{ $t('reset') }}</Button>
+      <Button icon="ios-search" type="primary" style="margin-right: 12px;">{{ $t('search') }}</Button>
+      <Button icon="md-refresh" type="warning">{{ $t('reset') }}</Button>
     </div>
     <Alert show-icon
       >文章总数为 <strong>{{ data.length }} </strong>篇， 共计阅读量为 <strong>{{ totalReadCount }}</strong> 次</Alert
@@ -26,16 +26,20 @@
       <template slot-scope="{ row, index }" slot="index">
         <strong>{{ index + 1 }}</strong>
       </template>
+
       <template slot-scope="{ row }" slot="title">
         <a target="blank" :href="row.href">{{ row.title }}</a>
       </template>
+
       <template slot-scope="{ row }" slot="status">
         <Tag color="success" v-if="row.status === 1">已发布</Tag>
         <Tag color="warning" v-else>未发布</Tag>
       </template>
+
       <template slot-scope="{ row }" slot="star">
         <Rate allow-half v-model="row.star" />
       </template>
+
       <template slot-scope="{ row, index }" slot="action">
         <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
