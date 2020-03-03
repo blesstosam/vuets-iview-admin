@@ -143,7 +143,7 @@ const padding = 15;
 import { ADD_VISITED_VIEW, DEL_VISITED_VIEW, CLEAR_VISITED_VIEW, DEL_OTHER_VISITED_VIEW } from '@/store/mutation-types';
 import { Vue, Component, Watch, Prop } from 'vue-property-decorator';
 import { Mutation, Getter } from 'vuex-class';
-import { RouteConfig } from 'vue-router';
+import { Route } from 'vue-router';
 import { VisitedViewsList, VisitedViewItem } from '@/store/module/app';
 import { showTitle } from '@/assets/script/util';
 import cfg from '@/config/index';
@@ -190,10 +190,10 @@ export default class TagViews extends Vue {
     return [{ name: 'home', title: 'menuTitle.home', path: '/home' }, ...this.viewList];
   }
 
-  @Mutation(ADD_VISITED_VIEW) addVisitedView!: (route: RouteConfig) => void;
+  @Mutation(ADD_VISITED_VIEW) addVisitedView!: (route: Route) => void;
   @Mutation(DEL_VISITED_VIEW) delVisitedView!: (item: VisitedViewItem) => void;
   @Mutation(CLEAR_VISITED_VIEW) clearVisitedView!: () => void;
-  @Mutation(DEL_OTHER_VISITED_VIEW) delOtherVisitedView!: (route: RouteConfig) => void;
+  @Mutation(DEL_OTHER_VISITED_VIEW) delOtherVisitedView!: (route: Route) => void;
 
   showTitle(item: any) {
     return showTitle(item, this);
@@ -287,14 +287,14 @@ export default class TagViews extends Vue {
     }
   }
 
-  generateRoute(): RouteConfig | boolean {
+  generateRoute(): Route | boolean {
     if (this.$route.name) {
       return this.$route;
     }
     return false;
   }
 
-  isActive(route: RouteConfig): boolean {
+  isActive(route: Route | VisitedViewItem): boolean {
     return route.path === this.$route.path || route.name === this.$route.name;
   }
 
@@ -306,11 +306,11 @@ export default class TagViews extends Vue {
       return false;
     }
     // 如果是点击首页，不需要增加
-    if ((_r as RouteConfig).name === cfg.homeName) {
+    if ((_r as Route).name === cfg.homeName) {
       return false;
     }
 
-    this.addVisitedView(_r as RouteConfig);
+    this.addVisitedView(_r as Route);
     cb && cb();
   }
 
