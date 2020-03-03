@@ -60,7 +60,7 @@
   <div class="navbar">
     <Header class="header-con" :class="`header-con-${headerTheme}`">
       <HeaderBar ref="headerBar">
-        <div class="time-wrap">{{ whichDay }} {{ currentTime }}</div>
+        <!-- <div class="time-wrap">{{ whichDay }} {{ currentTime }}</div> -->
         <Language v-if="useI18n" @on-lang-change="setLocal" style="margin-right: 20px;" :lang="local" />
         <Fullscreen v-model="isFullscreen" style="margin-right: 10px;" />
         <User :message-unread-count="unreadCount" />
