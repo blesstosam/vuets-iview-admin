@@ -17,7 +17,7 @@ Vue.component('TableAction', TableAction);
 import TreeTable from 'tree-table-vue';
 Vue.component(TreeTable.name, TreeTable);
 
-import Spacer from '@/components/Spacer.vue';
+import Spacer from '@/components/common/Spacer.vue';
 Vue.component('spacer', Spacer);
 
 import VueQrcode from '@chenfengyuan/vue-qrcode';
