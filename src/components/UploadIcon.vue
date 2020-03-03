@@ -65,7 +65,8 @@ import { Component, Vue, Emit, Ref, Prop, Watch } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { Upload } from 'view-design';
 import { baseUrl } from '@/api/server';
-import { OSS_UPLOAD } from '@/api/system-management/uri';
+// import { OSS_UPLOAD } from '@/api/system-management/uri';
+const OSS_UPLOAD = '';
 interface DefaultFile {
   name: string;
   url: string;
@@ -142,10 +143,10 @@ export default class UploadIcon extends Vue {
     return this.currentFileSrc;
   }
   handleErrorFile() {
-    this.$Message.error(this.$t('common.pictureFormat'));
+    this.$Message.error('文件格式不对');
   }
   handleMaxSize() {
-    this.$Message.warning(this.$t('common.appendixSize'));
+    this.$Message.warning('文件大小超出限制');
   }
 }
 </script>
