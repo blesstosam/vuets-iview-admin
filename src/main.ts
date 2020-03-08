@@ -25,7 +25,8 @@ Vue.component(VueQrcode.name, VueQrcode);
 
 // 引入iview组件
 import ViewUI from 'view-design';
-import 'view-design/dist/styles/iview.css';
+// import 'view-design/dist/styles/iview.css';
+import './styles/my-theme.less';
 //@ts-ignore
 // Vue.locale = () => {}; // 官网推荐配置 但是 $modal 有bug
 Vue.use(ViewUI, {
