@@ -2,6 +2,10 @@
 import { Form, Menu, Upload } from 'iview';
 import VueRouter from 'vue-router';
 
+export interface Dic<T = string> {
+  [k: string]: T;
+}
+
 // 侧边栏菜单数据类型
 export interface MenuItem {
   title: string;
@@ -25,13 +29,6 @@ export interface User {
   roleId: string;
   adminId: string;
 }
-
-// 枚举类型
-// export enum LoginStatus {
-//   SUCCESS = 'SUCCESS',
-//   PENDING = 'PENDING',
-//   FAILED = 'FAILED'
-// }
 
 // 后台接口返回数据类型
 export interface AjaxResponse<T = any> {
