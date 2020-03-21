@@ -66,6 +66,7 @@ const i18n = new VueI18n({
 
 //全局样式
 import './styles/common.styl';
+import './styles/tailwind.css';
 
 // 引入自定义icon
 import './assets/fonts/iconfont.js';

@@ -20,10 +20,10 @@
 import CommonCardTitle from '@/components/CommonCardTitle.vue';
 import TodoList from './TodoList.vue';
 import Inputer from './Inputer.vue';
-import { createComponent, reactive } from '@vue/composition-api';
+import { defineComponent, reactive } from '@vue/composition-api';
 import { Message } from 'view-design';
 
-export default createComponent({
+export default defineComponent({
   name: 'TodoListIndex',
   components: { CommonCardTitle, TodoList, Inputer },
 

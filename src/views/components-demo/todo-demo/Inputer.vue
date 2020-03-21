@@ -13,14 +13,14 @@
         <Input v-model="content" />
       </Col>
       <Col span="4">
-        <Button @click="add" icon="md-add">Add</Button>
+        <Button @click="add" icon="md-add" class="shadow-lg">Add</Button>
       </Col>
     </Row>
   </div>
 </template>
 
 <script lang="ts">
-import { createComponent, ref, Ref } from '@vue/composition-api';
+import { defineComponent, ref, Ref } from '@vue/composition-api';
 
 interface TodoListType {
   content: string;
@@ -28,7 +28,7 @@ interface TodoListType {
   id: number;
 }
 
-export default createComponent({
+export default defineComponent({
   name: 'Inputer',
   setup(props, ctx) {
     const content: Ref<string> = ref('');

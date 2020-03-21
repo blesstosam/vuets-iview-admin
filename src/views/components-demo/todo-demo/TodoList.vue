@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { createComponent, computed, ref, Ref } from '@vue/composition-api';
+import { defineComponent, computed, ref, Ref } from '@vue/composition-api';
 
 interface TodoListType {
   content: string;
@@ -29,7 +29,7 @@ interface TodoListType {
   id: number;
 }
 
-export default createComponent({
+export default defineComponent({
   name: 'TodoList',
   props: {
     list: {
