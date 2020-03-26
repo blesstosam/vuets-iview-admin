@@ -107,7 +107,7 @@ export class HttpService {
     });
   }
 
-  get(url: string, param: Object): Promise<any> {
+  get(url: string, param?: Object): Promise<any> {
     return new Promise(resolve => {
       this.service.get(url, { params: param || {} }).then(
         (res: AxiosResponse) => {
