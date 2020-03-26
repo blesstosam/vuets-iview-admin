@@ -128,15 +128,15 @@ export class HttpService {
    * @param {formData对象} data
    */
   upload(url: string, data: any): Promise<any> {
-    return new Promise(reslove => {
+    return new Promise(resolve => {
       this.service
         .post(url, data, { headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() } })
         .then(
           res => {
-            reslove(res.data);
+            resolve(res.data);
           },
           err => {
-            reslove(err);
+            resolve(err);
           }
         );
     });
