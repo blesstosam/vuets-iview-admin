@@ -47,6 +47,7 @@ import { UPDATE_USER, CHANGE_SETTING } from '@/store/mutation-types';
 import { toRouterComponent } from '@/router/router-list';
 import storage from '@/assets/script/storage';
 import { login } from '@/api/user/index';
+import { getLocationQuery } from '@/assets/script/util';
 
 interface LoginForm {
   username: string;
@@ -123,7 +124,9 @@ export default class Login extends Vue {
           // 动态添加路由
           // this.addRouters();
 
-          this.$router.push('/home');
+          // get next path from location.href
+          const next = window.decodeURIComponent(getLocationQuery('next') || '/home');
+          this.$router.push(next);
         }
       }
     );

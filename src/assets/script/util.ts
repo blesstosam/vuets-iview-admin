@@ -271,3 +271,17 @@ export function paramToUrl(url: string, data: any) {
   params = params.substr(0, params.length - 1);
   return url.indexOf('?') > -1 ? url + '&' + params : url + '?' + params;
 }
+
+/**
+ * 获取location.href的query参数
+ * @param name key
+ */
+export function getLocationQuery(name: string) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var _search = window.location.href.substr(window.location.href.indexOf('?'));
+  var r=_search.substr(1).replace(new RegExp(/(amp;)/g),'').match(reg);
+  if (r != null) {
+      return r[2];
+  }
+  return null;
+};

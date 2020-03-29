@@ -54,7 +54,7 @@ _router.beforeEach((to: Route, from: Route, next: Function) => {
     if (getLsCache('username')) {
       next();
     } else {
-      next('/login');
+      next(`/login?next=${window.encodeURIComponent(to.path)}`);
     }
   } else if (to.path === '/login') {
     if (getLsCache('username')) {
