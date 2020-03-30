@@ -44,7 +44,11 @@
         <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
         <!-- // https://next.ant.design/docs/spec/stay-cn -->
-        <PopConfirm @on-ok="remove(index)" />
+        <PopConfirm :onOk="remove(index)">
+          <template slot="action">
+            <Button type="error" size="small">删除</Button>
+          </template>
+        </PopConfirm>
       </template>
     </Table>
     <Page class="pager" :total="data.length" show-elevator />
@@ -180,7 +184,9 @@ export default class ComplexTable extends Vue {
     });
   }
   remove(index: number) {
-    this.data.splice(index, 1);
+    return () => {
+      this.data.splice(index, 1);
+    };
   }
 }
 </script>

@@ -1,12 +1,24 @@
 <style lang="stylus">
-.ivu-poptip-confirm .ivu-poptip-body .ivu-icon
-  // 解决 iview 的一个小bug
-  left 16px !important
+.ivu-poptip-popper
+  & .ivu-poptip-title
+    text-align: left
 </style>
 
 <template>
-  <Poptip v-on="$listeners" v-bind="$attrs" :placement="placement" confirm :title="confirmMsg">
-    <Button type="error" size="small">删除</Button>
+  <Poptip v-model="show" width="300" v-on="$listeners" v-bind="$attrs" :title="title" word-wrap>
+    <template slot="title">
+      <Icon size="16" type="ios-help-circle" color="#f90" style="margin-right: 8px" />
+      <strong>{{ title }}</strong>
+    </template>
+    <slot name="action"> </slot>
+    <template slot="content">
+      <div>
+        <slot name="desc"></slot>
+        <Divider v-if="$slots.desc" />
+        <Button type="text" @click="cancle">{{ cancleText }}</Button>
+        <Button type="primary" @click="ok" :loading="loading">{{ okText }}</Button>
+      </div>
+    </template>
   </Poptip>
 </template>
 
@@ -15,7 +27,31 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class PopConfirm extends Vue {
-  @Prop({ default: '确定要删除吗？' }) readonly confirmMsg!: string;
-  @Prop({ default: 'left-end' }) readonly placement!: string;
+  @Prop({ default: '确定要删除吗？' }) readonly title!: string;
+
+  @Prop({ default: '确定' }) readonly okText!: string;
+  @Prop({ default: '取消' }) readonly cancleText!: string;
+
+  @Prop() onOk!: Function;
+  @Prop() onCancle!: Function;
+
+  show = false;
+  loading = false;
+
+  async ok() {
+    this.loading = true;
+    if (this.onOk) {
+      await this.onOk();
+    }
+    this.loading = false;
+    this.show = false;
+  }
+
+  async cancle() {
+    if (this.onCancle) {
+      await this.cancle();
+    }
+    this.show = false;
+  }
 }
 </script>
