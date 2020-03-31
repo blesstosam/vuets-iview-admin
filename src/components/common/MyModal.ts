@@ -1,15 +1,6 @@
-<template>
-  <div>
-    <Modal v-model="isShow" v-on="$listeners" v-bind="$attrs">
-      <div slot="footer">
-        <Button @click="isShow = false">关闭</Button>
-      </div>
-    </Modal>
-  </div>
-</template>
-
-<script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator';
+import { Modal } from 'view-design';
+import { CreateElement } from 'vue';
 
 @Component
 export default class MyModal extends Vue {
@@ -33,5 +24,24 @@ export default class MyModal extends Vue {
     if (!val) return;
     // 当显示modal组件的时候 do something
   }
+
+  render(h: CreateElement) {
+    return h(Modal, {
+      props: {
+        ...this.$props,
+        value: this.isShow,
+        title: this.$props.title || 'title'
+      },
+      attrs: { ...this.$attrs },
+      on: {
+        ...this.$listeners,
+        'on-visible-change': (val: boolean) => {
+          if (!val) {
+            this.isShow = false;
+          }
+        }
+      },
+      scopedSlots: this.$scopedSlots
+    });
+  }
 }
-</script>
