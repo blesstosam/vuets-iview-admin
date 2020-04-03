@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <Poptip v-model="show" width="300" v-on="$listeners" v-bind="$attrs" :title="title" word-wrap>
+  <Poptip v-model="show" width="300" @click.native.stop v-on="$listeners" v-bind="$attrs" :title="title" word-wrap>
     <template slot="title">
       <Icon size="16" type="ios-help-circle" color="#f90" style="margin-right: 8px" />
       <strong>{{ title }}</strong>
