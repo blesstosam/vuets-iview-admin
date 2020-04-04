@@ -26,7 +26,9 @@
 <template>
   <Card dis-hover :bordered="false" class="number-card">
     <Tooltip :content="explanation">
-      <div class="question-icon"><Icon color="#ccc" custom="iconfont icon-icon-circle-question" /></div>
+      <div class="question-icon">
+        <Icon color="#ccc" custom="iconfont icon-icon-circle-question" />
+      </div>
     </Tooltip>
     <div>
       <span class="icon-wrap">

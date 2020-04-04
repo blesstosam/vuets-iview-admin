@@ -30,7 +30,7 @@ export default class MyModal extends Vue {
       props: {
         ...this.$props,
         value: this.isShow,
-        title: this.$props.title || 'title'
+        title: this.$attrs.title || 'title'
       },
       attrs: { ...this.$attrs },
       on: {

@@ -5,7 +5,8 @@ import cfg from '@/config/index';
 //-------------------------------日期选择 格式化
 export function formatDataToSecond(d: Date): string {
   const resDate = d.getFullYear() + '-' + addZero(d.getMonth() + 1) + '-' + addZero(d.getDate());
-  const resTime = addZero(d.getHours()) + ':' + addZero(d.getMinutes()) + ':' + addZero(d.getSeconds());
+  const resTime =
+    addZero(d.getHours()) + ':' + addZero(d.getMinutes()) + ':' + addZero(d.getSeconds());
   const str = resDate + ' ' + resTime;
   return str;
 }

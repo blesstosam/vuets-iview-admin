@@ -20,7 +20,12 @@
     <SiderBarTop v-show="showMenuInHeader" :showAvatar="false" />
     <HeaderMenu v-show="showMenuInHeader" />
     <SiderTrigger v-if="!showMenuInHeader" />
-    <custom-bread-crumb v-if="!showMenuInHeader" show-icon style="margin-left: 30px;" :list="breadCrumbList" />
+    <custom-bread-crumb
+      v-if="!showMenuInHeader"
+      show-icon
+      style="margin-left: 30px;"
+      :list="breadCrumbList"
+    />
     <spacer />
     <div class="custom-content-con">
       <slot></slot>

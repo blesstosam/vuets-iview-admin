@@ -15,7 +15,9 @@
 
     <div v-for="(item, index) in showList" :key="index" style="margin-top: 8px;">
       <Checkbox v-model="item.completed"></Checkbox>
-      <span style="margin-left: 12px;" :class="{ 'completed-item': item.completed }">{{ item.content }}</span>
+      <span style="margin-left: 12px;" :class="{ 'completed-item': item.completed }">{{
+        item.content
+      }}</span>
     </div>
   </div>
 </template>

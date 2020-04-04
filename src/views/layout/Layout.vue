@@ -78,11 +78,17 @@
         <div class="position-wrap">
           <div class="position-wrap-item">
             <div>是否显示页签</div>
-            <i-switch v-model="isShowTagsView" @on-change="changeSwitch('isShowTagsView', $event)" />
+            <i-switch
+              v-model="isShowTagsView"
+              @on-change="changeSwitch('isShowTagsView', $event)"
+            />
           </div>
           <div class="position-wrap-item">
             <div>是否开启顶部菜单模式</div>
-            <i-switch v-model="isShowMenuInHeader" @on-change="changeSwitch('isShowMenuInHeader', $event)" />
+            <i-switch
+              v-model="isShowMenuInHeader"
+              @on-change="changeSwitch('isShowMenuInHeader', $event)"
+            />
           </div>
         </div>
       </RightPanel>
@@ -134,7 +140,13 @@ export default class Layout extends Vue {
   isShowMenuInHeader: boolean = false;
 
   styleIndex: number = 0;
-  styleType: Array<{ img: string; sidebarTheme: string; headerTheme: string; key: string; tip: string }> = [
+  styleType: Array<{
+    img: string;
+    sidebarTheme: string;
+    headerTheme: string;
+    key: string;
+    tip: string;
+  }> = [
     {
       img: require('../../assets/img/svg/sidebar-dark-header-light.svg'),
       sidebarTheme: 'dark',

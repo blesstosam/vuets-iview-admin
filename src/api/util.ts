@@ -130,7 +130,9 @@ export class HttpService {
   upload(url: string, data: any): Promise<any> {
     return new Promise(resolve => {
       this.service
-        .post(url, data, { headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() } })
+        .post(url, data, {
+          headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() }
+        })
         .then(
           res => {
             resolve(res.data);

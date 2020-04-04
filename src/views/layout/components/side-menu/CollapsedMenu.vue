@@ -13,7 +13,9 @@
       :style="{ textAlign: !hideTitle ? 'left' : '' }"
     >
       <common-icon :size="rootIconSize" :color="textColor" :type="parentItem.icon" />
-      <span class="menu-title" v-if="!hideTitle" :style="{ color: textColor }">{{ showTitle(parentItem) }}</span>
+      <span class="menu-title" v-if="!hideTitle" :style="{ color: textColor }">{{
+        showTitle(parentItem)
+      }}</span>
     </a>
     <DropdownMenu ref="dropdown" slot="list">
       <template v-for="child in children">

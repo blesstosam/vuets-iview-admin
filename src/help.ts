@@ -42,7 +42,9 @@ export default function install(Vue: any) {
         return btnMap[`${(this as any).$route.path}/${key}`] || '';
       },
       __isBtnShow(key: string): string {
-        return btnMap[`${(this as any).$route.path}/${key}`] ? 'display: inline-block' : 'display: none';
+        return btnMap[`${(this as any).$route.path}/${key}`]
+          ? 'display: inline-block'
+          : 'display: none';
       }
     }
   });

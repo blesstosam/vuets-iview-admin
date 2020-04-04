@@ -61,7 +61,12 @@
     <Header class="header-con" :class="`header-con-${headerTheme}`">
       <HeaderBar ref="headerBar">
         <!-- <div class="time-wrap">{{ whichDay }} {{ currentTime }}</div> -->
-        <Language v-if="useI18n" @on-lang-change="setLocal" style="margin-right: 20px;" :lang="local" />
+        <Language
+          v-if="useI18n"
+          @on-lang-change="setLocal"
+          style="margin-right: 20px;"
+          :lang="local"
+        />
         <Fullscreen v-model="isFullscreen" style="margin-right: 10px;" />
         <User :message-unread-count="unreadCount" />
       </HeaderBar>
@@ -120,7 +125,8 @@ export default class Navbar extends Vue {
   @Mutation(SET_MENU_LIST) setMenuList!: (arr: Array<MenuItem>) => void;
 
   setCurrentTime() {
-    const formatTxt = this.local === cfg.langType.CN ? 'YYYY年MM月DD日 HH:mm:ss' : 'YYYY-MM-DD HH:mm:ss';
+    const formatTxt =
+      this.local === cfg.langType.CN ? 'YYYY年MM月DD日 HH:mm:ss' : 'YYYY-MM-DD HH:mm:ss';
     this.currentTime = dayjs().format(formatTxt);
     this.timer = setInterval(() => {
       this.currentTime = dayjs().format(formatTxt);

@@ -3,7 +3,11 @@
   <div class="table-footer">
     <Table v-bind="$attrs">
       <template slot="action" slot-scope="{ row }">
-        <TableAction tooltip-type="ipSetting" tooltip-content="ip段设置" @click="isModalShow = true" />
+        <TableAction
+          tooltip-type="ipSetting"
+          tooltip-content="ip段设置"
+          @click="isModalShow = true"
+        />
         <TableAction tooltip-type="delete" tooltip-content="删除" @click="handleDel(row)" />
       </template>
 

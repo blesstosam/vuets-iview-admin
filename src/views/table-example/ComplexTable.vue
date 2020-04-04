@@ -16,11 +16,14 @@
     <div class="search-wrap">
       <Input style="width: 200px; margin-right: 24px;" placeholder="请输入文章标题" />
       <Input style="width: 200px; margin-right: 12px;" placeholder="请输入作者姓名" />
-      <Button icon="ios-search" type="primary" style="margin-right: 12px;">{{ $t('search') }}</Button>
+      <Button icon="ios-search" type="primary" style="margin-right: 12px;">{{
+        $t('search')
+      }}</Button>
       <Button icon="md-refresh" type="warning">{{ $t('reset') }}</Button>
     </div>
     <Alert show-icon
-      >文章总数为 <strong>{{ data.length }} </strong>篇， 共计阅读量为 <strong>{{ totalReadCount }}</strong> 次</Alert
+      >文章总数为 <strong>{{ data.length }} </strong>篇， 共计阅读量为
+      <strong>{{ totalReadCount }}</strong> 次</Alert
     >
     <Table :columns="columns" :data="data">
       <template slot-scope="{ row, index }" slot="index">
@@ -41,7 +44,9 @@
       </template>
 
       <template slot-scope="{ row, index }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)">详情</Button>
+        <Button type="primary" size="small" style="margin-right: 5px" @click="show(index)"
+          >详情</Button
+        >
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
         <!-- // https://next.ant.design/docs/spec/stay-cn -->
         <PopConfirm :onOk="remove(index)">

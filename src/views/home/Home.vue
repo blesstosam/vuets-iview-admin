@@ -40,7 +40,12 @@
           subTitle="在线登录人数"
           @update-data="handleUpdateData"
         />
-        <Card style="height: 228px; margin-top: 12px;" dis-hover :bordered="false" class="my-chart-wrap">
+        <Card
+          style="height: 228px; margin-top: 12px;"
+          dis-hover
+          :bordered="false"
+          class="my-chart-wrap"
+        >
           <p slot="title">当前活跃度</p>
           <div style="display: flex; justify-content: space-around;">
             <div style="margin-top: 20px;">

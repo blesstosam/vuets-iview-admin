@@ -12,9 +12,12 @@
 <template>
   <div>
     <Alert show-icon style="margin-top: 24px;"
-      >引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。本 Demo 是基于 driver.js.</Alert
+      >引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。本 Demo 是基于
+      driver.js.</Alert
     >
-    <Button @click="openGuide" type="primary" style="margin-top: 12px;" size="large">打开引导</Button>
+    <Button @click="openGuide" type="primary" style="margin-top: 12px;" size="large"
+      >打开引导</Button
+    >
   </div>
 </template>
 

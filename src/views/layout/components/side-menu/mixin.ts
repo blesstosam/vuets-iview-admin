@@ -17,6 +17,10 @@ export default class Mixin extends Vue {
     return item.children && (item.children.length > 1 || (item.meta && item.meta.showAlways));
   }
   getNameOrHref(item: any, hasChildren: boolean) {
-    return item.href ? `isTurnByHref_${item.href}` : hasChildren ? item.children[0].name : item.name;
+    return item.href
+      ? `isTurnByHref_${item.href}`
+      : hasChildren
+      ? item.children[0].name
+      : item.name;
   }
 }

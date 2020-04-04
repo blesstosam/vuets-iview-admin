@@ -93,7 +93,11 @@
     </div>
 
     <!-- 右键菜单 -->
-    <ul v-show="visible" class="contextmenu" :style="{ left: contextMenuLeft + 'px', top: contextMenuTop + 'px' }">
+    <ul
+      v-show="visible"
+      class="contextmenu"
+      :style="{ left: contextMenuLeft + 'px', top: contextMenuTop + 'px' }"
+    >
       <li v-for="(item, key) of menuList" @click="handleTagsOption(key)" :key="key">{{ item }}</li>
     </ul>
 
@@ -140,7 +144,12 @@
 
 <script lang="ts">
 const padding = 15;
-import { ADD_VISITED_VIEW, DEL_VISITED_VIEW, CLEAR_VISITED_VIEW, DEL_OTHER_VISITED_VIEW } from '@/store/mutation-types';
+import {
+  ADD_VISITED_VIEW,
+  DEL_VISITED_VIEW,
+  CLEAR_VISITED_VIEW,
+  DEL_OTHER_VISITED_VIEW
+} from '@/store/mutation-types';
 import { Vue, Component, Watch, Prop } from 'vue-property-decorator';
 import { Mutation, Getter } from 'vuex-class';
 import { Route } from 'vue-router';
@@ -241,7 +250,8 @@ export default class TagViews extends Vue {
 
       let wrapperWidth = (this.$refs.scrollWrapper as HTMLElement).offsetWidth;
       // let barWidth = this.$refs.scrollBar.offsetWidth;
-      let _right = (_el as HTMLElement).offsetLeft + (_el as HTMLElement).offsetWidth + this.tagBodyLeft;
+      let _right =
+        (_el as HTMLElement).offsetLeft + (_el as HTMLElement).offsetWidth + this.tagBodyLeft;
       let _left = (_el as HTMLElement).offsetLeft + this.tagBodyLeft;
       let _o;
       // console.log(_right, _left, wrapperWidth)

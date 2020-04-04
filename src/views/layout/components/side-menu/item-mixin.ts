@@ -4,7 +4,11 @@ import { Prop } from 'vue-property-decorator';
 
 @Component
 export default class ItemMixin extends Vue {
-  @Prop({ default: () => {} }) readonly parentItem!: { name: string; children: string; [key: string]: string };
+  @Prop({ default: () => {} }) readonly parentItem!: {
+    name: string;
+    children: string;
+    [key: string]: string;
+  };
   @Prop(Number) readonly iconSize!: number;
 
   get parentName() {

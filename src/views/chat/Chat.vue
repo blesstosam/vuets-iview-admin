@@ -114,7 +114,12 @@
   <div class="chat-page">
     <div class="chat-list">
       <Input search style="margin-bottom: 24px; margin-top: 3px;" />
-      <li class="chat-list-item" v-for="(item, index) in chatList" :key="index" @click="currentChatIndex = index">
+      <li
+        class="chat-list-item"
+        v-for="(item, index) in chatList"
+        :key="index"
+        @click="currentChatIndex = index"
+      >
         <img :src="item.avatar" alt="avatar" class="avatar" />
         <div class="introduction">
           <div class="name">{{ item.name }}</div>
@@ -138,14 +143,23 @@
           v-for="(item, index) in currentChatList"
           :key="'index' + index"
         >
-          <img class="avatar" :src="item.type === 'other' ? currentChatItem.avatar : myAvatar" alt="avatar" />
+          <img
+            class="avatar"
+            :src="item.type === 'other' ? currentChatItem.avatar : myAvatar"
+            alt="avatar"
+          />
           <p class="text">{{ item.msg }}</p>
         </div>
       </div>
 
       <div class="input-box">
         <Input v-model="msg" type="text" />
-        <Icon @click="send" type="md-send" size="24" style="margin-top: 10px; margin-right: 5px; " />
+        <Icon
+          @click="send"
+          type="md-send"
+          size="24"
+          style="margin-top: 10px; margin-right: 5px; "
+        />
       </div>
     </div>
   </div>

@@ -49,7 +49,11 @@
     :collapsed-width="collapsedWidth"
     v-model="collapsed"
     class="left-sider"
-    :class="[`left-sider-${sidebarTheme}`, { left: isSidebarOpened }, { 'hide-sider': !isSidebarOpened }]"
+    :class="[
+      `left-sider-${sidebarTheme}`,
+      { left: isSidebarOpened },
+      { 'hide-sider': !isSidebarOpened }
+    ]"
     :style="{ overflow: 'hidden' }"
   >
     <side-menu
@@ -73,7 +77,9 @@
             :placeholder="$t('searchMenu')"
             style="width:90%"
           >
-            <Option v-for="item in searchResult" :value="item.name" :key="item.name"> {{ item.title }}</Option>
+            <Option v-for="item in searchResult" :value="item.name" :key="item.name">
+              {{ item.title }}</Option
+            >
           </AutoComplete>
         </div>
       </div>

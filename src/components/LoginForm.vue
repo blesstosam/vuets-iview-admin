@@ -22,9 +22,19 @@
         </Input>
       </FormItem>
       <FormItem prop="password">
-        <Input :type="passwordInputType" v-model="formValidate.password" :placeholder="$t('login.enterPassword')">
+        <Input
+          :type="passwordInputType"
+          v-model="formValidate.password"
+          :placeholder="$t('login.enterPassword')"
+        >
           <Icon size="14" type="md-key" slot="prepend"></Icon>
-          <Icon size="14" :type="iconType" slot="append" style="width: 27px;" @click.native="togglePassword"></Icon>
+          <Icon
+            size="14"
+            :type="iconType"
+            slot="append"
+            style="width: 27px;"
+            @click.native="togglePassword"
+          ></Icon>
         </Input>
       </FormItem>
 

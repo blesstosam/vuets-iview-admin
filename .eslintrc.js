@@ -173,7 +173,19 @@ module.exports = {
 
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020
   },
-  plugins: ['@typescript-eslint']
+  plugins: ['@typescript-eslint'],
+  overrides: [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "mocha": true
+      }
+    }
+  ]
 };

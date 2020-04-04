@@ -20,13 +20,25 @@
     <p slot="title">{{ chartTypes.targetName }}</p>
     <div v-if="chartData.rows.length > 0">
       <span v-if="chartTypes.chartStyle === 'line'" class="icon-style">
-        <img @click="changeChart('line', chartTypes.chartName)" src="@/assets/img/line_active.png" alt />
-        <img @click="changeChart('histogram', chartTypes.chartName)" src="@/assets/img/tiao.png" alt />
+        <img
+          @click="changeChart('line', chartTypes.chartName)"
+          src="@/assets/img/line_active.png"
+          alt
+        />
+        <img
+          @click="changeChart('histogram', chartTypes.chartName)"
+          src="@/assets/img/tiao.png"
+          alt
+        />
       </span>
 
       <span v-else class="icon-style">
         <img @click="changeChart('line', chartTypes.chartName)" src="@/assets/img/line.png" alt />
-        <img @click="changeChart('histogram', chartTypes.chartName)" src="@/assets/img/tiao_active.png" alt />
+        <img
+          @click="changeChart('histogram', chartTypes.chartName)"
+          src="@/assets/img/tiao_active.png"
+          alt
+        />
       </span>
 
       <ve-line
