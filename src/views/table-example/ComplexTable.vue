@@ -49,7 +49,7 @@
         >
         <!-- // 参考 antd 的设计思想 - 足不出户 使用popconfirm 来提示用户 而不是modal -->
         <!-- // https://next.ant.design/docs/spec/stay-cn -->
-        <PopConfirm :onOk="remove(index)">
+        <PopConfirm :onOk="remove(index)" transfer>
           <template slot="action">
             <Button type="error" size="small">删除</Button>
           </template>
