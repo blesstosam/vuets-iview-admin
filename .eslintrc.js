@@ -33,7 +33,7 @@ module.exports = {
       }
     ],
     'vue/no-parsing-error': ['error', { "x-invalid-end-tag": false }],
-    // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": "error",
     // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
 
     'object-shorthand': 'error', // 对象属性缩写
