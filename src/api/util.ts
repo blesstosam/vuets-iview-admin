@@ -1,16 +1,32 @@
+// 1. enableCanclePedding 处于 pendding 的请求默认被拦截
+// 2. retryOpts {times: 1, enable: false} 默认关闭retry 开启retry后默认多请求一次
+// 3. cache todo
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
 import { LOGOUT } from '@/store/mutation-types';
 import Vue from 'vue';
 import cfg from '@/config/index';
+import sha256 from 'sha256';
 
 let dispathLogoutTime = 0; // 确保logout只调用了一次
+let apiPeddingMap: Map<string, boolean> = new Map(); // 正在pendding的接口请求
+
+const dispatchLogOut = (msg: string) => {
+  Vue.prototype.$Modal.info({
+    title: msg,
+    onOk: () => {
+      store.dispatch(LOGOUT);
+    }
+  });
+};
 
 export class HttpService {
   service: AxiosInstance;
 
   constructor(
     url: string,
+    // 是否开启pendding请求的拦截 默认为true
+    enableCanclePedding: boolean = true,
     requestCb?: (config: AxiosRequestConfig) => void,
     responseCb?: (response: AxiosResponse) => void
   ) {
@@ -32,6 +48,21 @@ export class HttpService {
         // 将单独的逻辑通过回调的方式给外部处理
         requestCb && requestCb(config);
 
+        // 每次请求前 先判断该请求是否在pedding中 如果在拦截掉该请求
+        // 不在则请求，并将api请求放到pendding里
+        if (enableCanclePedding) {
+          const { url, method, params, data } = config;
+          const param = method === 'get' ? params : data;
+          const hash = sha256(url || '' + method + JSON.stringify(param));
+          if (apiPeddingMap.has(hash)) {
+            return Promise.reject(new Error('Api is in pendding, do not request anymore!'));
+          }
+
+          apiPeddingMap.set(hash, true);
+          // @ts-ignore
+          config.__hash__ = hash;
+        }
+
         return config;
       },
       (error: AxiosError) => {
@@ -42,6 +73,13 @@ export class HttpService {
     // respone拦截器
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
+        // @ts-ignore
+        const hash = response.config.__hash__;
+        // 每次请求结束 将该请求的hash从数组移除
+        if (hash) {
+          apiPeddingMap.delete(hash);
+        }
+
         if (response.status !== 200) {
           // 405: 其他客户端登录了;  407:Token 过期了;
           if (response.status !== 407 && response.status !== 405) {
@@ -49,12 +87,7 @@ export class HttpService {
           } else {
             if (dispathLogoutTime === 0) {
               dispathLogoutTime++;
-              Vue.prototype.$Modal.info({
-                title: response.data.msg,
-                onOk: () => {
-                  store.dispatch(LOGOUT);
-                }
-              });
+              dispatchLogOut(response.data.msg);
             }
           }
           return Promise.reject(response);
@@ -64,12 +97,7 @@ export class HttpService {
         if (response.data.code === 407 || response.data.code === 405) {
           if (dispathLogoutTime === 0) {
             dispathLogoutTime++;
-            Vue.prototype.$Modal.info({
-              title: response.data.msg,
-              onOk: () => {
-                store.dispatch(LOGOUT);
-              }
-            });
+            dispatchLogOut(response.data.msg);
           }
 
           return Promise.reject(response); // 407的直接不处理
@@ -101,6 +129,7 @@ export class HttpService {
           resolve(res.data);
         },
         (err: AxiosError) => {
+          window.console.error(err);
           resolve(err);
         }
       );
@@ -116,6 +145,7 @@ export class HttpService {
         },
         (err: AxiosError) => {
           // err为reject
+          window.console.error(err);
           resolve(err);
         }
       );
@@ -128,22 +158,40 @@ export class HttpService {
    * @param {formData对象} data
    */
   upload(url: string, data: any): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise(reslove => {
       this.service
         .post(url, data, {
           headers: { 'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime() }
         })
         .then(
           res => {
-            resolve(res.data);
+            reslove(res.data);
           },
           err => {
-            resolve(err);
+            reslove(err);
           }
         );
     });
   }
 }
+
+/**
+ * @description: 获取请求头
+ */
+export const getHeaders = () => {
+  let headers: any = {};
+  const token = (store.state as any).user.token;
+  const serviceId = (store.state as any).user.serviceId;
+  const authorization = (store.state as any).user.authorization;
+  const _locale = (store.state as any).app.local;
+  headers.serviceId = serviceId;
+  headers.authorization = authorization;
+  if (token) {
+    headers.token = token;
+  }
+  headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
+  return headers;
+};
 
 // 获取本地json数据
 export function getJson(url: string): Promise<any> {
