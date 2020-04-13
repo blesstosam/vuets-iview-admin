@@ -108,6 +108,11 @@ export class HttpService {
         return response; // return 会默认resolve
       },
       (error: AxiosError) => {
+        // @ts-ignore
+        const hash = error.response && error.response.config.__hash__;
+        if (hash) {
+          apiPeddingMap.delete(hash);
+        }
         // 404，500, timeout 等服务器报错
         let errStr = error + '';
         if (errStr.search('timeout') === -1) {
