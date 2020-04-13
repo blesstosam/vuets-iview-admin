@@ -20,6 +20,15 @@ const dispatchLogOut = (msg: string) => {
   });
 };
 
+const removePenddingHash = (d: AxiosResponse | AxiosError) => {
+  // @ts-ignore
+  const hash = d.config.__hash__;
+  // 每次请求结束 将该请求的hash从数组移除
+  if (hash) {
+    apiPeddingMap.delete(hash);
+  }
+};
+
 export class HttpService {
   service: AxiosInstance;
 
@@ -73,13 +82,7 @@ export class HttpService {
     // respone拦截器
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
-        // @ts-ignore
-        const hash = response.config.__hash__;
-        // 每次请求结束 将该请求的hash从数组移除
-        if (hash) {
-          apiPeddingMap.delete(hash);
-        }
-
+        removePenddingHash(response);
         if (response.status !== 200) {
           // 405: 其他客户端登录了;  407:Token 过期了;
           if (response.status !== 407 && response.status !== 405) {
@@ -108,11 +111,7 @@ export class HttpService {
         return response; // return 会默认resolve
       },
       (error: AxiosError) => {
-        // @ts-ignore
-        const hash = error.response && error.response.config.__hash__;
-        if (hash) {
-          apiPeddingMap.delete(hash);
-        }
+        removePenddingHash(error);
         // 404，500, timeout 等服务器报错
         let errStr = error + '';
         if (errStr.search('timeout') === -1) {
