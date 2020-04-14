@@ -12,12 +12,13 @@
     v-bind="$attrs"
     :title="title"
     word-wrap
+    transfer
   >
     <template slot="title">
       <Icon size="16" type="ios-help-circle" color="#f90" style="margin-right: 8px" />
       <strong>{{ title }}</strong>
     </template>
-    <slot name="action"> </slot>
+    <slot></slot>
     <template slot="content">
       <div>
         <slot name="desc"></slot>
