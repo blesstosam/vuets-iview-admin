@@ -21,6 +21,10 @@ const api = {
 
   remove(key: string, storage: Storage) {
     storage.removeItem(key);
+  },
+
+  has(key: string, storage: Storage) {
+    return storage.has(key);
   }
 };
 
@@ -32,6 +36,9 @@ const store = {
   get(key: string) {
     return api.get(key, this.storage);
   },
+  has(key: string) {
+    return api.has(key, this.storage);
+  },
   remove(key: string) {
     return api.remove(key, this.storage);
   },
@@ -42,6 +49,9 @@ const store = {
     },
     get(key: string) {
       return api.get(key, this.storage);
+    },
+    has(key: string) {
+      return api.has(key, this.storage);
     },
     remove(key: string) {
       return api.remove(key, this.storage);

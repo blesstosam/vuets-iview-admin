@@ -1,5 +1,5 @@
 // 1. enableCanclePedding 处于 pendding 的请求默认被拦截
-// 2. retryOpts {times: 1, enable: false} 默认关闭retry 开启retry后默认多请求一次
+// 2. retryOpts {times: 2 } 默认关闭retry 开启retry后请求2次
 // 3. cache todo
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
@@ -7,6 +7,7 @@ import { LOGOUT } from '@/store/mutation-types';
 import Vue from 'vue';
 import cfg from '@/config/index';
 import sha256 from 'sha256';
+import { paramToUrl } from '@/assets/script/util';
 
 let dispathLogoutTime = 0; // 确保logout只调用了一次
 let apiPeddingMap: Map<string, boolean> = new Map(); // 正在pendding的接口请求
@@ -29,15 +30,24 @@ const removePenddingHash = (d: AxiosResponse | AxiosError | unknown) => {
   }
 };
 
+/**
+ * 根据请求生成唯一的hash值作为key
+ * @param config
+ */
+export function generateHashKey(config: AxiosRequestConfig) {
+  const { url, method, params, data } = config;
+  const param = method === 'get' ? params : data;
+  const hash = sha256(method + ':' + paramToUrl(url || '', param));
+  return hash;
+}
+
 export class HttpService {
   service: AxiosInstance;
 
   constructor(
     url: string,
     // 是否开启pendding请求的拦截 默认为true
-    enableCanclePedding: boolean = true,
-    requestCb?: (config: AxiosRequestConfig) => void,
-    responseCb?: (response: AxiosResponse) => void
+    enableCanclePedding: boolean = true
   ) {
     this.service = axios.create({
       baseURL: url,
@@ -54,15 +64,11 @@ export class HttpService {
         const _locale = (store.state as any).app.local;
         config.headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
 
-        // 将单独的逻辑通过回调的方式给外部处理
-        requestCb && requestCb(config);
-
         // 每次请求前 先判断该请求是否在pedding中 如果在拦截掉该请求
         // 不在则请求，并将api请求放到pendding里
         if (enableCanclePedding) {
-          const { url, method, params, data } = config;
-          const param = method === 'get' ? params : data;
-          const hash = sha256((url || '') + method + JSON.stringify(param));
+          const { url, method } = config;
+          const hash = generateHashKey(config);
           if (apiPeddingMap.has(hash)) {
             return Promise.reject(
               new Error(`Request ${method}-${url} is in pendding, do not request again!`)
@@ -107,8 +113,6 @@ export class HttpService {
 
           return Promise.reject(response); // 407的直接不处理
         }
-
-        responseCb && responseCb(response);
 
         return response; // return 会默认resolve
       },
@@ -174,6 +178,7 @@ export class HttpService {
             reslove(res.data);
           },
           err => {
+            window.console.error(err);
             reslove(err);
           }
         );
