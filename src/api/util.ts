@@ -23,7 +23,7 @@ const dispatchLogOut = (msg: string) => {
 const removePenddingHash = (d: AxiosResponse | AxiosError | unknown) => {
   // @ts-ignore
   const hash = d.config && d.config.__hash__;
-  // 每次请求结束 将该请求的hash从数组移除
+  // 每次请求结束 将该请求的hash从Map移除
   if (hash) {
     apiPeddingMap.delete(hash);
   }
@@ -62,7 +62,7 @@ export class HttpService {
         if (enableCanclePedding) {
           const { url, method, params, data } = config;
           const param = method === 'get' ? params : data;
-          const hash = sha256(url || '' + method + JSON.stringify(param));
+          const hash = sha256((url || '') + method + JSON.stringify(param));
           if (apiPeddingMap.has(hash)) {
             return Promise.reject(
               new Error(`Request ${method}-${url} is in pendding, do not request again!`)
