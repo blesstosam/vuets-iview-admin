@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@types/echarts": "4.4.3",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "25.2.1",
     "@types/mockjs": "1.0.2",
     "@types/quill": "2.0.3",
     "@types/sha256": "0.2.0",
