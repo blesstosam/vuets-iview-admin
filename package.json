@@ -52,9 +52,8 @@
     "vuex-class": "0.3.2"
   },
   "devDependencies": {
-    "@types/chai": "4.2.10",
     "@types/echarts": "4.4.3",
-    "@types/mocha": "7.0.2",
+    "@types/jest": "^25.2.1",
     "@types/mockjs": "1.0.2",
     "@types/quill": "2.0.3",
     "@types/sha256": "0.2.0",
@@ -63,7 +62,7 @@
     "@vue/cli-plugin-babel": "3.12.1",
     "@vue/cli-plugin-eslint": "4.3.1",
     "@vue/cli-plugin-typescript": "4.3.1",
-    "@vue/cli-plugin-unit-mocha": "4.3.1",
+    "@vue/cli-plugin-unit-jest": "4.3.1",
     "@vue/cli-service": "4.3.1",
     "@vue/eslint-config-prettier": "4.0.1",
     "@vue/eslint-config-typescript": "5.0.2",
@@ -71,7 +70,6 @@
     "babel-eslint": "10.1.0",
     "babel-plugin-import": "1.13.0",
     "babel-polyfill": "6.26.0",
-    "chai": "4.2.0",
     "eslint": "6.7.2",
     "eslint-plugin-vue": "6.2.2",
     "less": "2.7.3",
@@ -91,5 +89,8 @@
     "*.{js,ts,vue}": [
       "vue-cli-service lint"
     ]
+  },
+  "jest": {
+    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
   }
 }

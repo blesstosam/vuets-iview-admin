@@ -1,5 +1,3 @@
-import { expect } from 'chai';
-
 const data = [
   {
     id: '0',
@@ -117,15 +115,15 @@ function generatePerms(type: string, pId: string) {
 
 describe('generatePerms', () => {
   it('ADD 222-222', () => {
-    expect(generatePerms('ADD', '222-222')).to.eq('222:222-222:ADD');
+    expect(generatePerms('ADD', '222-222')).toEqual('222:222-222:ADD');
   });
   it('ADD 222-111', () => {
-    expect(generatePerms('ADD', '222-111')).to.eq('222:222-111:ADD');
+    expect(generatePerms('ADD', '222-111')).toEqual('222:222-111:ADD');
   });
   it('ADD 111-111', () => {
-    expect(generatePerms('ADD', '111-111')).to.eq('111:111-111:ADD');
+    expect(generatePerms('ADD', '111-111')).toEqual('111:111-111:ADD');
   });
   it('ADD 111-222-', () => {
-    expect(generatePerms('ADD', '111-222-')).to.eq('ADD');
+    expect(generatePerms('ADD', '111-222-')).toEqual('ADD');
   });
 });
