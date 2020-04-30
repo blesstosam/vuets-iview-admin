@@ -87,7 +87,8 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "npm run test "
+      "vue-cli-service lint",
+      "vue-cli-service test:unit"
     ]
   },
   "jest": {
