@@ -144,7 +144,7 @@ export const routerList: Array<RouteConfig> = [
     component: Layout,
     name: '_chat',
     redirect: '/chat/index',
-    meta: { title: 'menuTitle.chat' },
+    meta: { title: 'menuTitle.chat', icon: 'md-chatboxes' },
     children: [
       {
         path: 'index',
@@ -155,6 +155,16 @@ export const routerList: Array<RouteConfig> = [
           icon: 'md-chatboxes'
         },
         component: () => import('@/views/chat/Chat.vue')
+      },
+      {
+        path: 'chat-new',
+        name: 'ChatNew',
+        meta: {
+          title: 'Chat New',
+          remark: 'remark.chat',
+          icon: 'md-chatboxes'
+        },
+        component: () => import('@/views/chat/ChatNew.vue')
       }
     ]
   },

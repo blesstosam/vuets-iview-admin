@@ -1,4 +1,4 @@
-import { shallowMount } from "@vue/test-utils";
+// import { shallowMount } from "@vue/test-utils";
 // import HelloWorld from "@/components/HelloWorld.vue";
 
 describe("HelloWorld.vue", () => {
@@ -8,5 +8,6 @@ describe("HelloWorld.vue", () => {
     //   propsData: { msg }
     // });
     expect(1).toBe(1);
+    expect(2).toBe(2);
   });
 });
