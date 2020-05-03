@@ -87,8 +87,10 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "vue-cli-service lint",
-      "vue-cli-service test:unit"
+      "vue-cli-service lint"
+    ],
+    "*.{js,ts}": [
+      "vue-cli-service test:unit --coverage=true"
     ]
   },
   "jest": {
