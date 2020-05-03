@@ -38,6 +38,11 @@ export default defineComponent({
         content: '学做饭',
         completed: true,
         id: 2
+      },
+      {
+        content: '读书',
+        completed: true,
+        id: 3
       }
     ]);
 
