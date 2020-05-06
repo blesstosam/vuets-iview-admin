@@ -12,6 +12,8 @@ vuets-iview-admin is a front-end management background integration solution. It 
 
 ## Totally written by Typescript
 
+## build.sh可以配合gitlab自动打包部署
+
 ## Features
 - Login / Logout
 - i18n
