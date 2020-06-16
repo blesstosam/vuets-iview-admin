@@ -9,6 +9,9 @@ import cfg from '@/config/index';
 import sha256 from 'sha256';
 import { paramToUrl } from '@/assets/script/util';
 
+const REPEAT_LOGIN_CODE = 405;
+const INVALID_TOKEN = 407;
+
 let dispathLogoutTime = 0; // 确保logout只调用了一次
 let apiPeddingMap: Map<string, boolean> = new Map(); // 正在pendding的接口请求
 
@@ -92,8 +95,7 @@ export class HttpService {
       (response: AxiosResponse) => {
         removePenddingHash(response);
         if (response.status !== 200) {
-          // 405: 其他客户端登录了;  407:Token 过期了;
-          if (response.status !== 407 && response.status !== 405) {
+          if (response.status !== INVALID_TOKEN && response.status !== REPEAT_LOGIN_CODE) {
             Vue.prototype.$Message.error('网络异常，请稍后重试');
           } else {
             if (dispathLogoutTime === 0) {
@@ -104,17 +106,16 @@ export class HttpService {
           return Promise.reject(response);
         }
 
-        // 405: 其他客户端登录了;  407:Token 过期了;
-        if (response.data.code === 407 || response.data.code === 405) {
+        if (response.data.code === INVALID_TOKEN || response.data.code === REPEAT_LOGIN_CODE) {
           if (dispathLogoutTime === 0) {
             dispathLogoutTime++;
             dispatchLogOut(response.data.msg);
           }
 
-          return Promise.reject(response); // 407的直接不处理
+          return Promise.reject(response); // 405, 407的直接不处理
         }
 
-        return response; // return 会默认resolve
+        return response;
       },
       (error: AxiosError) => {
         removePenddingHash(error);
