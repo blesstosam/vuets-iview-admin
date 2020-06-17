@@ -89,7 +89,7 @@
     "*.{js,ts,vue}": [
       "vue-cli-service lint"
     ],
-    "*.{js,ts}": [
+    "**/tests/unit/**/*.spec.{j,t}s?(x)": [
       "vue-cli-service test:unit --coverage=true"
     ]
   },
