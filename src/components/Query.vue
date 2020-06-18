@@ -43,7 +43,7 @@ import { AjaxResponse } from '../type';
 
 @Component
 export default class Query extends Vue {
-  @Prop({ required: true }) request!: () => { originalRes: AjaxResponse; data: any };
+  @Prop({ required: true }) request!: () => Promise<{ originalRes: AjaxResponse; data: any }>;
 
   loading = false;
   error: { code: number; msg: string } | null = null;
