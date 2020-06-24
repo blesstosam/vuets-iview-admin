@@ -22,7 +22,7 @@
     "@download/blockies": "1.0.3",
     "@riophae/vue-treeselect": "0.0.38",
     "@toast-ui/vue-editor": "1.1.1",
-    "@vue/composition-api": "0.5.0",
+    "@vue/composition-api": "0.6.7",
     "ant-design-vue": "1.4.12",
     "axios": "0.19.2",
     "bpmn-js": "6.3.4",
