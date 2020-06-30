@@ -1,6 +1,6 @@
 // 1. enableCanclePedding 处于 pendding 的请求默认被拦截
 // 2. retryOpts {times: 2 } 默认关闭retry 开启retry后请求2次
-// 3. cache todo
+// 3. cache
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
 import store from '../store';
 import { LOGOUT } from '@/store/mutation-types';
@@ -64,8 +64,8 @@ export class HttpService {
         if (token) {
           config.headers.token = token;
         }
-        const _locale = (store.state as any).app.local;
-        config.headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
+        const locale = (store.state as any).app.local;
+        config.headers.locale = locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
 
         // 每次请求前 先判断该请求是否在pedding中 如果在拦截掉该请求
         // 不在则请求，并将api请求放到pendding里
@@ -112,7 +112,7 @@ export class HttpService {
             dispatchLogOut(response.data.msg);
           }
 
-          return Promise.reject(response); // 405, 407的直接不处理
+          return Promise.reject(response);
         }
 
         return response;
@@ -186,24 +186,6 @@ export class HttpService {
     });
   }
 }
-
-/**
- * @description: 获取请求头
- */
-export const getHeaders = () => {
-  let headers: any = {};
-  const token = (store.state as any).user.token;
-  const serviceId = (store.state as any).user.serviceId;
-  const authorization = (store.state as any).user.authorization;
-  const _locale = (store.state as any).app.local;
-  headers.serviceId = serviceId;
-  headers.authorization = authorization;
-  if (token) {
-    headers.token = token;
-  }
-  headers.locale = _locale === cfg.langType.CN ? 'zh_CN' : 'en_US';
-  return headers;
-};
 
 // 获取本地json数据
 export function getJson(url: string): Promise<any> {
