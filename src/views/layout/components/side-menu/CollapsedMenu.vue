@@ -35,15 +35,13 @@
 </template>
 
 <script lang="ts">
-import mixin from './mixin';
-import itemMixin from './item-mixin';
+import Mixin from './mixin';
+import ItemMixin from './item-mixin';
 import { findNodeUpperByClasses, getTextColor } from '@/assets/script/util';
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Mixins } from 'vue-property-decorator';
 
-@Component({
-  mixins: [itemMixin, mixin]
-})
-export default class CollapsedMenu extends Vue {
+@Component
+export default class CollapsedMenu extends Mixins(ItemMixin, Mixin) {
   mounted() {
     let dropdown = findNodeUpperByClasses((this.$refs.dropdown as Vue).$el, [
       'ivu-select-dropdown',

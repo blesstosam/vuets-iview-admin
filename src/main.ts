@@ -23,6 +23,9 @@ Vue.component('spacer', Spacer);
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 Vue.component(VueQrcode.name, VueQrcode);
 
+import { Query } from '@/components/common/Query';
+Vue.component('Query', Query);
+
 // 引入iview组件
 import ViewUI from 'view-design';
 // import 'view-design/dist/styles/iview.css';
