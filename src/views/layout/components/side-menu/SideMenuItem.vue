@@ -24,12 +24,10 @@
 </template>
 
 <script lang="ts">
-import mixin from './mixin';
-import itemMixin from './item-mixin';
-import { Vue, Component } from 'vue-property-decorator';
+import Mixin from './mixin';
+import ItemMixin from './item-mixin';
+import { Component, Mixins } from 'vue-property-decorator';
 
-@Component({
-  mixins: [mixin, itemMixin]
-})
-export default class SideMenuItem extends Vue {}
+@Component
+export default class SideMenuItem extends Mixins(ItemMixin, Mixin) {}
 </script>
