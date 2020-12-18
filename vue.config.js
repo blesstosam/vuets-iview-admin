@@ -10,7 +10,7 @@ module.exports = {
   // 设为false打包时不生成.map文件
   productionSourceMap: false,
 
-  publicPath: process.env.NODE_ENV === 'production' ? '/vuets-iview-admin' : '/',
+  publicPath: '/',
 
   outputDir: process.env.NODE_ENV === 'production' ? 'vuets-iview-admin' : 'vuets-iview-admin-test',
 
