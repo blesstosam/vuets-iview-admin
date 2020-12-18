@@ -25,8 +25,8 @@ vuets-iview-admin is a front-end management background integration solution. It 
     - Bpmn Demo
     - Todolist Demo (By Composition api)
 - Table
-- Guide  
-- Chat  
+- Guide
+- Chat
 - Error Page
     - 403
     - 404
