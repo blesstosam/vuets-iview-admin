@@ -24,7 +24,7 @@
     "@toast-ui/vue-editor": "1.1.1",
     "@vue/composition-api": "0.5.0",
     "ant-design-vue": "1.4.12",
-    "axios": "0.19.2",
+    "axios": "0.28.0",
     "bpmn-js": "6.3.4",
     "bpmn-js-properties-panel": "0.33.1",
     "camunda-bpmn-moddle": "4.4.0",
