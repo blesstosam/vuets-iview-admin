@@ -52,7 +52,7 @@
     "vuex-class": "0.3.2"
   },
   "devDependencies": {
-    "@types/echarts": "4.4.3",
+    "@types/echarts": "4.9.22",
     "@types/jest": "25.2.1",
     "@types/mockjs": "1.0.2",
     "@types/quill": "2.0.3",
